@@ -67,7 +67,8 @@
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false|
+|url|string|null: false|
 ### Association
 - belongs_to :item
 
@@ -75,7 +76,7 @@
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, foreign_key: true|
+|name|string|null: false|
 ### Association
 - has_many :items
 
