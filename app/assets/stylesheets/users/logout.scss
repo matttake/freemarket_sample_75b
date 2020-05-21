@@ -11,9 +11,13 @@
         background-color: #3ccace;
         margin: 50px auto;
         line-height: 50px;
+        &__btn {
+          display: block;
+        }
         a {
           color: white;
           text-decoration: none;
+          text-align: center;
         }
       }
     }

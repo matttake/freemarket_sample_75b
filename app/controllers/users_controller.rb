@@ -6,4 +6,7 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def card_register
+  end
+  
 end
