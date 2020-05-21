@@ -1,0 +1,48 @@
+.mypage-wrapper {
+  background-color:  #f8f8f8;
+
+  &__contents {
+    width: 720px;
+    margin: 0 auto;
+    display: flex;
+
+    &__left {
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      &__content {
+        position: relative;
+        width: 200px;
+        height: 25px;
+        line-height: 25px;
+        color: black;
+        padding: 16px;
+        font-size: 14px;
+        background-color: white;
+        border-top: solid 1px #eee;
+        text-decoration: none;
+        .icon {
+          position: absolute;
+          top: 35%;
+          right: 16px;
+          color: #ccc;
+        }
+      }
+      &__content:hover {
+        background-color: #f1f1f1;
+      }
+    }
+
+    &__right {
+      background-color: white;
+      width: 500px;
+      margin: 20px 10px;
+      position: relative;
+      &__back-image {
+        width: 500px;
+        height: 250px;
+        display: block;
+      }
+    }
+  }
+}

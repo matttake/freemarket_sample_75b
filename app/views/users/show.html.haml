@@ -1,0 +1,36 @@
+header
+-# headerの部分テンプレート
+-# = render "layouts/header"
+
+-# マイページ左側のメニューリンク一覧
+- contents = ["マイページ", "出品する", "出品した商品", "購入した商品", "発送元・お届け先住所変更", "クレジットカードの登録", "ログアウト"]
+- links    = ["",         "",        "",           "",           "",                     "",                   ""]
+
+.mypage-wrapper
+  .mypage-wrapper__contents
+    .mypage-wrapper__contents__left
+      - contents.each.with_index(0) do |content, i|
+        = link_to links[i], class: "mypage-wrapper__contents__left__content" do
+          = content
+          = icon("fas", "chevron-right", class: "icon")
+
+    .mypage-wrapper__contents__right
+      -# = image_tag "bg-topMiddleDl-pict.jpg", class: "mypage-wrapper__contents__right__back-image"
+      -# = image_tag "member_photo_noimage_thumb.png", class: "mypage-wrapper__contents__right__user-image"
+      .mypage-wrapper__contents__right__user-name
+      freemarket_sample_75b
+      .mypage-wrapper__contents__right__title
+        .mypage-wrapper__contents__right__title__notice
+          お知らせ
+        .mypage-wrapper__contents__right__title__todo
+          やることリスト
+        .mypage-wrapper__contents__right__notices
+          事務局から個別メッセージ「ログイン通知」
+        .mypage-wrapper__contents__right__notices
+          事務局から個別メッセージ「ログイン通知」
+        .mypage-wrapper__contents__right__view-list
+          一覧を見る
+
+footer
+-# footerの部分テンプレート
+-# = render "layouts/footer"
