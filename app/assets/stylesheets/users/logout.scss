@@ -1,0 +1,21 @@
+.mypage-wrapper {
+  &__contents {
+    &__right-logout {
+      background-color: white;
+      height: 170px;
+      width: 700px;
+      margin: 20px;
+      &__content {
+        width: 300px;
+        height: 50px;
+        background-color: #3ccace;
+        margin: 50px auto;
+        line-height: 50px;
+        a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

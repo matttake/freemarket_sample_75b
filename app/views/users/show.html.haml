@@ -1,18 +1,9 @@
 header
--# headerの部分テンプレート
 -# = render "layouts/header"
-
--# マイページ左側のメニューリンク一覧
-- contents = ["マイページ", "出品する", "出品した商品", "購入した商品", "発送元・お届け先住所変更", "クレジットカードの登録", "ログアウト"]
-- links    = ["user_path", "", "", "", "", "", "destroy_user_session_path"]
 
 .mypage-wrapper
   .mypage-wrapper__contents
-    .mypage-wrapper__contents__left
-      - contents.each.with_index(0) do |content, i|
-        = link_to links[i], class: "mypage-wrapper__contents__left__content" do
-          = content
-          = icon("fas", "chevron-right", class: "icon")
+    = render "menu_bar"
 
     .mypage-wrapper__contents__right
       = image_tag "pict-reason-03.jpg", class: "mypage-wrapper__contents__right__back-image"
@@ -34,5 +25,4 @@ header
         一覧を見る
 
 footer
--# footerの部分テンプレート
 -# = render "layouts/footer"

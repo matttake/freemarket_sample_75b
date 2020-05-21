@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
   end
   
-  def destroy
+  def logout
   end
+
 end
