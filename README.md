@@ -14,7 +14,6 @@
 |telephone|integer|null: false|
 ### Association
 - has_many :items
-
 - has_many :payments
 - has_many :addresses
 
