@@ -1,0 +1,47 @@
+.header-content {
+  display: block;
+  padding: 0 15%;
+  .header-main{
+    width: 100%;
+    padding: 15px 0 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    &__image{
+      width: 150px;
+    }
+    &__search {
+      &--box {
+        margin-top: 5px;
+        width: 500px;
+        height: 30px;
+        padding-right: 200px;
+      }
+      &--btn {
+        font-size: 25px;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .header-nav {
+    font-size: 14px;
+    display: flex;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    justify-content: space-between;
+    ul {
+      display: flex;
+      .header-nav-left {
+        margin-right: 40px;
+      }
+      .header-nav-right{
+        margin-right: 20px;
+        &__btn {
+          text-decoration: none;
+          color: #333;
+        }
+      }
+    }
+  }
+}

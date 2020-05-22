@@ -1,0 +1,207 @@
+.main-visual {
+  background-image: url("bg-mainVisual-pict_pc.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 600px;
+  &__title {
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    font-size: 60px;
+    line-height: 1.2;
+    color: #fff;
+    padding-top: 15%;
+    padding-left: 80px;
+  }
+  &__text {
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.77778;
+    padding-left: 80px;
+    margin-top: 15px;
+  }
+}
+
+.main-reason {
+  padding: 60px 20px;
+  .main-title{
+    text-align: center;
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    position: relative;
+  }
+  .main-lists {
+    display: flex;
+    justify-content: space-around;
+    &__first {
+      position: relative;
+      &--number {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 4%;
+        font-size: 30px;
+        text-align: center;
+        margin: 0 5px 0 0;
+        padding: 10px 20px;
+        background-color: #3CCACE;
+        color: #fff;
+      }
+    }
+    &__second {
+      position: relative;
+      &--number {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 4%;
+        font-size: 30px;
+        text-align: center;
+        margin: 0 5px 0 0;
+        padding: 10px 20px;
+        background-color: #3CCACE;
+        color: #fff;
+      }
+    }
+    &__third {
+      position: relative;
+      &--number {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 4%;
+        font-size: 30px;
+        text-align: center;
+        margin: 0 5px 0 0;
+        padding: 10px 20px;
+        background-color: #3CCACE;
+        color: #fff;
+      }
+    }
+    &__image {
+      width: 300px;
+      margin-bottom: 25px;
+    }
+    &__subtitle {
+      color: #3CCACE;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    &__bold {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+}
+
+.main-midle {
+  background-image: url("bg-topMiddleDl-pict.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 400px;
+  &__title {
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.77778;
+    font-size: 27px;
+    font-weight: bold;
+    padding: 90px 0 25px 50px;
+  }
+  &__text {
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.77778;
+    padding-left: 50px;
+  }
+}
+
+.main-keypoint {
+  padding: 60px 20px;
+  &__title {
+    text-align: center;
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+  }
+  &__lists {
+    display: flex;
+    justify-content: space-around;
+    &--image {
+      width: 200px;
+    }
+    &--subtitle {
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.main-categories {
+  padding: 60px 20px;
+  background-color: #f8f8f8;
+  &__title {
+    text-align: center;
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: bold;
+  }
+  &__subtitle {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #3CCACE;
+    font-weight: bold;
+  }
+  &__lists {
+    display: flex;
+    width: 780px;
+    justify-content: space-around;
+    margin: 26px auto;
+    &--image {
+      width: 280px;
+      margin-left: 25px;
+    }
+  }
+}
+
+.main-brands {
+  padding-bottom: 80px;
+  background-color: #f8f8f8;
+  &__title {
+    text-align: center;
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: bold;
+  }
+  &__subtitle {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #3CCACE;
+    font-weight: bold;
+  }
+  &__lists {
+    display: flex;
+    width: 780px;
+    justify-content: space-around;
+    margin: 26px auto;
+    &--image {
+      width: 280px;
+      margin-left: 25px;
+    }
+  }
+}
