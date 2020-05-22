@@ -115,6 +115,11 @@ $backColor: #EEEEEE;
           font-size: 18px;
           line-height: 30px;
         }
+        .form__birth-date{
+          height: 40px;
+          width: 400px;
+          display: flex;
+        }
         span{
           font-weight: bold;
         }
@@ -134,7 +139,7 @@ $backColor: #EEEEEE;
           width: 196px;
           text-indent: 1em;
         }
-        .year,.month,.day{
+        .select-year,.select-month,.select-day{
           height: 40px;
           width: 100px;
         }
