@@ -3,10 +3,10 @@
   width: 100vw;
 }
 .body {
-  background-color: #EEEEEE;
+  background-color: $backColor;
   height: 520px;
   .content {
-    background-color:#EEEEEE;
+    background-color:$backColor;
     width: 450px;
     height: 520px;
     margin: 0 auto;

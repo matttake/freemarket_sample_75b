@@ -1,9 +1,16 @@
+// 変数定義
+@mixin input-brock{
+  height: 100px;
+  margin-bottom: 10px;
+}
+$backColor: #EEEEEE;
+
 // ログイン画面
 .page {
   height: 100vh;
   width: 100vw;
   .header {
-    background-color:#EEEEEE;
+    background-color: $backColor;
     height: 120px;
     width: 100vw;
     &__content {
@@ -19,7 +26,7 @@
    }
   //  フォーム
   .form {
-    background-color: #EEEEEE;
+    background-color: $backColor;
     height: 1200px;
     &__content {
       background-color: white;
@@ -33,7 +40,7 @@
         font-weight: bold;
         text-align: center;
         line-height: 100px;
-        border-bottom: 3px solid #EEEEEE;
+        border-bottom: 3px solid $backColor;
       }
       .form__input{
         width: 400px;
@@ -45,25 +52,20 @@
           margin-bottom: 10px;
         }
       }
-        .form__input--email{
-          height: 100px;
-          margin-bottom: 10px;
+        .form__input--email {
+          @include input-brock;
         }
         .form__input--password{
-          height: 100px;
-          margin-bottom: 10px;
+          @include input-brock;
         }
         .fidentification{
-          height: 100px;
-          margin-bottom: 10px;
+          @include input-brock;
         }
         .form__input--name{
-          height: 100px;
-          margin-bottom: 10px;
+          @include input-brock;
         }
         .form__input--name-katakana{
-          height: 100px;
-          margin-bottom: 10px;
+          @include input-brock;
         }
         .form__input--birth-date{
           height: 70px;
@@ -98,7 +100,7 @@
           line-height: 8px;
         }
         .privacy-policy{
-          background-color:  #EEEEEE;
+          background-color:  $backColor;
           height: 40px;
           font-size: 11px;
           color: gray;
@@ -136,14 +138,12 @@
           height: 40px;
           width: 100px;
         }
-
-        
     }
   }
 
   // フッター
   .footer {
-    background-color:#EEEEEE;          
+    background-color:$backColor;          
     height: 220px;
     padding: 30px ;
     &__nav{
