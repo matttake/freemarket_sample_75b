@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     collection do
       get 'logout'
+      get 'card_index'
       get 'card_register'
     end
   end

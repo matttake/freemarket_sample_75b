@@ -1,0 +1,199 @@
+.mypage-wrapper {
+  &__contents {
+    // クレジットカード一覧画面用
+    &__right-card-index {
+      background-color: white;
+      height: 405px;
+      width: 700px;
+      margin: 20px;
+      &__title {
+        width: 700px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        padding: 8px 0;
+        border-bottom: solid 2px #eee;
+      }
+      &__content {
+        width: 500px;
+        height: 150px;
+        margin: 70px auto 30px ;
+        border-bottom: solid 1px #eee;
+        &__name {
+          font-weight: bold;
+          margin-left: 100px;
+        }
+        &__register-btn {
+          display: block;
+          background-color: #3ccace;
+          height: 50px;
+          line-height: 50px;
+          width: 300px;
+          margin: 20px auto;
+        }
+        a {
+          color: white;
+          text-decoration: none;
+          text-align: center;
+        }
+      }
+      &__link {
+        position: relative;
+        &__btn {
+          width: 200px;
+        }
+        a {
+          color: #3ccace;
+          margin-left: 440px;
+          text-decoration: none;
+          .icon {
+            position: absolute;
+            top: 5px;
+            right: 100px;
+            color: #3ccace;
+          }
+        }
+        a:hover {
+          text-decoration: underline;
+          opacity: 0.5;
+        }
+      }
+    }
+
+    // クレジットカード登録画面用
+    &__right-card-register {
+      background-color: white;
+      height: 550px;
+      width: 700px;
+      margin: 20px;
+      &__title {
+        width: 700px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        padding: 8px 0;
+        border-bottom: solid 2px #eee;
+      }
+      &__form {
+        width: 500px;
+        height: 400px;
+        margin: 30px auto ;
+        &__first {
+          margin-bottom: 8px;
+          &__title {
+            margin-bottom: 5px;
+          }
+          .required {
+            padding: 3px;
+            margin-left: 5px;
+            background-color: #3ccace;
+            border-radius: 3px;
+            color: white;
+          }
+          &__card-number {
+            height: 40px;
+            width: 450px;
+            padding-left: 10px;
+            border-radius: 3px;
+          }
+        }
+        &__card-images {
+          margin-bottom: 20px;
+        }
+        &__second {
+          margin-bottom: 20px;
+          &__title {
+            margin-bottom: 5px;
+          }
+          .required {
+            padding: 3px;
+            margin-left: 5px;
+            background-color: #3ccace;
+            border-radius: 3px;
+            color: white;
+          }
+          &__limit {
+            display: flex;
+            &__month {
+              .select-month {
+                width: 150px;
+                height: 40px;
+              }
+            }
+            .limit {
+              margin: 0 10px;
+              line-height: 40px;
+            }
+            &__year {
+              .select-year {
+                width: 150px;
+                height: 40px;
+              }
+            }
+          }
+        }
+        &__third {
+          margin-bottom: 5px;
+          &__title {
+            margin-bottom: 5px;
+          }
+          .required {
+            padding: 3px;
+            margin-left: 5px;
+            background-color: #3ccace;
+            border-radius: 3px;
+            color: white;
+          }
+          &__cvc {
+            height: 40px;
+            width: 450px;
+            padding-left: 10px;
+            border-radius: 3px;
+          }
+        }
+        &__link {
+          margin-bottom: 20px;
+          &__text {
+            display: block;
+            text-align: right;
+            text-decoration: none;
+            color: #3ccace;
+          }
+        }
+        &__add {
+          width: 300px;
+          height: 50px;
+          background-color: #3ccace;
+          margin: 10px auto;
+          line-height: 50px;
+          &__btn {
+            display: block;
+          }
+          a {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+// &__register-btn {
+//   display: block;
+//   background-color: #3ccace;
+//   height: 50px;
+//   line-height: 50px;
+//   width: 300px;
+//   margin: 20px auto;
+// }
+// a {
+//   color: white;
+//   text-decoration: none;
+//   text-align: center;
+// }

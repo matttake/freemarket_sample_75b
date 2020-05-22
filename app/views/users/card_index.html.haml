@@ -1,0 +1,23 @@
+header
+-# = render "layouts/header"
+
+.mypage-wrapper
+  .mypage-wrapper__contents
+    = render "menu_bar"
+
+    .mypage-wrapper__contents__right-card-index
+      .mypage-wrapper__contents__right-card-index__title
+        支払い方法
+      .mypage-wrapper__contents__right-card-index__content
+        .mypage-wrapper__contents__right-card-index__content__name
+          クレジットカード一覧
+        = link_to "card_register", class: "mypage-wrapper__contents__right-card-index__content__register-btn" do
+          クレジットカードを追加する
+      .mypage-wrapper__contents__right-card-index__link
+        = link_to "", class: "mypage-wrapper__contents__right-card-index__link__btn" do
+          支払い方法について
+          = icon("fas", "chevron-right", class: "icon")
+
+
+footer
+-# = render "layouts/footer"
