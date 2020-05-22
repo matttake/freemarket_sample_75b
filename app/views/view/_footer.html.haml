@@ -2,12 +2,12 @@
   .footer__nav
     %ul
       %li 
-        %a{:href => "#"} プライバシーポリシー
+        = link_to 'プライバシーポリシー', '#'
       %li
-        %a{:href => "#"} FURIMA利用規約
+        = link_to 'FURIMA利用規約', '#'
       %li
-        %a{:href => "#"} 特定商取引に関する表記
+        = link_to '特定商取引に関する表記', '#'
   .footer__logo
-    = link_to image_tag(src= "logo-white.png", class: "image-footer"),"#"
+    = link_to image_tag("logo-white.png", class: "image-footer"),"#"
   .footer__text
     ©︎ FURIMA,Inc

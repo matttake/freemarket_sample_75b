@@ -7,18 +7,17 @@
         .content__top--text
           アカウントをお持ちでない方はこちら
         .content__top--btn
-          %button.btn-new{:type => "submit"}新規会員登録
+          %button.btn-new{type: "submit"}新規会員登録
       .content__under
         .content__under__content
           .content__under__content--mail
-            %input{:name => "mail", :type => "text",:class => "input-tag",:placeholder =>"メールアドレス"}/
+            %input{name: "mail", type: "text",class: "input-tag",placeholder: "メールアドレス"}/
           .content__under__content--password
-            %input{:maxlength => "30", :name => "example2",:type => "password",:class => "input-tag",:placeholder =>"パスワード"}/
+            %input{maxlength: "30", name: "example2",type: "password",class: "input-tag",placeholder: "パスワード"}/
           .content__under__content--btn
-            %button.btn-login{:type => "submit"}ログイン
+            %button.btn-login{type: "submit"}ログイン
           .content__under__content--text
-            %a{:href => "#"}
-              パスワードをお忘れの方
+            = link_to 'パスワードをお忘れの方','#'
 
 
 

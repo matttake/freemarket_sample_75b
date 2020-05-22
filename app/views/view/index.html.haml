@@ -10,17 +10,17 @@
           .form__input--title
             ニックネーム
             %span.red 必須
-          %input{:name => "name", :type => "text",:class => "input-tag",:placeholder => "例)フリマ太郎"}/
+          %input{name: "name", type: "text",class: "input-tag",placeholder: "例)フリマ太郎"}/
         .form__input--email
           .form__title
             メールアドレス
             %span.red 必須
-          %input{:name => "mail", :type => "text",:class => "input-tag",:placeholder =>"PC、携帯どちらでも可"}/
+          %input{name: "mail", type: "text",class: "input-tag",placeholder: "PC、携帯どちらでも可"}/
         .form__input--password
           .form__title
             パスワード
             %span.red 必須
-          %input{:maxlength => "30", :name => "example2",:type => "password",:class => "input-tag",:placeholder =>"7文字以上の半角英数"}/
+          %input{maxlength: "30", name: "example2",type: "password",class: "input-tag",placeholder: "7文字以上の半角英数"}/
         .fidentification
           %span本人確認<br>
           安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
@@ -28,20 +28,20 @@
           .form__title
             お名前(全角)
             %span.red 必須
-          %div{:style => "display:inline-flex"}
+          %div{style: "display:inline-flex"}
             %form
-              %input{:type => "text", :name =>"first-name", :class =>"input-name",:placeholder =>"例)山田"}/
+              %input{type: "text", name: "first-name",class: "input-name",placeholder: "例)山田"}/
             %form
-              %input{:type => "text", :name =>"second-name", :class =>"input-name",:placeholder =>"例)太朗"}/
+              %input{type: "text",name: "second-name",class: "input-name",placeholder: "例)太朗"}/
         .form__input--name-katakana
           .form__title
             お名前カナ(全角)
             %span.red 必須
           %div{:style => "display:inline-flex"}
             %form
-              %input{:type => "text", :name =>"first-name", :class =>"input-name",:placeholder =>"例)ヤマダ"}/
+              %input{type: "text",name: "first-name",class: "input-name",placeholder: "例)ヤマダ"}/
             %form
-              %input{:type => "text", :name =>"second-name", :class =>"input-name",:placeholder =>"例)タロウ"}/
+              %input{type: "text",name: "second-name",class: "input-name",placeholder: "例)タロウ"}/
         .form__input--birth-date
           .form__title
             生年月日
@@ -51,18 +51,16 @@
           ※本人情報は正しく入力してください
         .text-wraning2
           「登録」のボタンを押すことにより、
-          %a{:href => "#"}> 利用規約
+          =link_to '利用規約','#'
           に同意したものとみなします
         .register-button
-          %button.btn-blue{:type => "submit"} 登録
+          %button.btn-blue{type: "submit"} 登録
         .explanation
-          %a{:href => "#"}
-            本人情報の登録について>
+          =link_to '本人情報の登録について>','#'
           %i.icon-arrow-right
         .privacy-policy
           This site is protected by reCAPTCHA and the Google
-          %a{:href => "https://policies.google.com/privacy", :target => "_blank"} Privacy Policy
+          = link_to 'Privacy Policy','https://policies.google.com/privacy'
           and
-          %a{:href => "https://policies.google.com/terms", :target => "_blank"} Terms of Service
-          apply.
+          = link_to 'Terms of Service apply.','https://policies.google.com/terms'
   =render "footer"
