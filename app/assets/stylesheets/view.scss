@@ -1,0 +1,181 @@
+// 変数定義
+@mixin input-brock{
+  height: 100px;
+  margin-bottom: 10px;
+}
+$backColor: #EEEEEE;
+
+// ログイン画面
+.page {
+  height: 100vh;
+  width: 100vw;
+  .header {
+    background-color: $backColor;
+    height: 120px;
+    width: 100vw;
+    &__content {
+      height: 120px;
+      width: 720px;
+      margin: 0 auto;;
+      text-align: center;
+    }   
+  }
+   .image-top{
+      width: 200px;
+      margin-top: 30px;
+   }
+  //  フォーム
+  .form {
+    background-color: $backColor;
+    height: 1200px;
+    &__content {
+      background-color: white;
+      height: 1200px;
+      width: 720px;
+      margin: 0 auto;
+      &--title{
+        background-color: white;
+        height: 100px;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 100px;
+        border-bottom: 3px solid $backColor;
+      }
+      .form__input{
+        width: 400px;
+        height: 1115px;
+        margin: 0 auto;
+        padding: 30px 0 20px 0;
+        &--nicname{
+          height: 100px;
+          margin-bottom: 10px;
+        }
+      }
+        .form__input--email {
+          @include input-brock;
+        }
+        .form__input--password{
+          @include input-brock;
+        }
+        .fidentification{
+          @include input-brock;
+        }
+        .form__input--name{
+          @include input-brock;
+        }
+        .form__input--name-katakana{
+          @include input-brock;
+        }
+        .form__input--birth-date{
+          height: 70px;
+          margin-bottom: 10px;
+        }
+        .text-wraning1{
+          height: 12px;
+          margin-bottom: 30px;
+          color: gray;
+          line-height: 8px;
+          font-size: 14px;
+        }
+        .text-wraning2{
+          height: 26px;
+          margin-bottom: 30px;
+          font-size: 14px;
+          text-align: center;
+        }
+        button{
+          background-color: #33CCCC;
+          height: 50px;
+          width: 400px;
+          margin-bottom: 40px;
+          color:white;
+          font-size: 15px;
+        }
+        .explanation{
+          height: 12px;
+          margin-bottom: 30px;
+          text-align: right;
+          font-size: 14px;
+          line-height: 8px;
+        }
+        .privacy-policy{
+          background-color:  $backColor;
+          height: 40px;
+          font-size: 11px;
+          color: gray;
+          text-align: center;
+        }
+      // 以下細かな指定
+        a{
+          text-decoration: none;
+        }
+        .form__title{
+          height: 30px;
+          font-size: 18px;
+          line-height: 30px;
+        }
+        span{
+          font-weight: bold;
+        }
+        span.red{
+          color: white;
+          font-size: 15px;
+          font-weight: normal;
+          background-color: red;
+        }
+        .input-tag{
+          height: 40px;
+          width: 390px;
+          text-indent: 1em;
+        }
+        .input-name{
+          height: 40px;
+          width: 196px;
+          text-indent: 1em;
+        }
+        .year,.month,.day{
+          height: 40px;
+          width: 100px;
+        }
+    }
+  }
+
+  // フッター
+  .footer {
+    background-color:$backColor;          
+    height: 220px;
+    padding: 30px ;
+    &__nav{
+      height: 30px;
+      width: 500px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    a {
+      color: dimgray;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    li {
+      display: inline;
+      margin-right: 1em;
+    }
+    .footer__logo{
+      margin: 0 auto;
+      margin-top: 30px;
+      text-align: center;
+    }
+    .image-footer{
+      width: 150px;
+      color: gray;
+    }
+    .footer__text{
+      height: 15px;
+      width: 80px;
+      font-size: 12px;
+      color: dimgray;
+      margin: 0 auto;
+    }
+  }
+}

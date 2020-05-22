@@ -1,0 +1,66 @@
+-# 新規登録画面
+.page
+  = render "header"
+  .form
+    .form__content
+      .form__content--title
+        会員情報入力
+      .form__input
+        .form__input--nicname
+          .form__input--title
+            ニックネーム
+            %span.red 必須
+          %input{name: "name", type: "text",class: "input-tag",placeholder: "例)フリマ太郎"}/
+        .form__input--email
+          .form__title
+            メールアドレス
+            %span.red 必須
+          %input{name: "mail", type: "text",class: "input-tag",placeholder: "PC、携帯どちらでも可"}/
+        .form__input--password
+          .form__title
+            パスワード
+            %span.red 必須
+          %input{maxlength: "30", name: "example2",type: "password",class: "input-tag",placeholder: "7文字以上の半角英数"}/
+        .fidentification
+          %span本人確認<br>
+          安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        .form__input--name
+          .form__title
+            お名前(全角)
+            %span.red 必須
+          %div{style: "display:inline-flex"}
+            %form
+              %input{type: "text", name: "first-name",class: "input-name",placeholder: "例)山田"}/
+            %form
+              %input{type: "text",name: "second-name",class: "input-name",placeholder: "例)太朗"}/
+        .form__input--name-katakana
+          .form__title
+            お名前カナ(全角)
+            %span.red 必須
+          %div{:style => "display:inline-flex"}
+            %form
+              %input{type: "text",name: "first-name",class: "input-name",placeholder: "例)ヤマダ"}/
+            %form
+              %input{type: "text",name: "second-name",class: "input-name",placeholder: "例)タロウ"}/
+        .form__input--birth-date
+          .form__title
+            生年月日
+            %span.red 必須
+          = render "yymmdd"
+        .text-wraning1
+          ※本人情報は正しく入力してください
+        .text-wraning2
+          「登録」のボタンを押すことにより、
+          =link_to '利用規約','#'
+          に同意したものとみなします
+        .register-button
+          %button.btn-blue{type: "submit"} 登録
+        .explanation
+          =link_to '本人情報の登録について>','#'
+          %i.icon-arrow-right
+        .privacy-policy
+          This site is protected by reCAPTCHA and the Google
+          = link_to 'Privacy Policy','https://policies.google.com/privacy'
+          and
+          = link_to 'Terms of Service apply.','https://policies.google.com/terms'
+  =render "footer"
