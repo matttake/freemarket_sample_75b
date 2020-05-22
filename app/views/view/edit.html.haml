@@ -1,0 +1,16 @@
+-# 登録完了画面
+.page
+  = render "header"
+  .body
+    .content-center
+      .text__register
+        登録が完了しました
+      .image__mail
+        %span.image
+          = image_tag(src="email.png",class: "image-mail")
+      .content__send-email
+        ご登録時のメールアドレス宛に認証URLをお送りしています。FURIMAからの大事なお知らせや登録手続き等を間違いなく受信するために、必ずご確認お願いします。
+      .content__question
+        %a{:href => "#", :class => "no-mail"}
+          メールが届いてない場合はこちらから
+  = render "footer"
