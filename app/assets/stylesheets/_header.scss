@@ -1,3 +1,10 @@
+// 変数定義
+@mixin between {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 .header-content {
   display: block;
   padding: 0 15%;
@@ -5,13 +12,12 @@
     width: 100%;
     padding: 15px 0 0;
     position: relative;
-    display: flex;
-    justify-content: space-between;
+    @include between;
     &__image{
       width: 150px;
     }
     &__search {
-      &--box {
+      &--field {
         margin-top: 5px;
         width: 500px;
         height: 30px;
@@ -26,10 +32,9 @@
 
   .header-nav {
     font-size: 14px;
-    display: flex;
     margin-bottom: 15px;
     margin-top: 15px;
-    justify-content: space-between;
+    @include between;
     ul {
       display: flex;
       .header-nav-left {

@@ -1,86 +1,113 @@
-.main-visual {
-  background-image: url("bg-mainVisual-pict_pc.jpg");
+// 変数定義
+@mixin number {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 4%;
+  font-size: 30px;
+  text-align: center;
+  margin: 0 5px 0 0;
+  padding: 10px 20px;
+  background-color: #3CCACE;
+  color: #fff;
+}
+
+@mixin visual {
+  color: #fff;
+  padding-left: 80px;
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+
+@mixin title {
+  text-align: center;
+  font-size: 26px;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+@mixin sub {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@mixin image {
   background-position: center;
   background-size: cover;
+}
+
+@mixin midle {
+  color: #fff;
+  line-height: 1.77778;
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: space-around;  
+}
+
+@mixin subtitle {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #3CCACE;
+  font-weight: bold;
+}
+
+@mixin lists-image {
+  width: 280px;
+  margin-left: 25px;
+}
+
+
+
+.main-visual {
+  background-image: url("bg-mainVisual-pict_pc.jpg");
+  @include image;
   height: 600px;
   &__title {
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
     font-size: 60px;
     line-height: 1.2;
-    color: #fff;
     padding-top: 15%;
-    padding-left: 80px;
+    @include visual;
   }
   &__text {
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
     font-size: 18px;
-    color: #fff;
     line-height: 1.77778;
-    padding-left: 80px;
     margin-top: 15px;
+    @include visual;
   }
 }
 
 .main-reason {
   padding: 60px 20px;
   .main-title{
-    text-align: center;
-    font-size: 26px;
-    line-height: 1.4;
-    font-weight: bold;
+    @include title;
     margin-bottom: 25px;
     padding-bottom: 15px;
     position: relative;
   }
   .main-lists {
-    display: flex;
-    justify-content: space-around;
+    @include flex;
     &__first {
       position: relative;
       &--number {
-        display: inline-block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-radius: 4%;
-        font-size: 30px;
-        text-align: center;
-        margin: 0 5px 0 0;
-        padding: 10px 20px;
-        background-color: #3CCACE;
-        color: #fff;
+        @include number;
       }
     }
     &__second {
       position: relative;
       &--number {
-        display: inline-block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-radius: 4%;
-        font-size: 30px;
-        text-align: center;
-        margin: 0 5px 0 0;
-        padding: 10px 20px;
-        background-color: #3CCACE;
-        color: #fff;
+        @include number;
       }
     }
     &__third {
       position: relative;
       &--number {
-        display: inline-block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-radius: 4%;
-        font-size: 30px;
-        text-align: center;
-        margin: 0 5px 0 0;
-        padding: 10px 20px;
-        background-color: #3CCACE;
-        color: #fff;
+        @include number
       }
     }
     &__image {
@@ -89,52 +116,40 @@
     }
     &__subtitle {
       color: #3CCACE;
-      font-size: 24px;
-      font-weight: bold;
+      @include sub;
     }
     &__bold {
-      font-size: 24px;
-      font-weight: bold;
+      @include sub;
     }
   }
 }
 
 .main-midle {
   background-image: url("bg-topMiddleDl-pict.jpg");
-  background-position: center;
-  background-size: cover;
+  @include image;
   height: 400px;
   &__title {
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
-    font-size: 18px;
-    color: #fff;
-    line-height: 1.77778;
+    @include midle;
     font-size: 27px;
     font-weight: bold;
     padding: 90px 0 25px 50px;
   }
   &__text {
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
-    font-size: 18px;
-    color: #fff;
-    line-height: 1.77778;
+    @include midle;
     padding-left: 50px;
+    font-size: 18px;
   }
 }
 
 .main-keypoint {
   padding: 60px 20px;
   &__title {
-    text-align: center;
-    font-size: 26px;
-    line-height: 1.4;
-    font-weight: bold;
+    @include title;
     margin-bottom: 25px;
     padding-bottom: 15px;
   }
   &__lists {
-    display: flex;
-    justify-content: space-around;
+    @include flex;
     &--image {
       width: 200px;
     }
@@ -150,28 +165,17 @@
   padding: 60px 20px;
   background-color: #f8f8f8;
   &__title {
-    text-align: center;
-    font-size: 26px;
-    line-height: 1.4;
-    font-weight: bold;
+    @include title;
   }
   &__subtitle {
-    display: block;
-    text-decoration: none;
-    text-align: center;
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #3CCACE;
-    font-weight: bold;
+    @include subtitle;
   }
   &__lists {
-    display: flex;
+    @include flex;
     width: 780px;
-    justify-content: space-around;
     margin: 26px auto;
     &--image {
-      width: 280px;
-      margin-left: 25px;
+      @include lists-image;
     }
   }
 }
@@ -180,28 +184,17 @@
   padding-bottom: 80px;
   background-color: #f8f8f8;
   &__title {
-    text-align: center;
-    font-size: 26px;
-    line-height: 1.4;
-    font-weight: bold;
+    @include title;
   }
   &__subtitle {
-    display: block;
-    text-decoration: none;
-    text-align: center;
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #3CCACE;
-    font-weight: bold;
+    @include subtitle;
   }
   &__lists {
-    display: flex;
+    @include flex;
     width: 780px;
-    justify-content: space-around;
     margin: 26px auto;
     &--image {
-      width: 280px;
-      margin-left: 25px;
+      @include lists-image;
     }
   }
 }

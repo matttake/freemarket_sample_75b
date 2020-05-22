@@ -1,3 +1,11 @@
+// 変数定義
+@mixin title {
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+  color: #fff;
+  text-align: center;
+}
+
+
 .app-banner {
   background-image: url("bg-appBanner-pict.jpg");
   background-position: center;
@@ -8,16 +16,12 @@
     font-size: 24px;
     font-weight: bold;
     line-height: 1.4;
-    color: #fff;
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
-    text-align: center;
+    @include title;
     padding-top: 100px;
   }
   &__subtitle {
     font-size: 35px;
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
-    color: #fff;
-    text-align: center;
+    @include title;
   }
 }
 

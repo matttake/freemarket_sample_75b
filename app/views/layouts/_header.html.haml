@@ -3,11 +3,10 @@
     .header-main
       =image_tag "/assets/logo.png",class: "header-main__image"
       .heaer-main__search
-        =form_with url: search_tops_path, local: true, method: :get, class: "header-main__search--field" do |f|
-          =f.text_field :content,placeholder:"キーワードから探す",class: "header-main__search--box"
-          =link_to "#" ,class: "header-main__search--btn" do
-            =icon('far','fa-search')
-            <i class="fas fa-search"></i>
+        %input{type: "text_field",class: "header-main__search--field",placeholder: "キーワードから探す"}
+        =link_to "#",class: "header-main__search--btn" do
+          =icon('far','fa-search')
+          <i class="fas fa-search"></i>
 
     .header-nav
       %ul
