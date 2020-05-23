@@ -5,18 +5,17 @@
       .heaer-main__search
         %input{type: "text_field",class: "header-main__search--field",placeholder: "キーワードから探す"}
         =link_to "#",class: "header-main__search--btn" do
-          =icon('far','fa-search')
-          <i class="fas fa-search"></i>
-
+          =icon("fas fa-search", class: "icon")
+    
     .header-nav
       %ul
-        %li{class: "header-nav-left"}
+        %li.header-nav-left
           カテゴリー
-        %li{class: "header-nav-left"}
+        %li.header-nav-left
           ブランド     
       %ul
-        %li{class: "header-nav-right"}
+        %li.header-nav-right
           =link_to "ログイン","#",class: "header-nav-right__btn"
-        %li{class: "header-nav-right"}
+        %li.header-nav-right
           =link_to "新規会員登録","#",class: "header-nav-right__btn"
 
