@@ -1,0 +1,162 @@
+.exhibition{
+  background-color: #F5F5F5;
+  &__top{
+    .logo{
+      display: block;
+      margin: 0 auto;
+      padding:40px 0;
+    }
+  }
+  
+  &__main{
+    margin: 0 auto;
+    width: 620px;
+    background-color: white;
+    padding: 40px;
+    &__container{
+      >input{
+        @include form;
+        margin-bottom: 28px;
+      }
+      >textarea{
+        @include form;
+        margin-bottom: 5px;
+        height: 156px;
+      }
+      >select{
+        @include form;
+        margin-bottom: 18px;
+      }
+      >hr{
+        color: $gray;
+        margin:24px 0 38px;
+        border: .7px solid;
+      }
+      >p{
+        font-size: 10px;
+        margin-bottom: 30px;
+      }
+
+      .box{
+        display: flex;
+        justify-content: space-between;
+        margin: 36px 0;
+        &__price{
+          display: flex;
+          #price{
+            width:290px ;
+          }
+          >p{
+            padding: 10px 5px 0 0;
+            font-size: 5px;
+          }
+        }
+      }
+
+      &__topic{
+        margin-bottom: 14px;
+        font-weight: 600;
+        >label{
+          font-size: 10px;
+        }
+        >span{
+          font-size: 10px;
+          color: white;
+          background-color: $image-color;
+          padding: 1px 4px 2px;
+        }
+      }
+
+      &__uploader{
+        height: 140px;
+        background-color: $gray;
+        text-align: center;
+        margin: 16px 0 46px 0;
+        &__text{
+          padding-top: 40px;
+          >p{
+            font-size: 9px;
+          }
+        }
+      }
+
+      &__letters{
+        text-align: right;
+        >p{
+          font-size: .2rem;
+          color: #888;
+          margin-bottom: 30px;
+        }
+      }
+    }
+
+    &__btn{
+      display: grid;
+      margin: 0 auto;
+      text-align: center;
+      width: 360px;
+      .do{
+        @include btn;
+        color: white;
+        background-color: $image-color;
+        &:hover{
+          background-color: rgb(43, 105, 199);
+        }
+      }
+      .suspense{
+        @include btn;
+        color: black;
+        background-color: #cccccc;
+        &:hover{
+          background-color: #bfbfbf;
+        }
+        
+      }
+      .back{
+        @include btn;
+        color: $image-color;
+        font-size: 8px;
+        &:hover{
+          @include link;
+        }
+      }
+    }
+    
+    &__precaution{
+      >p{
+        font-size: 13px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+  
+  &__footer{
+    padding: 40px 0;
+    &__poricy{
+      display: flex;
+      justify-content: center;
+      >li{ 
+        padding-right: 20px;
+        >a{
+          text-decoration: none;
+          font-size: 9px;
+          color: black;
+          &:hover{
+            @include link;
+          } 
+        }
+      }
+    }
+
+    >img{
+      display: block;
+      margin: 30px auto 8px;
+      }
+    >p{
+      font-size: 8px;
+      text-align: center;
+    }
+  }
+
+}
+
