@@ -1,0 +1,14 @@
+header
+-# = render "layouts/header"
+
+.mypage-wrapper
+  .mypage-wrapper__contents
+    = render "menu_bar"
+
+    .mypage-wrapper__contents__right-logout
+      .mypage-wrapper__contents__right-logout__content
+        = link_to '', class: "mypage-wrapper__contents__right-logout__content__btn" do
+          ログアウト
+
+footer
+-# = render "layouts/footer"
