@@ -1,0 +1,135 @@
+// 変数定義
+.main-visual {
+  background-image: url("bg-mainVisual-pict_pc.jpg");
+  @include image;
+  height: 600px;
+  &__title {
+    font-size: 60px;
+    line-height: 1.2;
+    padding-top: 15%;
+    @include visual;
+  }
+  &__text {
+    font-size: 18px;
+    line-height: 1.77778;
+    margin-top: 15px;
+    @include visual;
+  }
+}
+
+.main-reason {
+  padding: 60px 20px;
+  .main-title{
+    @include title;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    position: relative;
+  }
+  .main-lists {
+    @include flex;
+    &__first {
+      position: relative;
+      &--number {
+        @include number;
+      }
+    }
+    &__second {
+      position: relative;
+      &--number {
+        @include number;
+      }
+    }
+    &__third {
+      position: relative;
+      &--number {
+        @include number
+      }
+    }
+    &__image {
+      width: 300px;
+      margin-bottom: 25px;
+    }
+    &__subtitle {
+      color: #3CCACE;
+      @include sub;
+    }
+    &__bold {
+      @include sub;
+    }
+  }
+}
+
+.main-midle {
+  background-image: url("bg-topMiddleDl-pict.jpg");
+  @include image;
+  height: 400px;
+  &__title {
+    @include midle;
+    font-size: 27px;
+    font-weight: bold;
+    padding: 90px 0 25px 50px;
+  }
+  &__text {
+    @include midle;
+    padding-left: 50px;
+    font-size: 18px;
+  }
+}
+
+.main-keypoint {
+  padding: 60px 20px;
+  &__title {
+    @include title;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+  }
+  &__lists {
+    @include flex;
+    &--image {
+      width: 200px;
+    }
+    &--subtitle {
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.main-categories {
+  padding: 60px 20px;
+  background-color: #f8f8f8;
+  &__title {
+    @include title;
+  }
+  &__subtitle {
+    @include subtitle;
+  }
+  &__lists {
+    @include flex;
+    width: 780px;
+    margin: 26px auto;
+    &--image {
+      @include lists-image;
+    }
+  }
+}
+
+.main-brands {
+  padding-bottom: 80px;
+  background-color: #f8f8f8;
+  &__title {
+    @include title;
+  }
+  &__subtitle {
+    @include subtitle;
+  }
+  &__lists {
+    @include flex;
+    width: 780px;
+    margin: 26px auto;
+    &--image {
+      @include lists-image;
+    }
+  }
+}

@@ -1,0 +1,106 @@
+=render 'layouts/header'
+.main
+  .main-visual
+    .main-visual__title
+      人生を変えるフリマアプリ
+    .main-visual__text
+      FURIMAは誰でもかんたんに出品・購入できる
+      %br
+      フリマアプリです
+    
+  .main-reason
+    %h2.main-title FURIMAが選ばれる3つの理由
+    %ul.main-lists
+      %li
+        .main-lists__first
+          =image_tag "/assets/pict-reason-01.jpg",class: "main-lists__image"
+          %span.main-lists__first--number 1
+        %span.main-lists__subtitle 3分
+        %span.main-lists__bold ですぐに出品 
+        %p  
+        スマホで入力するだけで簡単に
+        %br
+        出品できる！
+      %li
+        .main-lists__second
+          =image_tag "/assets/pict-reason-02.jpg",class: "main-lists__image"
+          %span.main-lists__second--number 2
+        %span.main-lists__subtitle シンプル
+        %span.main-lists__bold で使いやすい
+        %p  
+        めんどくさい入力は必要なく、
+        %br 
+        検索も購入もスムーズ！
+      %li
+        .main-lists__third
+          =image_tag "/assets/pict-reason-03.jpg",class: "main-lists__image"
+          %span.main-lists__third--number 3
+        %span.main-lists__bold 手数料 
+        %span.main-lists__subtitle 業界最安
+        %p  最大3%でお得に出品&購入!
+  
+  .main-midle
+    .main-midle__title
+      会員数日本一位
+    .main-midle__text
+      FURIMAは、フリマアプリで最も人気。
+      %br
+      出品・購入回数も業界最多です！
+      %br
+      ほしかったあの商品に出会えるかもしれません。
+
+  .main-keypoint
+    %h2.main-keypoint__title FURIMAの特徴
+    %ul.main-keypoint__lists
+      %li
+        =image_tag "/assets/icon-01.png",class: "main-keypoint__lists--image"
+        %h3.main-keypoint__lists--subtitle 簡単に売り買いできる
+        スマホひとつで、いつで
+        %br
+        もどこでも簡単に出品・
+        %br
+        購入が可能！
+      %li
+        =image_tag "/assets/icon-02.png",class: "main-keypoint__lists--image"
+        %h3.main-keypoint__lists--subtitle 売上金は即翌日振り込みに対応
+        午前9時までに振込を依
+        %br
+        頼いただければ、翌日に
+        %br
+        指定の口座に入金いたし
+        %br
+        ます！
+      %li
+        =image_tag"/assets/icon-03.png",class: "main-keypoint__lists--image"
+        %h3.main-keypoint__lists--subtitle 様々な支払いに対応
+        お支払いは、クレジット
+        %br
+        カードだけではなく、ポイ
+        %br
+        ントや売上金など多彩な
+        %br
+        方法があります。
+    
+  .main-categories
+    %h2.main-categories__title ピックアップカテゴリー
+    =link_to "新規投稿商品" ,"#",class: "main-categories__subtitle"
+    %ul.main-categories__lists
+      %li
+        =image_tag "/assets/sample-image1.jpg",class: "main-categories__lists--image" 
+      %li
+        =image_tag "/assets/sample-image2.jpg",class: "main-categories__lists--image"
+      %li
+        =image_tag "/assets/sample-image3.jpg",class: "main-categories__lists--image"
+
+  .main-brands
+    %h2.main-brands__title ピックアップブランド
+    =link_to "アーカイバ","#",class: "main-brands__subtitle"
+    %ul.main-brands__lists
+      %li
+        =image_tag "/assets/sample-image1.jpg",class: "main-brands__lists--image" 
+      %li
+        =image_tag "/assets/sample-image2.jpg",class: "main-brands__lists--image"
+      %li
+        =image_tag "/assets/sample-image3.jpg",class: "main-brands__lists--image"
+
+=render 'layouts/footer'

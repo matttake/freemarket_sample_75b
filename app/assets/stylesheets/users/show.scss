@@ -1,0 +1,115 @@
+.mypage-wrapper {
+  background-color:  #f8f8f8;
+
+  &__contents {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+
+    &__left {
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      &__content {
+        position: relative;
+        width: 250px;
+        height: 25px;
+        line-height: 25px;
+        color: black;
+        padding: 16px;
+        font-size: 14px;
+        background-color: white;
+        border-top: solid 1px #eee;
+        text-decoration: none;
+        .icon {
+          position: absolute;
+          top: 35%;
+          right: 16px;
+          color: #ccc;
+        }
+      }
+      &__content:hover {
+        background-color: #f1f1f1;
+      }
+    }
+
+    &__right {
+      background-color: white;
+      width: 700px;
+      margin: 20px;
+      position: relative;
+      &__back-image {
+        width: 700px;
+        height: 250px;
+        display: block;
+        object-fit: cover;
+      }
+      &__user-image {
+        border-radius: 100%;
+        width: 100px;
+        object-fit: cover;
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+      }
+      &__user-name {
+        margin: 0 auto;
+        position: absolute;
+        top: 140px;
+        left: 35%;
+        font-weight: bold;
+      }
+      &__title {
+        display: flex;
+        border-bottom: 1px solid #eee; 
+        &__notice {
+          width: 350px;
+          height: 60px;
+          line-height: 60px;
+          font-weight: bold;
+          text-align: center;
+          cursor: pointer;
+          background-color: #fafafa;
+        }
+        &__notice:hover {
+          opacity: 0.5;
+        }
+        &__todo {
+          width: 350px;
+          height: 60px;
+          line-height: 60px;
+          font-weight: bold;
+          text-align: center;
+          cursor: pointer;
+        }
+        &__todo:hover {
+          opacity: 0.5;
+        }
+      }
+      &__notices {
+        height: 53px;
+        cursor: pointer;
+        padding: 0 16px;
+        font-size: 12px;
+        overflow: hidden;
+        line-height: 53px;
+        border-bottom: 1px solid #eee;
+      }
+      &__notices:hover {
+        background-color: #f1f1f1;
+      }
+      &__view-list {
+        height: 53px;
+        cursor: pointer;
+        padding: 0 16px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 53px;
+        background-color: #fafafa;
+        border-bottom: 1px solid #eee;
+      }
+    }
+  }
+}
