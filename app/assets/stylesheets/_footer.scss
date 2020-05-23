@@ -1,0 +1,44 @@
+.app-banner {
+  background-image: url("bg-appBanner-pict.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 350px;
+  padding: 100px 40px;
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.4;
+    @include footer_title;
+    padding-top: 100px;
+  }
+  &__subtitle {
+    font-size: 35px;
+    @include footer_title;
+  }
+}
+
+.footer-contents {
+  padding: 60px 0; 
+  display: flex;
+  justify-content: space-around;
+  background-color: #272727;
+  .contents {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    .contents-footer {
+      margin: 0 0 20px;
+      font-weight: bold;
+    }
+    &--infomation {
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .footer-image{
+      width: 150px;
+      padding-top: 50px;
+    }
+  }
+}
