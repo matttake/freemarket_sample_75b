@@ -1,0 +1,91 @@
+.exhibition
+  .exhibition__top
+    = image_tag('logo.png',height:"49px",width:"185px",class:"logo")
+  .exhibition__main
+    =form_with url:"#" do |form|
+      .exhibition__main__container
+        .exhibition__main__container__topic
+          %label 出品画像
+          %span 必須
+        %p 最大10枚までアップロードできます
+        .exhibition__main__container__uploader
+          .exhibition__main__container__uploader__text
+            %i.fa.fa-camera
+            %p ドラッグアンドドロップ 
+            %p またはクリックしてファイルをアップロード
+        %hr/
+
+      .exhibition__main__container
+        .exhibition__main__container__topic
+          %label 商品名
+          %span 必須
+        =form.text_field :name,placeholder:"40文字まで"
+        .exhibition__main__container__topic
+          %label 商品の説明
+          %span 必須
+        =form.text_area :name,placeholder:"sample"
+        .exhibition__main__container__letters
+          %p 0/1000
+        %hr/
+
+      .exhibition__main__container
+        %p 商品の詳細
+        .exhibition__main__container__topic
+          %label カテゴリー
+          %span 必須
+        =form.select:category,[],prompt:"選択してください"
+        .exhibition__main__container__topic
+          %label 商品の状態
+          %span 必須
+        =form.select:category,[],prompt:"選択してください"
+        %hr/
+
+      .exhibition__main__container
+        %p 配送について
+        .exhibition__main__container__topic
+          %label 配送料の負担
+          %span 必須
+        =form.select:category,[],prompt:"選択してください"
+        .exhibition__main__container__topic
+          %label 配送元の地域
+          %span 必須
+        =form.select:category,[],prompt:"選択してください"
+        .exhibition__main__container__topic
+          %label 配送までの日数
+          %span 必須
+        =form.select:category,[],prompt:"選択してください"
+        %hr/
+
+      .exhibition__main__container
+        %p 価格(¥300~9,999,999)
+        .box
+          .exhibition__main__container__topic
+            %label 販売価格
+            %span 必須
+          .box__price
+            %p ¥
+            =form.number_field :price,id:"price"
+        %p 販売手数料(10%)
+        %hr/
+
+      .exhibition__main__container
+        %p 販売利益
+
+      .exhibition__main__btn
+        = link_to "出品する","#",class:"do"
+        = link_to "下書きに保存","#",class:"suspense"
+        = link_to "もどる","#",class:"back"
+
+      .exhibition__main__precaution
+        %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+        
+
+  .exhibition__footer
+    %ul.exhibition__footer__poricy
+      %li= link_to "プライバシーポリシー","#"
+      %li= link_to "メルカリ利用規約","#"
+      %li= link_to "特定商取引に関する法律表記","#"
+    = image_tag('logo-mini.png',height:"65px",width:"80px",class:"logo")
+    %p © Mercari, Inc.
+      
+      
