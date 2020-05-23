@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'view#edit'
-  root 'items#index'
+  # トップページ
+  root to: "tops#index"
+
+  # マージしてから修正するので一旦コメントアウト
+  # root to: 'view#edit'
+  # root 'items#index'
 end
