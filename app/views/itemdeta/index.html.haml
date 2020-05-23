@@ -1,0 +1,114 @@
+.header
+  ヘッダーが入ります
+.ground
+  .background
+    .category
+      %ul.category__hierarchy
+        %li.category__hierarchy__top
+          = link_to "FURIMA","#"
+        %li.symbol
+          >
+        %li.category__hierarchy__gender
+          = link_to "メンズ ","#"
+        %li.symbol
+          >
+        %li.category__hierarchy__category
+          = link_to "ジャケット、アウター","#"
+        %li.symbol
+          >
+        %li.category__hierarchy__item
+          = link_to "ノーカラージャケット","#"
+        %li.symbol
+          >
+        %li.category__hierarchy__currentItem
+          project2
+    .item__box
+      .item__box__name
+        product2
+      .item__box__body
+        .item__box__body--topImage
+          =image_tag 'sushi2.png',class: 'top-image',size: '550x350'
+        .item__box__body--subImages
+          %ol.subimages__box
+            %li
+              =image_tag 'sushi.png', size: '120x88'
+            %li
+              =image_tag 'sushi3.png', size: '120x88'
+            %li
+              =image_tag 'sushi4.png', size: '120x88'
+      .item__box__price
+        ¥20000
+      .item__box__price--underText
+        (税込) 送料込み
+      .item__box__explanation
+        親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+      %table.item__box__table
+        %colgroup
+        %tr
+          %td.item__box__table__user__title
+            出品者
+          %td.item__box__table__user__input
+            hoge
+        %tr
+          %td.item__box__table__category__title
+            カテゴリー
+          %td.item__box__table__category__input
+            %ul
+              %li.category__gender
+                =link_to 'メンズ', '#'
+              %li.category__name
+                =link_to 'ジャケット、アウター', '#'
+              %li.category__detalis
+                =link_to 'ノーカラージャケット', '#'
+        %tr
+          %td.item__box__table__brand__title
+            ブランド
+          %td.item__box__table__brand__input
+            hoge
+        %tr
+          %td.item__box__table__size__title
+            商品のサイズ
+          %td.item__box__table__size__input
+            hoge
+        %tr
+          %td.item__box__table__status__title
+            商品の状態
+          %td.item__box__table__status__input
+            新品未使用
+        %tr
+          %td.item__box__table__delivery__title
+            配送料の負担
+          %td.item__box__table__delivery__input
+            着払い（購入者負担）
+        %tr
+          %td.item__box__table__shipping__title
+            発送元の地域
+          %td.item__box__table__shipping__input
+            = link_to '青森県','#'
+        %tr
+          %td.item__box__table__standard__title
+            発送の目安
+          %td.item__box__table__standard__input
+            1-2日で発送
+      .option__area
+        .option__area__likeBtn
+          =icon("fas","star")
+          = link_to "お気に入り0","#"
+        .option__area__optionlBtn
+          =icon("fas","flag")
+          = link_to "不適切な商品の通報","#" 
+    .comment__box
+      = form_with url: "#" do |form|
+        = form.text_area :name,class:"user_comment",size: "70x4" 
+        .comment__box__note
+          相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = form.submit "コメントする", class:"comment__box__submitBtn"
+    %ol.links
+      %li.links__previous__page
+        =link_to "< 前の商品", "#"
+      %li.links__next__page
+        =link_to "次の商品 >","#"
+    .related__items
+      =link_to "メンズをもっと見る","#"
+  .footer
+  フッターがはいります
