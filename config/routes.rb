@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  # トップページ
-  root to: "tops#index"
+
+  root to: 'itemdeta#index' 
+  
+  # 一旦、自分(貫山)の作ったビュー、ファイル最下部にまとめました
+#   root to: 'view#edit'
+#   root 'items#index'
+# end
+
+#   root to: "tops#index"
 
   # マージしてから修正するので一旦コメントアウト
   # root to: 'view#edit'
@@ -16,10 +23,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items,only: [:index] do
-    collection do
-      get 'confimation'
-    end
-  end
-
 end
+
+
+# itemdeta#index --- 商品詳細ページ
+# view#index --- 新規登録画面
+# view#new --- ログイン画面
+# view#edit --- 登録完了画面
