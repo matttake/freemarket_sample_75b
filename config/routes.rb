@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
 #   root to: "tops#index"
 
+  # マージしてから修正するので一旦コメントアウト
+  # root to: 'view#edit'
+  # root 'items#index'
+  
+  
   resources :users, only: [:show] do
     # マイページ表示用の仮アクション
     collection do

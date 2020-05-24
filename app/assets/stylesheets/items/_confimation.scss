@@ -1,0 +1,176 @@
+
+// ヘッダー
+.header {
+  background-color: $backColor;
+  height: 120px;
+  width: 100vw;
+  &__content {
+    height: 120px;
+    width: 720px;
+    margin: 0 auto;;
+    text-align: center;
+  }   
+}
+ .image-top{
+    width: 200px;
+    margin-top: 30px;
+ }
+
+
+//  メイン
+.confimation{
+  background-color:$backColor; 
+  .confimation-main {
+    width: 700px;
+    margin: 0 auto;
+    &__page {
+      background-color: white;
+      &__title {
+        font-size: 22px;
+        padding: 32px;
+        text-align: center;
+        font-weight: 600;
+      }
+      &__content{
+        padding: 32px 16px;
+        border-top: 1px solid #f5f5f5;
+        border-bottom: 1px solid #f5f5f5;
+        &__inner {
+          display: flex;
+          &__box {
+            display: flex;
+            margin: 0 auto;
+            &__image {
+              .image {
+                width:100px;
+              }
+            }
+            &__item {
+              margin-left: 16px;
+              .item-name {
+                font-size: 14px;
+                margin: 0;
+                padding: 0 0 8px;
+                line-height: 1.5;
+                text-align: left;
+              }
+              .item-price {
+                margin: 0;
+                text-align: left;
+                font-size: 12px;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+      &__form {
+        max-width: 343px;
+        margin: 0 auto;
+        &__price {
+          display:flex;
+          justify-content:space-between;
+          padding-top: 32px;
+          &--pay {
+            font-size: 18px;
+            font-weight: bold;
+          }
+          &--prices {
+            font-weight: 600;
+            font-size: 20px;
+          }
+        }
+        &__point {
+          margin: 24px 0 32px;
+          .fa-check-square {
+            color: #ccc;
+            background: #ccc;
+            width: 20px;
+            height: 20px;
+            border-radius: 2px;
+          }
+          &__label {
+            font-size: 14px;
+            color: #888888;
+          }
+        }
+        &__buy {
+          @include confimation-form;
+          &__pay {
+            font-size: 14px;
+          }
+          .fa-plus-circle{
+            color:#0099e8;
+          }
+          &__link {
+            @include confimation-link;
+          }
+        }
+        &__delivery {
+          @include confimation-form;
+          &__address {
+            font-size: 14px;
+          }
+          .fa-plus-circle{
+            color:#0099e8;
+          }
+          &__link {
+            @include confimation-link;
+          }
+        }
+        &__submit {
+          padding: 32px 0 48px 0;
+          border-top: 1px solid #f5f5f5;
+          &--btn {
+            border: 1px solid #888;
+            background: #888;
+            color: #fff;
+            width: 100%;
+            line-height: 48px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+// フッター 
+.footer {
+  background-color:$backColor;          
+  height: 220px;
+  padding: 30px ;
+  &__nav{
+    height: 30px;
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  a {
+    color: dimgray;
+    font-size: 12px;
+    text-decoration: none;
+  }
+  li {
+    display: inline;
+    margin-right: 1em;
+  }
+  .footer__logo{
+    margin: 0 auto;
+    margin-top: 30px;
+    text-align: center;
+  }
+  .image-footer{
+    width: 150px;
+    color: gray;
+  }
+  .footer__text{
+    height: 15px;
+    width: 80px;
+    font-size: 12px;
+    color: dimgray;
+    margin: 0 auto;
+  }
+}
