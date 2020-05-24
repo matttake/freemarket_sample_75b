@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
 
-  root to: "tops#index"
+  root to: 'itemdeta#index' 
+  
+  # 一旦、自分(貫山)の作ったビュー、ファイル最下部にまとめました
+#   root to: 'view#edit'
+#   root 'items#index'
+# end
+
+#   root to: "tops#index"
 
   resources :users, only: [:show] do
     # マイページ表示用の仮アクション
@@ -12,3 +19,9 @@ Rails.application.routes.draw do
   end
 
 end
+
+
+# itemdeta#index --- 商品詳細ページ
+# view#index --- 新規登録画面
+# view#new --- ログイン画面
+# view#edit --- 登録完了画面

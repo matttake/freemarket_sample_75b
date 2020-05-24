@@ -46,7 +46,25 @@
           .form__title
             生年月日
             %span.red 必須
-          = render "yymmdd"
+          .form__birth-date
+            .year
+              %select.select-year
+                -(1920..2020).each do |i| 
+                  %option{value: "#{i}"} #{i}
+              年
+            %span.limit
+            .month
+              %select.select-month
+                -(1..12).each do |i|
+                  %option{value: "#{i}"} #{i}
+              月
+            %span.limit
+            .day
+              %select.select-day
+                -(1..31).each do |i|
+                  %option{value: "#{i}"} #{i}
+              日    
+            %span.limit
         .text-wraning1
           ※本人情報は正しく入力してください
         .text-wraning2
