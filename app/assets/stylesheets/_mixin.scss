@@ -76,3 +76,13 @@
   width: 280px;
   margin-left: 25px;
 }
+
+// // 購入確認画面で使用
+@mixin confimation-form {
+  padding: 32px 0;
+  border-top: 1px solid #f5f5f5;
+}
+@mixin confimation-link {
+  font-size: 14px;
+  color: #0099e8;  
+}
