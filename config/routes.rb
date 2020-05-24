@@ -16,4 +16,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :items,only: [:index] do
+    collection do
+      get 'confimation'
+    end
+  end
+
 end
