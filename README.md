@@ -50,6 +50,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 |name|string|null: false|
 |description|text|null: false|
 |condition|string|null: false|
@@ -57,7 +58,6 @@
 |delivery_origin_area|string|null: false|
 |days_until_delivery|string|null: false|
 |price|integer|null: false|
-|size|string||
 ### Association
 - belongs_to :user
 - has_many :images
@@ -67,7 +67,7 @@
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|integer|null: false|
+|item_id|integer|null: false, foreign_key: true|
 |url|string|null: false|
 ### Association
 - belongs_to :item
