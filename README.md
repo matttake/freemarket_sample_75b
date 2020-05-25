@@ -50,7 +50,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 |name|string|null: false|
 |description|text|null: false|
 |condition|string|null: false|
