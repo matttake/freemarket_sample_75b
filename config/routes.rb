@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-  root to: "tops#index"
+  root to: "items#index"
 
-  resources :itemdeta, only: [:index] 
-  resources :items, only: [:index] do
+  resources :items, only: [:index, :show] do
     collection do
       get 'confimation'
       get 'exhibition'
@@ -19,10 +18,11 @@ Rails.application.routes.draw do
   resources :view, only: [:index, :new, :edit]
 end
 
-  # tops#index          --- トップページ
-  # itemdeta#index      --- 商品詳細ページ
+  # items#index         --- トップページ
+  # items#show          --- 商品詳細ページ
   # items#confimation   --- 商品購入確認ページ
   # items#exhibition    --- 商品出品ページ
+
   # users#show          --- ユーザーマイページ
   # users#logout        --- ログアウト画面
   # users#card_index    --- クレジットカード一覧ページ
