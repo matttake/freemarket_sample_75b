@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root to: 'itemdeta#index' 
   
   # 一旦、自分(貫山)の作ったビュー、ファイル最下部にまとめました
