@@ -1,18 +1,19 @@
-@import "reset";
+@import "config/reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "config/mixin";
+@import "header";
+@import "footer";
 
 @import "users/show";
 @import "users/logout";
 @import "users/card";
-@import "mixin";
-@import "style";
-@import "items/header";
-@import "items/tops";
-@import "items/footer";
-@import "exhibition";
-@import "view";
-@import "new";
-@import "edit";
-@import"items/confimation";
-@import "itemdeta";
+
+@import "view/index";
+@import "view/new";
+@import "view/edit";
+
+@import "items/index";
+@import "items/show";
+@import "items/confimation";
+@import "items/exhibition";

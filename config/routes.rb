@@ -1,33 +1,34 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  root to: 'itemdeta#index' 
-  
-  # 一旦、自分(貫山)の作ったビュー、ファイル最下部にまとめました
-#   root to: 'view#edit'
-#   root 'items#index'
-# end
+  root to: "items#index"
 
-#   root to: "tops#index"
-
-  # マージしてから修正するので一旦コメントアウト
-  # root to: 'view#edit'
-  # root 'items#index'
-  
-  
+  resources :items, only: [:index, :show] do
+    collection do
+      get 'confimation'
+      get 'exhibition'
+    end
+  end
   resources :users, only: [:show] do
-    # マイページ表示用の仮アクション
     collection do
       get 'logout'
       get 'card_index'
       get 'card_register'
     end
   end
-
+  resources :view, only: [:index, :new, :edit]
 end
 
+  # items#index         --- トップページ
+  # items#show          --- 商品詳細ページ
+  # items#confimation   --- 商品購入確認ページ
+  # items#exhibition    --- 商品出品ページ
 
-# itemdeta#index --- 商品詳細ページ
-# view#index --- 新規登録画面
-# view#new --- ログイン画面
-# view#edit --- 登録完了画面
+  # users#show          --- ユーザーマイページ
+  # users#logout        --- ログアウト画面
+  # users#card_index    --- クレジットカード一覧ページ
+  # users#card_register --- クレジットカード登録ページ
+
+  # 以下のビューファイルはdeviseで元々用意されているファイルと置き換えても良いかと思います
+  # view#index          --- ユーザー新規登録ページ
+  # view#new            --- ログインページ
+  # view#edit           --- 登録完了ページ
