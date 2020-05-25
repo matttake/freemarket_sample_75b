@@ -1,7 +1,7 @@
 %header
   .header-content
     .header-main
-      =image_tag "/assets/logo.png",class: "header-main__image"
+      =image_tag "logo.png",class: "header-main__image"
       .heaer-main__search
         %input{type: "text_field",class: "header-main__search--field",placeholder: "キーワードから探す"}
         =link_to "#",class: "header-main__search--btn" do
@@ -15,7 +15,7 @@
           ブランド     
       %ul
         %li.header-nav-right
-          =link_to "ログイン","#",class: "header-nav-right__btn"
+          =link_to "ログイン","/view/new",class: "header-nav-right__btn"
         %li.header-nav-right
-          =link_to "新規会員登録","#",class: "header-nav-right__btn"
+          =link_to "新規会員登録","/view",class: "header-nav-right__btn"
 
