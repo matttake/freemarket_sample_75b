@@ -12,5 +12,5 @@ class UsersController < ApplicationController
   def card_register
   end
 
-  
+  def 
 end
