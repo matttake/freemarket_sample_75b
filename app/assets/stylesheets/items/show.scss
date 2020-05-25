@@ -1,0 +1,198 @@
+$logo-color: #33CCCC;
+
+.ground{
+  height: 100vh;
+  width: 100vw;
+}
+.background{
+  // background-color: $backColor;
+  height: 1950px;
+  width: 100vw;
+  .category{
+    background-color:white;
+    height: 60px;
+    width: 100vw;
+    border-top: gray 2px;
+    box-shadow: 2px 2px 4px #BBBBBB;
+    margin-bottom: 50px;
+    &__hierarchy{
+      height: 60px;
+      width: 1050px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 60px;
+      font-size: 14px;
+      display: flex;
+      a:visited { color:black;} 
+    }
+    .symbol{
+      margin:0 8px 0 8px;
+      font-size: 10px;
+    }
+
+  }
+  .item__box{
+    background-color: white;
+    height: 1400px;
+    width: 580px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 0 60px 0 60px;
+    
+    
+    &__name{
+      height: 70px;
+      text-align: center;
+      line-height: 70px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    &__body{
+      height: 440px;
+      &--topImage{
+        height: 350px;
+        text-align: center;
+        line-height: 350px;
+        margin-bottom: 10px;
+      }
+      &--subImages{
+        height: 90px;
+        .subimages__box{
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+    }
+    &__price{
+      height: 56px;
+      text-align: center;
+      line-height: 56px;
+      font-weight: bold;
+      font-size: 40px;
+      margin-top: 10px;
+    }
+    &__price--underText{
+      height: 26px;
+      text-align: center;
+      line-height: 26px;
+      margin-bottom: 20px;
+    }
+    &__explanation{
+    height: 160px;
+    font-size: 17px;
+    }
+    .item__box__table{
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+    colgroup{
+      background-color: #EEEEEE;
+      width: 150px;
+
+    }
+    table{
+      height: 480px;
+      width: 580px;
+    }
+    td{
+      border: solid 1px #DDDDDD;
+      padding: 0.5em;
+      font-size: 14px;
+      text-indent: 1em; 
+    }
+    .category__gender,.category__name,.category__detalis,.item__box__table__shipping__input{
+      color: $logo-color;
+      a:visited { color:$logo-color;}
+    }
+
+  }
+  .option__area{
+    height: 40px;
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    &__likeBtn{
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      width: 125px;
+      border: 1px solid orange;
+      color: $logo-color;
+      border-radius: 20px;
+      line-height: 40px;
+      text-align: center;
+      a:visited { color:$logo-color;}
+    }
+    &__optionlBtn{
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      width: 162px;
+      border: 1px solid;
+      border-radius: 6px;
+      font-size: 13px;
+      a:visited { color:black;}
+    }
+  }
+  .comment__box{
+    background-color: white;
+    height: 240px;
+    width: 650px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+    &__inputText{
+      background-color: blueviolet;
+      height:110px;
+      margin-bottom: 10px;
+    }
+    &__note{
+      // background-color: $backColor;
+      height: 46px;
+      margin-bottom: 20px;
+      padding: 5px;
+      font-size: 15px;
+      
+    }
+    &__submitBtn{
+      height: 50px;
+      background-color: $logo-color;
+      width: 350px;
+      border-radius: 50px; 
+      color: white;
+      text-align: center;
+      line-height: 50px;
+      font-size: 20px;
+      a:visited { color:white;}
+    }
+  }
+  .links{
+    height: 40px;
+    width: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    &__previous__page{
+      color: $logo-color;
+      width: 80px;
+      a:visited { color: $logo-color;}
+    }
+    &__next__page{
+      color: $logo-color;
+      width: 80px;
+      a:visited { color: $logo-color;}
+    }
+  }
+  .related__items{
+    height: 50px;
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 10px;
+    color: $logo-color;
+    font-weight: bold;
+    font-size: 20px;
+    a:visited { color: $logo-color;}
+  }
+}
