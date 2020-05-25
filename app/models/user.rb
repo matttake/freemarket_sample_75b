@@ -4,13 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nicname presence: true, uniqueness: true
-  validates :email presence: true, uniqueness: true
-  validates :fast_name presence: true
-  validates :lasr_name presence: true
-  validates :fast_name_reading presence: true 
-  validates :lasr_name_reading presence: true
-  validates :birth_date presence: true
+  validates :nicname, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+  validates :fast_name, presence: true
+  validates :last_name, presence: true
+  validates :fast_name_reading, presence: true 
+  validates :last_name_reading, presence: true
+  validates :birth_date, presence: true
 
   has_many :items
   has_many :payments
