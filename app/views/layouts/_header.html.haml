@@ -12,10 +12,13 @@
         %li.header-nav-left
           カテゴリー
         %li.header-nav-left
-          ブランド     
+          ブランド
       %ul
-        %li.header-nav-right
-          =link_to "ログイン","/view/new",class: "header-nav-right__btn"
-        %li.header-nav-right
-          =link_to "新規会員登録","/view",class: "header-nav-right__btn"
-
+        - if user_signed_in?
+          %li.header-nav-right
+            = link_to "マイページ", user_path, class: "header-nav-right__btn"
+        -else
+          %li.header-nav-right
+            = link_to "ログイン", new_user_session_path,class: "header-nav-right__btn"
+          %li.header-nav-right
+            = link_to "新規会員登録", new_user_registration_path, class: "header-nav-right__btn"
