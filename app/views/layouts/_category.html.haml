@@ -1,0 +1,16 @@
+.category-box
+  -# カテゴリの親要素の取得
+  .parent
+    - @parents.each do |parent|
+      .parent-content
+        = parent.name
+        -# カテゴリの子要素の取得
+        .child
+          - parent.children.each do |child|
+            .child-content
+              = child.name
+              -# カテゴリの孫要素の取得
+              .grandchild
+                - child.children.each do |grandchild|
+                  .grandchild-content
+                    = grandchild.name
