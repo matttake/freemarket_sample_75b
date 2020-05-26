@@ -65,11 +65,15 @@
           background-color: $image-color;
           padding: 1px 4px 2px;
         }
-        .category-select-wrapper__box__select{
-          height: 46px;
-          width: 620px;
-          font-weight: normal;
+        &__category{
+          .listing-select-wrapper__box--select{
+            margin-bottom: 14px;
+            height: 46px;
+            width: 620px;
+            font-weight: normal;
+          }
         }
+        
       }
 
       &__uploader{
