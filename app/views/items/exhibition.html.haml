@@ -2,14 +2,15 @@
   .exhibition__top
     = image_tag('logo.png',height:"49px",width:"185px",class:"logo")
   .exhibition__main
-    =form_with url:"#" do |form|
+    =form_with(model: @items,local:true) do |form|
       .exhibition__main__container
         .exhibition__main__container__topic
           %label 出品画像
           %span 必須
         %p 最大10枚までアップロードできます
-        .exhibition__main__container__uploader
+        =form.fields_for :images,class:"exhibition__main__container__uploader" do |i|
           .exhibition__main__container__uploader__text
+            =i.file_field :url
             %i.fa.fa-camera
             %p ドラッグアンドドロップ 
             %p またはクリックしてファイルをアップロード
