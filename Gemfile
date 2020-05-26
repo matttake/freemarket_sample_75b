@@ -76,3 +76,4 @@ gem "font-awesome-sass"
 gem 'carrierwave'
 gem 'mini_magick'
 gem "fog-aws"
+gem 'active_hash'
