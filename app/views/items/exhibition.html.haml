@@ -34,11 +34,11 @@
         .exhibition__main__container__topic
           %label カテゴリー
           %span 必須
-        =form.select:category,[],prompt:"選択してください"
+        =form.collection_select(:category_id, Category.all, :id, :name, {prompt:"選択してください"})
         .exhibition__main__container__topic
           %label 商品の状態
           %span 必須
-        =form.select:category,[],prompt:"選択してください"
+        =form.select:stats,[["新品、未使用"],["未使用に近い"],["目立った傷や汚れなし"],["やや傷や汚れあり"],["傷や汚れあり"],["全体的に状態が悪い"]],prompt:"選択してください"
         %hr/
 
       .exhibition__main__container
@@ -46,15 +46,15 @@
         .exhibition__main__container__topic
           %label 配送料の負担
           %span 必須
-        =form.select:category,[],prompt:"選択してください"
+        =form.select:delivery_charge,[["送料込み（出品者負担）"],["着払い（購入者負担）"]],prompt:"選択してください"
         .exhibition__main__container__topic
           %label 配送元の地域
           %span 必須
-        =form.select:category,[],prompt:"選択してください"
+        =form.collection_select(:delivery_origin_area,Prefecture.all, :id, :name, {prompt:"選択してください"})
         .exhibition__main__container__topic
           %label 配送までの日数
           %span 必須
-        =form.select:category,[],prompt:"選択してください"
+        =form.select:days_until_delivery,[["１〜２日で発送"],["２〜３日で発送"],["４〜７日で発送"]],prompt:"選択してください"
         %hr/
 
       .exhibition__main__container
@@ -65,7 +65,7 @@
             %span 必須
           .box__price
             %p ¥
-            =form.number_field :price,id:"price"
+            =form.number_field :price,id:"price",mini: 300, max: 9999999
         %p 販売手数料(10%)
         %hr/
 
@@ -73,7 +73,7 @@
         %p 販売利益
 
       .exhibition__main__btn
-        = link_to "出品する","#",class:"do"
+        = form.submit "出品する",class:"do"
         = link_to "下書きに保存","#",class:"suspense"
         = link_to "もどる","#",class:"back"
 
