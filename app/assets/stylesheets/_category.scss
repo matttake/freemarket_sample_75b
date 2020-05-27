@@ -1,3 +1,4 @@
+// ヘッダーのカテゴリメニュー用
 .parent,.child,.grandchild{
   display: none;
 }
@@ -37,6 +38,8 @@
       }
     }
   }
+
+  // 親、子、孫カテゴリにカーソルを合わせたときの表示
   &:hover{
     .parent{
       display: block;

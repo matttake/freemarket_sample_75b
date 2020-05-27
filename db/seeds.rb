@@ -1,4 +1,4 @@
-# カテゴリデータの導入
+# カテゴリデータの導入(今後必要に応じて追加する)
 
 lady = Category.create(name: "レディース")
 lady_1 = lady.children.create(name: "トップス")
