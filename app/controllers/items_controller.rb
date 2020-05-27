@@ -11,12 +11,8 @@ class ItemsController < ApplicationController
 
   # 商品出品アクション
   def exhibition
-    # カテゴリセレクトボックスの初期値
-    @category_parent_array = ["選択してください"]
-    # DBから親カテゴリのみ抽出し、配列へ追加
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
+    # # DBから親カテゴリのみ抽出し、配列へ追加
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name).unshift("選択してください")
   end
 
   # 親カテゴリ選択後の子カテゴリ表示
