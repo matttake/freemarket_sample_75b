@@ -5,12 +5,30 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
-  validates :encrypted_password, presence: true, length: { minimum: 7 }
-  validates :fast_name, presence: true
-  validates :last_name, presence: true
-  validates :fast_name_reading, presence: true 
-  validates :last_name_reading, presence: true
+  validates :email, presence: true, uniqueness: true,
+                                    format: {
+                                      with:/\A\S+@\S+\.\S+\z/
+                                    }
+  validates :encrypted_password, presence: true,
+                                    format: {
+                                      with: /\A[a-z\d]{7,100}+\z/i 
+                                    }
+  validates :fast_name, presence: true,
+                                  format: {
+                                    with: /\A[ぁ-んァ-ン一-龥]/
+                                  }
+  validates :last_name, presence: true,
+                                  format: {
+                                    with: /\A[ぁ-んァ-ン一-龥]/
+                                  }
+  validates :fast_name_reading, presence: true,
+                                  format: {
+                                    with: /\A[ァ-ヶー－]+\z/
+                                  }
+  validates :last_name_reading, presence: true,
+                                  format: {
+                                    with: /\A[ァ-ヶー－]+\z/
+                                  }
   validates :birth_date, presence: true
 
   has_many :items
