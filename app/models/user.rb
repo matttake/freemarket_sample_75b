@@ -35,3 +35,8 @@ class User < ApplicationRecord
   has_many :payments
   has_many :addresses
 end
+
+# ニックネーム ---  非空白文字＠非空白文字.非空白文字
+# パスワード   --- 半角英数字７文字以上100字以内
+# 名前        --- 全角ひらがな、カタカナ、漢字
+# 名前(よみ)   -- 全角カタカナ
