@@ -2,19 +2,74 @@
   .exhibition__top
     = image_tag('logo.png',height:"49px",width:"185px",class:"logo")
   .exhibition__main
-    =form_with(model: @items,local:true) do |form|
+    =form_with(model: @items,local:true,class:"sell-form dropzone", id:"item-dropzone") do |form|
+      -# %h2.sell-form__header
+      -#   商品情報
+      -# .exhibition__main__container.sell-form-container
+      -#   .exhibition__main__container__topic
+      -#     %label.sell-form-container__label 出品画像
+      -#     %span.sell-form-container__require 必須
+      -#   %p 最大10枚までアップロードできます
+      -#   #image-box
+      -#     #previews
+      -#       - if @items.persisted?
+      -#         - @items.images.each_with_index do |image, i|
+      -#           = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+
+      -#     =form.fields_for :images,class:"exhibition__main__container__uploader" do |image|
+      -#       .exhibition__main__container__uploader__text.dropzone-container.clearfix.js-file_group{"data-index" => "#{image.index}"}
+      -#         #preview
+      -#         .dropzone-are
+      -#           = image.label :url, class: "dropzone-box", for: "upload-image" do
+      -#             .input_area
+      -#               =image.file_field :url, multiple: true,name: "images[url][]",id:"upload-image",class:"upload-image js-file",url:"images[url]",'data-image': 0
+      -#                 %p ここをクリックしてください  
+      -#                 %span.js-remove 削除
+      -#         #preview2
+      -#         .dropzone-area2
+      -#           = image.label :url, class: "dropzone-box", for: "upload-image" do
+      -#             %p 個々をクリックしてください          
+      -#       - if @items.persisted?
+      -#         = image.check_box :_destroy, data:{index:imgae.index},class:"hidden-destroy"
+      -#     - if @items.persisted?
+      -#       .js-file_group{"data-index" => "#{@items.images.count}"}
+      -#         =file_field_tag :url,name:"product[images_attributes][#{@items.images.count}][url]", class: 'js-file'
+      -#         .js-remove 削除
+      -#         -# %i.fa.fa-camera
+      -#         -# %p ドラッグアンドドロップ 
+      -#         -# %p またはクリックしてファイルをアップロード
+      -#     %hr/
+
+
+
+      
+
       .exhibition__main__container
         .exhibition__main__container__topic
           %label 出品画像
           %span 必須
         %p 最大10枚までアップロードできます
-        =form.fields_for :images,class:"exhibition__main__container__uploader" do |i|
-          .exhibition__main__container__uploader__text
-            =i.file_field :url
-            %i.fa.fa-camera
-            %p ドラッグアンドドロップ 
-            %p またはクリックしてファイルをアップロード
-        %hr/
+        #image-box
+          #previews
+            - if @items.persisted?
+              - @items.images.each_with_index do |image, i|
+                = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+
+          =form.fields_for :images,class:"exhibition__main__container__uploader" do |image|
+            .exhibition__main__container__uploader__text.js-file_group{"data-index" => "#{image.index}"}
+              =image.file_field :url,class:"js-file"
+              %br/
+              %span.js-remove 削除
+            - if @items.persisted?
+              = image.check_box :_destroy, data:{index:imgae.index},class:"hidden-destroy"
+          - if @items.persisted?
+            .js-file_group{"data-index" => "#{@items.images.count}"}
+              =file_field_tag :url,name:"product[images_attributes][#{@items.images.count}][url]", class: 'js-file'
+              .js-remove 削除
+              -# %i.fa.fa-camera
+              -# %p ドラッグアンドドロップ 
+              -# %p またはクリックしてファイルをアップロード
+          %hr/
 
       .exhibition__main__container
         .exhibition__main__container__topic
@@ -24,7 +79,7 @@
         .exhibition__main__container__topic
           %label 商品の説明
           %span 必須
-        =form.text_area :name,placeholder:"sample"
+        =form.text_area :description,placeholder:"sample"
         .exhibition__main__container__letters
           %p 0/1000
         %hr/
@@ -69,6 +124,10 @@
         %p 販売手数料(10%)
         %hr/
 
+        %p user_id（仮）
+        =form.number_field :user_id,id:"price",mini: 300, max: 9999999
+
+
       .exhibition__main__container
         %p 販売利益
 
@@ -88,5 +147,3 @@
       %li= link_to "特定商取引に関する法律表記","#"
     = image_tag('logo-mini.png',height:"65px",width:"80px",class:"logo")
     %p © Mercari, Inc.
-      
-      
