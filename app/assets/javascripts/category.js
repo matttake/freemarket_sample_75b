@@ -1,7 +1,7 @@
 $(function(){
   // カテゴリセレクトボックスのオプション
   function appendOption(category){
-    let html = '';
+    var html = '';
     html =  `<option value="${category.name}" data-category="${category.id}">
               ${category.name}
             </option>`;
