@@ -138,6 +138,9 @@
           width: 196px;
           text-indent: 1em;
         }
+        .input__name{
+          display: flex;
+        }
        
     }
   }
@@ -186,11 +189,8 @@
   width: 400px;
   text-indent: 1em;
 }
-#birthday_birth_date_1i{
+
+#birthday_birth_date_1i,#birthday_birth_date_2i, #birthday_birth_date_3i{
   height: 40px;
-  width: 140px;
-}
-#birthday_birth_date_2i, #birthday_birth_date_3i{
-  height: 40px;
-  width: 90px;
+  width: 100px;
 }
