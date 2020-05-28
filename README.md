@@ -10,7 +10,7 @@
 |last_name|string|null: false|
 |last_name_reading|string|null: false|
 |fast_name_reading|string|null: false|
-|birth_date|integer|null: false|
+|birth_date|date|null: false|
 ### Association
 - has_many :items
 - has_many :payments
