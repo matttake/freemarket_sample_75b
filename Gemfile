@@ -75,3 +75,4 @@ gem 'haml-rails'
 gem "font-awesome-sass"
 gem 'ancestry'
 gem 'jquery-rails'
+gem 'fog-aws'
