@@ -4,5 +4,5 @@ class User < ApplicationRecord
   has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
 
   validates :images, presence: true
-
+  # ↑userモデルは仮実装。後にdeviseで作られたモデルと結合する。
 end

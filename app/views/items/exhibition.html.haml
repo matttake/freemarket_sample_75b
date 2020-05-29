@@ -8,6 +8,9 @@
           %label 出品画像
           %span 必須
         %p 最大10枚までアップロードできます
+
+
+
         #image-box
           #previews
             - if @items.persisted?
@@ -26,6 +29,9 @@
               =file_field_tag :url,name:"product[images_attributes][#{@items.images.count}][url]", class: 'js-file'
               .js-remove 削除
           %hr/
+          -# ----------------↑今はまだ一枚しか登録できません。後にファイル修正します。--------------
+
+          
 
       .exhibition__main__container
         .exhibition__main__container__topic
@@ -84,6 +90,7 @@
         =form.number_field :user_id,id:"price"
         %p saler_id（仮）
         =form.number_field :saler_id,id:"price"
+        -# ----------↑ログイン機能実装後削除-------------
 
 
       .exhibition__main__container

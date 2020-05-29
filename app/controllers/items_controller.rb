@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
   def create
     @items = Item.new(item_params)
     # 現在はuser_idが無いから保存できない
-    binding.pry
     if @items.save
       redirect_to root_path
     else
@@ -24,24 +23,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
-    # if @items.save
-    #   # params[:images]["url"].each do |a|
-    #   #   @image = @items.images.create!(url: a)
-    #   # end
-    #   redirect_to root_path
-    # else
-    #   render :exhibition
-    # end
-        
-  # def update
-  #   if @items.update(item_params)
-  #     redirect_to root_path
-  #   else
-  #     render :edit
-  #   end
-  # end
-  
   private
  def item_params
     params.require(:item).permit(:category_id,:url, :name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :user_id, :price, :saler_id, :buyer_id, images_attributes:[:url, :_destroy, :id])

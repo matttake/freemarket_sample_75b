@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
   has_many :images  
   belongs_to :category
-
   belongs_to :saler, class_name: "User",foreign_key:"saler_id"
   belongs_to :buyer, class_name: "User",optional:true,foreign_key:"buyer_id"
 
@@ -9,6 +8,7 @@ class Item < ApplicationRecord
 
   accepts_nested_attributes_for :images, allow_destroy: true
   validates_associated :images
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
