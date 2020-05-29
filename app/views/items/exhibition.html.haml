@@ -30,10 +30,14 @@
 
       .exhibition__main__container
         %p 商品の詳細
-        .exhibition__main__container__topic
+        .exhibition__main__container__topic__category
           %label カテゴリー
           %span 必須
-        =form.select:category,[],prompt:"選択してください"
+          -# カテゴリ選択欄の表示
+          .listing-select-wrapper
+            .listing-select-wrapper__box
+              = form.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+
         .exhibition__main__container__topic
           %label 商品の状態
           %span 必須
@@ -83,9 +87,9 @@
   .exhibition__footer
     %ul.exhibition__footer__poricy
       %li= link_to "プライバシーポリシー","#"
-      %li= link_to "メルカリ利用規約","#"
+      %li= link_to "FURIMA利用規約","#"
       %li= link_to "特定商取引に関する法律表記","#"
     = image_tag('logo-mini.png',height:"65px",width:"80px",class:"logo")
-    %p © Mercari, Inc.
+    %p © FURIMA, Inc.
       
       

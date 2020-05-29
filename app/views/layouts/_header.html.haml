@@ -1,4 +1,5 @@
-%header
+#request{action: request.path}
+.header
   .header-content
     .header-main
       =image_tag "logo.png",class: "header-main__image"
@@ -10,7 +11,10 @@
     .header-nav
       %ul
         %li.header-nav-left
-          カテゴリー
+          .category-area
+            カテゴリー
+            .category-box
+              = render "layouts/category"
         %li.header-nav-left
           ブランド
       %ul
