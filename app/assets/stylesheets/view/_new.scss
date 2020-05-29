@@ -1,6 +1,6 @@
 // 新規登録画面
 .page {
-  height: 100vh;
+  height: auto;
   width: 100vw;
   .header {
     background-color: $backColor;
@@ -20,10 +20,10 @@
   //  フォーム
   .form {
     background-color: $backColor;
-    height: 1350px;
+    height: auto;
     &__content {
       background-color: white;
-      height: 1350px;
+      height: auto;
       width: 720px;
       margin: 0 auto;
       &--title{
@@ -37,7 +37,7 @@
       }
       .form__input{
         width: 400px;
-        height: 1115px;
+        height: auto;
         margin: 0 auto;
         padding: 30px 0 20px 0;
         &--nickname{
@@ -193,4 +193,12 @@
 #birthday_birth_date_1i,#birthday_birth_date_2i, #birthday_birth_date_3i{
   height: 40px;
   width: 100px;
+}
+
+.alert {
+  color:#262626; 
+  background:#EEEEEE;
+  text-align: center;
+  border:2px solid #33CCCC;
+  padding:12px; font-weight:850;
 }

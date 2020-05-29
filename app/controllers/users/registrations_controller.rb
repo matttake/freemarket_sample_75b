@@ -82,11 +82,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:nickname,:email,:password,:fast_name,:last_name,:fast_name_reading,:last_name_reading,:birth_date)
   end
 
-  #date_selectから日付の読み込み
+  #date_selectから日付の読み込み,その日付が存在するのか確認
 
   def birth_date_join(date)
     require "date"
-    Date.new(date["birth_date(1i)"].to_i,date["birth_date(2i)"].to_i,date["birth_date(3i)"].to_i)
+    Date.new(date["birth_date(1i)"].to_i,date["birth_date(2i)"].to_i,date["birth_date(3i)"].to_i) if Date.valid_date?(date["birth_date(1i)"].to_i,date["birth_date(2i)"].to_i,date["birth_date(3i)"].to_i) 
   end
 
 end

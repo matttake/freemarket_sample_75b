@@ -7,12 +7,12 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true,
                                     format: {
-                                      with:/\A\S+@\S+\.\S+\z/
+                                      with: /\A\S+@\S+\.\S+\z/
                                     }
   validates :encrypted_password, presence: true,
-                                    format: {
-                                      with: /\A[a-z\d]{7,100}+\z/i 
-                                    }
+                                  length: {
+                                    minimum: 7
+                                  } 
   validates :fast_name, presence: true,
                                   format: {
                                     with: /\A[ぁ-んァ-ン一-龥]/
@@ -36,7 +36,7 @@ class User < ApplicationRecord
   has_many :addresses
 end
 
-# ニックネーム ---  非空白文字＠非空白文字.非空白文字
-# パスワード   --- 半角英数字７文字以上100字以内
+# ニックネーム ---  非空白文字 ＠ 非空白文字 . 非空白文字
+# パスワード   --- ７文字以上
 # 名前        --- 全角ひらがな、カタカナ、漢字
 # 名前(よみ)   -- 全角カタカナ
