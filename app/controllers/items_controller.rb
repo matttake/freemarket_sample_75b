@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
   
   private
  def item_params
-    params.require(:item).permit(:category_id,:url, :name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :user_id, :price, images_attributes:{url:[]})
+    params.require(:item).permit(:category_id,:url, :name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :user_id, :price, images_attributes:[:url, :_destroy, :id])
     #ログイン機能実装後付け加える→ .merge(user_id: current_user.id)
   end
 
