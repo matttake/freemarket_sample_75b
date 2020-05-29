@@ -14,6 +14,9 @@
 !/tmp/.keep
 
 # Ignore uploaded files in development
+
+/public/uploads/
+
 /storage/*
 !/storage/.keep
 
@@ -27,3 +30,4 @@
 /config/master.key
 
 .DS_Store
+public/uploads/*
