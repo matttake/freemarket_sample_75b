@@ -6,8 +6,12 @@ Rails.application.routes.draw do
     collection do
       get 'confimation'
       get 'exhibition'
+      # 子、孫カテゴリ登録用アクション
+      get 'get_category_children',      defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
+
   resources :users, only: [:show] do
     collection do
       get 'logout'

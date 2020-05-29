@@ -23,4 +23,5 @@ class Item < ApplicationRecord
   validates :days_until_delivery, presence: true
   validates :price, presence: true
   validates :saler_id, presence: true
+
 end

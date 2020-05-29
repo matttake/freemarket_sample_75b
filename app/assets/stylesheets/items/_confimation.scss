@@ -1,7 +1,7 @@
 
 // ヘッダー
 .header {
-  // background-color: $backColor;
+  background-color: $backColor;
   height: 120px;
   width: 100vw;
   &__content {
@@ -19,7 +19,7 @@
 
 //  メイン
 .confimation{
-  // background-color:$backColor; 
+  background-color:$backColor; 
   .confimation-main {
     width: 700px;
     margin: 0 auto;
@@ -136,7 +136,7 @@
 
 // フッター 
 .footer {
-  // background-color:$backColor;
+  background-color:$backColor;
   height: 220px;
   padding: 30px ;
   &__nav{

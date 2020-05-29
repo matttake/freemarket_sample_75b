@@ -49,17 +49,21 @@
             出品者
           %td.item__box__table__user__input
             hoge
+
+        -# カテゴリ表示(商品出品機能未実装のため、リンクを文字列にしています。)
+        -# 商品出品機能実装後、リンクが登録されたカテゴリ名になっているか確認します。(リンクの"""を外す)
         %tr
           %td.item__box__table__category__title
             カテゴリー
           %td.item__box__table__category__input
-            %ul
-              %li.category__gender
-                =link_to 'メンズ', '#'
-              %li.category__name
-                =link_to 'ジャケット、アウター', '#'
-              %li.category__detalis
-                =link_to 'ノーカラージャケット', '#'
+            = link_to "#", class: "category-link" do
+              %br
+              = "@item.category.parent.parent.name" # 親カテゴリ名
+              %br
+              = "@item.category.parent.name" # 子カテゴリ名
+              %br
+              = "@item.category.name" # 孫カテゴリ名
+
         %tr
           %td.item__box__table__brand__title
             ブランド
