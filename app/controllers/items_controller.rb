@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   def create
     @items = Item.new(item_params)
     # 現在はuser_idが無いから保存できない
-    # binding.pry
+    binding.pry
     if @items.save
       redirect_to root_path
     else
@@ -44,8 +44,8 @@ class ItemsController < ApplicationController
   
   private
  def item_params
-    params.require(:item).permit(:category_id,:url, :name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :user_id, :price, images_attributes:[:url, :_destroy, :id])
-    #ログイン機能実装後付け加える→ .merge(user_id: current_user.id)
+    params.require(:item).permit(:category_id,:url, :name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :user_id, :price, :saler_id, :buyer_id, images_attributes:[:url, :_destroy, :id])
+    #ログイン機能実装後付け加える→ .merge(user_id: current_user.id)(saler_id: current_user_id )
   end
 
   
