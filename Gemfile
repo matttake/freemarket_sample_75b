@@ -76,3 +76,4 @@ gem "font-awesome-sass"
 gem 'ancestry'
 gem 'jquery-rails'
 gem 'fog-aws'
+gem 'carrierwave'
