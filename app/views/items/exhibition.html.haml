@@ -2,18 +2,36 @@
   .exhibition__top
     = image_tag('logo.png',height:"49px",width:"185px",class:"logo")
   .exhibition__main
-    =form_with url:"#" do |form|
+    =form_with(model: @items,local:true,class:"sell-form dropzone", id:"item-dropzone") do |form|
       .exhibition__main__container
         .exhibition__main__container__topic
           %label 出品画像
           %span 必須
         %p 最大10枚までアップロードできます
-        .exhibition__main__container__uploader
-          .exhibition__main__container__uploader__text
-            %i.fa.fa-camera
-            %p ドラッグアンドドロップ 
-            %p またはクリックしてファイルをアップロード
-        %hr/
+
+
+
+        #image-box
+          #previews
+            - if @items.persisted?
+              - @items.images.each_with_index do |image, i|
+                = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+
+          =form.fields_for :images,class:"exhibition__main__container__uploader" do |image|
+            .exhibition__main__container__uploader__text.js-file_group{"data-index" => "#{image.index}"}
+              =image.file_field :url,class:"js-file"
+              %br/
+              %span.js-remove 削除
+            - if @items.persisted?
+              = image.check_box :_destroy, data:{index:imgae.index},class:"hidden-destroy"
+          - if @items.persisted?
+            .js-file_group{"data-index" => "#{@items.images.count}"}
+              =file_field_tag :url,name:"product[images_attributes][#{@items.images.count}][url]", class: 'js-file'
+              .js-remove 削除
+          %hr/
+          -# ----------------↑今はまだ一枚しか登録できません。後にファイル修正します。--------------
+
+          
 
       .exhibition__main__container
         .exhibition__main__container__topic
@@ -23,7 +41,7 @@
         .exhibition__main__container__topic
           %label 商品の説明
           %span 必須
-        =form.text_area :name,placeholder:"sample"
+        =form.text_area :description,placeholder:"sample"
         .exhibition__main__container__letters
           %p 0/1000
         %hr/
@@ -33,15 +51,16 @@
         .exhibition__main__container__topic__category
           %label カテゴリー
           %span 必須
-          -# カテゴリ選択欄の表示
-          .listing-select-wrapper
-            .listing-select-wrapper__box
-              = form.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+
+          -# ↓カテゴリ選択欄の表示（渡辺）
+        .listing-select-wrapper
+          .listing-select-wrapper__box
+            = form.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
 
         .exhibition__main__container__topic
           %label 商品の状態
           %span 必須
-        =form.select:category,[],prompt:"選択してください"
+        =form.select:stats,[["新品、未使用"],["未使用に近い"],["目立った傷や汚れなし"],["やや傷や汚れあり"],["傷や汚れあり"],["全体的に状態が悪い"]],prompt:"選択してください"
         %hr/
 
       .exhibition__main__container
@@ -49,15 +68,15 @@
         .exhibition__main__container__topic
           %label 配送料の負担
           %span 必須
-        =form.select:category,[],prompt:"選択してください"
+        =form.select:delivery_charge,[["送料込み（出品者負担）"],["着払い（購入者負担）"]],prompt:"選択してください"
         .exhibition__main__container__topic
           %label 配送元の地域
           %span 必須
-        =form.select:category,[],prompt:"選択してください"
+        =form.collection_select(:delivery_origin_area,Prefecture.all, :id, :name, {prompt:"選択してください"})
         .exhibition__main__container__topic
           %label 配送までの日数
           %span 必須
-        =form.select:category,[],prompt:"選択してください"
+        =form.select:days_until_delivery,[["１〜２日で発送"],["２〜３日で発送"],["４〜７日で発送"]],prompt:"選択してください"
         %hr/
 
       .exhibition__main__container
@@ -68,15 +87,22 @@
             %span 必須
           .box__price
             %p ¥
-            =form.number_field :price,id:"price"
+            =form.number_field :price,id:"price",mini: 300, max: 9999999
         %p 販売手数料(10%)
         %hr/
+
+        %p user_id（仮）
+        =form.number_field :user_id,id:"price"
+        %p saler_id（仮）
+        =form.number_field :saler_id,id:"price"
+        -# ----------↑ログイン機能実装後削除-------------
+
 
       .exhibition__main__container
         %p 販売利益
 
       .exhibition__main__btn
-        = link_to "出品する","#",class:"do"
+        = form.submit "出品する",class:"do"
         = link_to "下書きに保存","#",class:"suspense"
         = link_to "もどる","#",class:"back"
 
@@ -91,5 +117,4 @@
       %li= link_to "特定商取引に関する法律表記","#"
     = image_tag('logo-mini.png',height:"65px",width:"80px",class:"logo")
     %p © FURIMA, Inc.
-      
       
