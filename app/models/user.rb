@@ -34,7 +34,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :payments
   has_many :addresses
-end
+
 
 # ニックネーム ---  非空白文字 ＠ 非空白文字 . 非空白文字
 # パスワード   --- ７文字以上
