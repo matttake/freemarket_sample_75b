@@ -66,14 +66,24 @@
           padding: 1px 4px 2px;
         }
         &__category{
-          .listing-select-wrapper__box--select{
-            margin-bottom: 14px;
-            height: 46px;
-            width: 620px;
-            font-weight: normal;
+          margin-bottom: 14px;
+          font-weight: 600;
+          >label{
+            font-size: 10px;
+          }
+          >span{
+            font-size: 10px;
+            color: white;
+            background-color: $image-color;
+            padding: 1px 4px 2px;
           }
         }
-        
+      }
+      .listing-select-wrapper__box--select{
+        margin-bottom: 14px;
+        height: 46px;
+        width: 620px;
+        font-weight: normal;
       }
 
       &__uploader{
