@@ -97,7 +97,7 @@ describe User do
       expect(user.errors[:last_name_reading]).to include("は不正な値です")
     end
 
-    it "lastname_readingがない場合は登録できないこと" do
+    it "last_name_readingがない場合は登録できないこと" do
       user = build(:user, last_name_reading: nil)
       user.valid?
       expect(user.errors[:last_name_reading]).to include("を入力してください")
