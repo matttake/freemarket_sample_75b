@@ -10,7 +10,7 @@ $(function(){
     let childSelectHtml = '';
     childSelectHtml = `<div class='listing-select-wrapper__added' id='children_wrapper'>
                         <div class='listing-select-wrapper__box' id='children_wrapper_box'>
-                          <select class='listing-select-wrapper__box--select' id='child_category' name='items[category_id]'>
+                          <select class='listing-select-wrapper__box--select' id='child_category' name='category_id'>
                             <option value='---' data-category='---'>選択してください</option>
                             ${insertHTML}
                           </select>
@@ -25,7 +25,7 @@ $(function(){
     let grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
                               <div class='listing-select-wrapper__box' id= 'grandchildren_wrapper_box'>
-                                <select class='listing-select-wrapper__box--select' id='grandchild_category' name='items[category_id]'>
+                                <select class='listing-select-wrapper__box--select' id='grandchild_category' name='item[category_id]'>
                                   <option value='---' data-category='---'>選択してください</option>
                                   ${insertHTML}
                                 </select>
@@ -46,6 +46,7 @@ $(function(){
         dataType: 'json'
       })
       .done(function(children){
+        console.log(children)
         $('#children_wrapper').remove(); // 親カテゴリが変更されたとき、子・孫カテゴリを削除する
         $('#grandchildren_wrapper').remove();
         let insertHTML = '';
