@@ -1,5 +1,5 @@
 .page
-  = render "view/header"
+  = render "layouts/sub_header"
   .form
     .form__content
       = form_with model: @user, url: user_registration_path, local: true do |f|
@@ -71,4 +71,4 @@
             = link_to 'Privacy Policy','https://policies.google.com/privacy'
             and
             = link_to 'Terms of Service apply.','https://policies.google.com/terms'
-    =render "view/footer"
+    =render "layouts/sub_footer"

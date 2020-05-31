@@ -1,5 +1,5 @@
 .page
-  = render "view/header"
+  = render "layouts/sub_header"
   .body
     .content
       = form_with model: @user, url: user_session_path, local: true do |f|
@@ -19,4 +19,4 @@
               = f.submit "ログイン", class: "btn-login"
             .content__under__content--text
               = link_to 'パスワードをお忘れの方','#'
-    = render "view/footer"
+    = render "layouts/sub_footer"
