@@ -10,25 +10,27 @@ class ItemsController < ApplicationController
 
   # 商品出品アクション
   def exhibition
+    # ↓DBから親カテゴリのみ抽出し、配列へ追加(渡辺)
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name).unshift("選択してください")
+    
     # ↓出品ページのフォームのインスタンス生成（塚本）
     @items = Item.new
     @items.images.build
 
-    # ↓DBから親カテゴリのみ抽出し、配列へ追加(渡辺)
-    @category_parent_array = Category.where(ancestry: nil).pluck(:name).unshift("選択してください")
+    
   end
-
 
   # ↓出品ボタン押した後の挙動（塚本）
   def create
     @items = Item.new(item_params)
-    if @items.save
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name).unshift("選択してください")
+
+    if @items.save!
       redirect_to root_path
     else
       render :exhibition
     end
   end
-
   
   # ↓親カテゴリ選択後の子カテゴリ表示（渡辺）
   def get_category_children
@@ -48,8 +50,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:category_id,:url, :name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :user_id, :price, :saler_id, :buyer_id, images_attributes:[:url, :_destroy, :id])
     #ログイン機能実装後付け加える→ .merge(user_id: current_user.id)(saler_id: current_user_id )
   end
-
-  
-  
 
 end
