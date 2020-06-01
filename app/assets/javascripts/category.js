@@ -1,7 +1,7 @@
 $(function(){
   // カテゴリセレクトボックスのオプション
   function appendOption(category){
-    let html =`<option value='${category.name}' data-category='${category.id}'>${category.name}</option>`;
+    let html =`<option value='${category.id}' data-category='${category.id}'>${category.name}</option>`;
     return html;
   }
 
@@ -10,13 +10,12 @@ $(function(){
     let childSelectHtml = '';
     childSelectHtml = `<div class='listing-select-wrapper__added' id='children_wrapper'>
                         <div class='listing-select-wrapper__box' id='children_wrapper_box'>
-                          <select class='listing-select-wrapper__box--select' id='child_category' name='category_id'>
+                          <select class='listing-select-wrapper__box--select' id='child_category' name='item[category_id]'>
                             <option value='---' data-category='---'>選択してください</option>
                             ${insertHTML}
                           </select>
                         </div>
                       </div>`;
-    // $('.exhibition__main__container__topic__category').append(childSelectHtml);
     $('.listing-select-wrapper__box').append(childSelectHtml);
   }
 
@@ -31,22 +30,21 @@ $(function(){
                                 </select>
                               </div>
                             </div>`;
-    // $('.exhibition__main__container__topic__category').append(grandchildSelectHtml);
     $('#children_wrapper_box').append(grandchildSelectHtml);
   }
 
   // 親カテゴリ選択後のイベント
   $('#parent_category').on('change', function(){
-    let parentCategory = document.getElementById('parent_category').value; // 選択された親カテゴリの名前を取得
-    if (parentCategory != "選択してください"){ // 親カテゴリが初期値でないときイベント発火
+    let parent_category_id = document.getElementById('parent_category').value; // 選択された親カテゴリの名前を取得
+    ('parent_category').value;
+    if (parent_category_id != "選択してください"){ // 親カテゴリが初期値でないときイベント発火
       $.ajax({
-        url: '/items/get_category_children',
+        url: 'get_category_children',
         type: 'GET',
-        data: { parent_name: parentCategory },
+        data: { parent_id: parent_category_id},
         dataType: 'json'
       })
       .done(function(children){
-        console.log(children)
         $('#children_wrapper').remove(); // 親カテゴリが変更されたとき、子・孫カテゴリを削除する
         $('#grandchildren_wrapper').remove();
         let insertHTML = '';
