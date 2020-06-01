@@ -68,7 +68,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params[:user][:birth_date] = birth_date_join(date)
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
+      flash[:notice] = "ユーザー登録が完了しました"
+      redirect_to("/users/#{@user.id}")
     else
       render 'new'
     end
