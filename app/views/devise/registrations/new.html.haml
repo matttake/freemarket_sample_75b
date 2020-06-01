@@ -1,0 +1,74 @@
+.page
+  = render "layouts/sub_header"
+  .form
+    .form__content
+      = form_with model: @user, url: user_registration_path, local: true do |f|
+        .form__content--title
+          会員情報入力
+        .form__input
+          = render 'layouts/error_messages', model: f.object
+          .form__input--nickname
+            .form__input--title
+              ニックネーム
+              %span.red 必須
+            = f.text_field :nickname, placeholder: "例)フリマ太郎", class: "nicknameBox"
+          .form__input--email
+            .form__title
+              メールアドレス
+              %span.red 必須
+            = f.email_field :email, autofocus: true, placeholder: "PC、携帯どちらでも可", class: "emailBox"
+          .form__input--password
+            .form__title
+              パスワード
+              %span.red 必須
+            = f.password_field :password, autocomplete: "off",placeholder: "6文字以上の半角英数", class: "passwordBox"
+          .form__input--password-confirmation
+            .form__title
+              確認用パスワード
+              %span.red 必須
+            = f.password_field :password_confirmation, autocomplete: "off",class: "confirmation"
+          .fidentification
+            %span本人確認<br>
+            安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .form__input--name
+            .form__title
+              お名前(全角)
+              %span.red 必須
+            %ul.input__name
+              %li
+                = f.text_field :fast_name, placeholder: "例)山田", class: "input-name"
+              %li
+                = f.text_field :last_name, placeholder: "例)太朗", class: "input-name"
+          .form__input--name-katakana
+            .form__title
+              お名前カナ(全角)
+              %span.red 必須
+            %ul.input__name
+              %li
+                = f.text_field :fast_name_reading, placeholder: "例)ヤマダ", class: "input-name"
+              %li
+                = f.text_field :last_name_reading, placeholder: "例)タロウ", class: "input-name"
+          .form__input--birth-date
+            .form__title
+              生年月日
+              %span.red 必須
+            .form__birth-date
+              .year
+                = f.date_select(:birth_date, prefix:'birthday', prompt:"--", use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'/')
+          .text-wraning1
+            ※本人情報は正しく入力してください
+          .text-wraning2
+            「登録」のボタンを押すことにより、
+            =link_to '利用規約','#'
+            に同意したものとみなします
+          .register-button
+            = f.submit "送信", class: "button"
+          .explanation
+            =link_to '本人情報の登録について>','#'
+            %i.icon-arrow-right
+          .privacy-policy
+            This site is protected by reCAPTCHA and the Google
+            = link_to 'Privacy Policy','https://policies.google.com/privacy'
+            and
+            = link_to 'Terms of Service apply.','https://policies.google.com/terms'
+    =render "layouts/sub_footer"

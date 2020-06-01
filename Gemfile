@@ -46,6 +46,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -73,6 +75,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem "font-awesome-sass"
+gem 'devise'
+gem 'pry-rails'
+gem 'rails-i18n'
+gem 'ancestry'
 gem 'carrierwave'
 gem 'mini_magick'
 gem "fog-aws"
