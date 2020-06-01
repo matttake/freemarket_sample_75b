@@ -14,7 +14,7 @@ CarrierWave.configure do |config|
       aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
       region: 'ap-northeast-1'
     }
-    config.fog_directory  = 'freemarket-sample-75b'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket-sample-75b'
+    config.fog_directory  = 'freemarket-sample-75'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket-sample-75'
   end
 end
