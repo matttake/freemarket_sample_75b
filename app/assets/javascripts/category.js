@@ -1,46 +1,47 @@
 $(function(){
   // カテゴリセレクトボックスのオプション
   function appendOption(category){
-    let html =`<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    let html =`<option value='${category.id}' data-category='${category.id}'>${category.name}</option>`;
     return html;
   }
 
   // 子カテゴリのセレクトボックス作成
   function appendChidrenBox(insertHTML){
     let childSelectHtml = '';
-    childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
-                        <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="child_category" name="category_id">
-                            <option value="---" data-category="---">選択してください</option>
+    childSelectHtml = `<div class='listing-select-wrapper__added' id='children_wrapper'>
+                        <div class='listing-select-wrapper__box' id='children_wrapper_box'>
+                          <select class='listing-select-wrapper__box--select' id='child_category' name='item[category_id]'>
+                            <option value='---' data-category='---'>選択してください</option>
                             ${insertHTML}
                           </select>
                         </div>
                       </div>`;
-    $('.exhibition__main__container__topic__category').append(childSelectHtml);
+    $('.listing-select-wrapper__box').append(childSelectHtml);
   }
 
   // 孫カテゴリのセレクトボックス作成
   function appendGrandchidrenBox(insertHTML){
     let grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
-                              <div class='listing-select-wrapper__box'>
-                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="category_id">
-                                  <option value="---" data-category="---">選択してください</option>
+                              <div class='listing-select-wrapper__box' id= 'grandchildren_wrapper_box'>
+                                <select class='listing-select-wrapper__box--select' id='grandchild_category' name='item[category_id]'>
+                                  <option value='---' data-category='---'>選択してください</option>
                                   ${insertHTML}
                                 </select>
                               </div>
                             </div>`;
-    $('.exhibition__main__container__topic__category').append(grandchildSelectHtml);
+    $('#children_wrapper_box').append(grandchildSelectHtml);
   }
 
   // 親カテゴリ選択後のイベント
   $('#parent_category').on('change', function(){
-    let parentCategory = document.getElementById('parent_category').value; // 選択された親カテゴリの名前を取得
-    if (parentCategory != "選択してください"){ // 親カテゴリが初期値でないときイベント発火
+    let parent_category_id = document.getElementById('parent_category').value; // 選択された親カテゴリの名前を取得
+    ('parent_category').value;
+    if (parent_category_id != "選択してください"){ // 親カテゴリが初期値でないときイベント発火
       $.ajax({
-        url: '/items/get_category_children',
+        url: 'get_category_children',
         type: 'GET',
-        data: { parent_name: parentCategory },
+        data: { parent_id: parent_category_id},
         dataType: 'json'
       })
       .done(function(children){
@@ -62,7 +63,7 @@ $(function(){
   });
 
   // 子カテゴリ選択後のイベント
-  $('.exhibition__main__container__topic__category').on('change', '#child_category', function(){
+  $('.listing-select-wrapper__box').on('change', '#child_category', function(){
     let childId = $('#child_category option:selected').data('category'); // 選択された子カテゴリのidを取得
     if (childId != "選択してください"){ // 子カテゴリが初期値でないときイベント発火
       $.ajax({
@@ -74,8 +75,6 @@ $(function(){
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove(); // 子カテゴリが変更されたとき孫カテゴリを削除する
-          $('#size_wrapper').remove();
-          $('#brand_wrapper').remove();
           let insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);

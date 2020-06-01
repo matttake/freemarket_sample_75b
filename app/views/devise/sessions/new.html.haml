@@ -1,0 +1,22 @@
+.page
+  = render "layouts/sub_header"
+  .body
+    .content
+      = form_with model: @user, url: user_session_path, local: true do |f|
+        .content__top
+          .content__top--text
+            アカウントをお持ちでない方はこちら
+          .content__top--btn
+            .btn-new
+              = link_to "新規会員登録","/users/sign_up"
+        .content__under
+          .content__under__content
+            .content__under__content--mail
+              = f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "input-tag"
+            .content__under__content--password
+              = f.password_field :password, autocomplete: "off",placeholder: "パスワード", class: "input-tag"
+            .content__under__content--btn
+              = f.submit "ログイン", class: "btn-login"
+            .content__under__content--text
+              = link_to 'パスワードをお忘れの方','#'
+    = render "layouts/sub_footer"
