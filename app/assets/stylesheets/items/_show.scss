@@ -88,7 +88,6 @@
     colgroup{
       background-color: #EEEEEE;
       width: 150px;
-
     }
     table{
       height: 480px;
@@ -100,11 +99,10 @@
       font-size: 14px;
       text-indent: 1em; 
     }
-    .category__gender,.category__name,.category__detalis,.item__box__table__shipping__input{
+    .category__gender,.category__name,.category__detalis,.item__box__table__shipping__input,.item__box__table__category__input{
       color: $logo-color;
       a:visited { color:$logo-color;}
     }
-
   }
   .option__area{
     height: 40px;
