@@ -26,7 +26,7 @@
               = image.check_box :_destroy, data:{index:imgae.index},class:"hidden-destroy"
           - if @items.persisted?
             .js-file_group{"data-index" => "#{@items.images.count}"}
-              =file_field_tag :url,name:"product[images_attributes][#{@items.images.count}][url]", class: 'js-file'
+              =file_field_tag :url,name:"item[images_attributes][#{@items.images.count}][url]", class: 'js-file'
               .js-remove 削除
           %hr/
           -# ----------------↑今はまだ一枚しか登録できません。後にファイル修正します。--------------

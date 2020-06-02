@@ -17,3 +17,4 @@
 //= require activestorage
 //= require rails-ujs 
 //= require_tree .
+//= require jquery_nested_form  
