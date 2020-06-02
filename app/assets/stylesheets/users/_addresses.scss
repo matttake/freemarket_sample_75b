@@ -1,0 +1,77 @@
+.mypage__main-contents{
+  background-color: white;
+  height: 1150px;
+  width: 700px;
+  margin: 20px;
+  &__title{
+    width: 700px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 0;
+    border-bottom: solid 2px #eee;
+  }
+}
+.mypage__main-contents__center{
+  width: 350px;
+  height: 950px;
+  margin: 0 auto;
+  &__name{
+    @include input-add-name;
+  }
+  &__name-kana{
+    @include input-add-name;
+  }
+  &__zip-code{
+    @include input-add;
+  }
+  &__prefectures{
+    @include input-add;
+  }
+  &__city{
+    @include input-add;
+  }
+  &__address-line1{
+    @include input-add;
+  }
+  &__address-line2{
+    @include input-add;
+  }
+  &__submit{
+    background-color: #33cccc;
+    height: 50px;
+    margin-top: 40px;
+  }
+}
+// 必須、任意のレイアウト
+span.blue{
+  color: white;
+  font-size: 15px;
+  background-color: #33CCCC;
+}
+span.gray{
+  color: white;
+  font-size: 15px;
+  background-color: gray;
+}
+
+// text_fieldのサイズ
+.input-area,#prefectures{
+  height: 46px;
+  width: 350px;
+  text-indent: 1em;
+  margin-top: 5px;
+  color: gray;
+}
+
+
+.submit-button{
+  background-color: #33CCCC;
+  height: 50px;
+  width: 350px;
+  margin-bottom: 40px;
+  color:white;
+  font-size: 15px;
+}

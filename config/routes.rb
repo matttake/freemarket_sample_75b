@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get 'logout'
       get 'card_index'
       get 'card_register'
+      get 'addresses'
     end
   end
 end
@@ -39,3 +40,4 @@ end
   # users#logout        --- ログアウト画面
   # users#card_index    --- クレジットカード一覧ページ
   # users#card_register --- クレジットカード登録ページ
+  # users#addresses     --- 送付先住所登録
