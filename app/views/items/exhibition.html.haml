@@ -72,7 +72,8 @@
         .exhibition__main__container__topic
           %label 配送元の地域
           %span 必須
-        =form.collection_select(:delivery_origin_area,Prefecture.all, :id, :name, {prompt:"選択してください"})
+        -# =form.collection_select(:delivery_origin_area,Prefecture.all, :id, :name, {prompt:"選択してください"})
+        =form.collection_select(:delivery_origin_area,Prefecture.all,:name, :name, {prompt:"選択してください"})
         .exhibition__main__container__topic
           %label 配送までの日数
           %span 必須
