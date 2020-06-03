@@ -28,11 +28,11 @@
         .exhibition__main__container__topic
           %label 商品名
           %span 必須
-        =form.text_field :name,placeholder:"40文字まで"
+        =form.text_field :name,maxlength: 40,placeholder:"40文字まで"
         .exhibition__main__container__topic
           %label 商品の説明
           %span 必須
-        =form.text_area :description,placeholder:"sample"
+        =form.text_area :description,maxlength: 1000,placeholder:"商品の説明（必須 1,000文字以内）"
         .exhibition__main__container__letters
           %p 0/1000
         %hr/
@@ -78,7 +78,7 @@
             %span 必須
           .box__price
             %p ¥
-            =form.number_field :price,id:"price",mini: 300, max: 9999999
+            =form.number_field :price,id:"price",min: 300, max: 9999999,placeholder:"０"
         %p 販売手数料(10%)
         %hr/
 
