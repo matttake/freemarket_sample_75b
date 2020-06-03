@@ -13,18 +13,19 @@
 ActiveRecord::Schema.define(version: 2020_06_02_030528) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "first_name_reading", null: false
     t.string "last_name_reading", null: false
-    t.integer "zip_code", null: false
+    t.string "zip_code", null: false
     t.string "prefectures", null: false
     t.string "city", null: false
     t.string "address_line1"
     t.string "address_line2"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -76,4 +77,5 @@ ActiveRecord::Schema.define(version: 2020_06_02_030528) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
 end
