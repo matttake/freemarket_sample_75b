@@ -11,9 +11,14 @@ FactoryBot.define do
     days_until_delivery         {"1〜2日"}
     price                       {"1000"}
     saler_id                    {"1"}
-  end
+    
+    
 
-  factory :image do
-    url                          {"image.png"}
+    after(:build) do |item|                           
+      item.images << build(:image, item: item) 
+    end                                                  
   end
 end
+
+
+

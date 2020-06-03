@@ -1,10 +1,12 @@
 require 'rails_helper'
 describe Item do
   describe '#create' do
+  
     # 1
     it "全てのフォームが記載されていれば登録できること" do
-      item = build(:item)
-      image = build(:image)
+      category = create(:category)
+      user = create(:user)
+      item = build(:item, category_id: category.id, saler_id: user.id)
       expect(item).to be_valid
     end
 
@@ -76,14 +78,7 @@ describe Item do
         item = build(:item, saler_id: "")
         item.valid?
         expect(item.errors[:saler_id]).to include("を入力してください")
-    end  
-
-
-    it "imageがない場合は登録できないこと" do
-      image = build(:image, url: "")
-      image.valid?
-      expect(image.errors[:url]).to include("を入力してください")
-  end  
+    end    
 
   end
 end

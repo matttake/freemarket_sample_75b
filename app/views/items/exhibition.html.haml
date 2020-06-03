@@ -46,7 +46,7 @@
         -# ↓カテゴリ選択欄の表示（渡辺）
         .listing-select-wrapper
           .listing-select-wrapper__box
-            = form.collection_select :category, @category_parent_array, :id, :name, {prompt:"選択してください"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+            = form.collection_select :category_id, @category_parent_array, :id, :name, {prompt:"選択してください"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
 
         .exhibition__main__container__topic
           %label 商品の状態
