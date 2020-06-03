@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_many :images  
+  has_many :images, dependent: :destroy  # itemを削除した場合、imageも同時に削除する
   belongs_to :category
   belongs_to :saler, class_name: "User",foreign_key:"saler_id"
   belongs_to :buyer, class_name: "User",optional:true,foreign_key:"buyer_id"

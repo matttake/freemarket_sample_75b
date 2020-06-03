@@ -2,7 +2,7 @@
   .exhibition__top
     = image_tag('logo.png',height:"49px",width:"185px",class:"logo")
   .exhibition__main
-    =form_with(model: @items,local:true,class:"sell-form dropzone", id:"item-dropzone") do |form|
+    =form_with(model: @item,local:true,class:"sell-form dropzone", id:"item-dropzone") do |form|
       .exhibition__main__container
         .exhibition__main__container__topic
           %label 出品画像
@@ -13,8 +13,8 @@
 
         #image-box
           #previews
-            - if @items.persisted?
-              - @items.images.each_with_index do |image, i|
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, i|
                 = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
 
           =form.fields_for :images,class:"exhibition__main__container__uploader" do |image|
@@ -22,11 +22,11 @@
               =image.file_field :url,class:"js-file"
               %br/
               %span.js-remove 削除
-            - if @items.persisted?
+            - if @item.persisted?
               = image.check_box :_destroy, data:{index:imgae.index},class:"hidden-destroy"
-          - if @items.persisted?
-            .js-file_group{"data-index" => "#{@items.images.count}"}
-              =file_field_tag :url,name:"product[images_attributes][#{@items.images.count}][url]", class: 'js-file'
+          - if @item.persisted?
+            .js-file_group{"data-index" => "#{@item.images.count}"}
+              =file_field_tag :url,name:"product[images_attributes][#{@item.images.count}][url]", class: 'js-file'
               .js-remove 削除
           %hr/
           -# ----------------↑今はまだ一枚しか登録できません。後にファイル修正します。--------------
