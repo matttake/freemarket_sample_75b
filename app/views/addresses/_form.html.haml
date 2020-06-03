@@ -1,0 +1,35 @@
+.mypage__main-contents__center
+  = form_with model: @address, local: true  do |f|
+    = render 'layouts/error_messages', model: f.object
+    .mypage__main-contents__center__name
+      お名前
+      %span.blue 必須
+    = f.text_field :first_name, placeholder: "例)山田", class: "input-area"
+    = f.text_field :last_name, placeholder: "例)太郎", class: "input-area"
+    .mypage__main-contents__center__name-kana
+      お名前カナ
+      %span.blue 必須
+    = f.text_field :first_name_reading, placeholder: "例)ヤマダ", class: "input-area"
+    = f.text_field :last_name_reading, placeholder: "例)タロウ", class: "input-area"
+    .mypage__main-contents__center__zip-code
+      郵便番号
+      %span.blue 必須
+    = f.text_field :zip_code, placeholder: "例)123-4567", class: "input-area"
+    .mypage__main-contents__center__prefectures
+      都道府県
+      %span.blue 必須
+    = f.collection_select(:prefectures, Prefecture.all, :name, :name, {prompt: "都道府県を選択してください"})
+    .mypage__main-contents__center__city
+      市区町村
+      %span.blue 必須
+    = f.text_field :city, placeholder: "例)横浜市緑区", class: "input-area"
+    .mypage__main-contents__center__address-line1
+      番地
+      %span.gray 任意
+    = f.text_field :address_line1, placeholder: "例)青山1-1-1", class: "input-area"
+    .mypage__main-contents__center__address-line2
+      建物名
+      %span.gray 任意
+    = f.text_field :address_line2, placeholder: "例)柳ビル103", class: "input-area"
+    .mypage__main-contents__center__submit
+      = f.submit "登録する", class: "submit-button"
