@@ -14,16 +14,16 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil)
     
     # ↓出品ページのフォームのインスタンス生成（塚本）
-    @items = Item.new
-    @items.images.new
+    @item = Item.new
+    @item.images.new
 
     
   end
 
   # ↓出品ボタン押した後の挙動（塚本）
   def create
-    @items = Item.new(item_params)
-    if @items.save!
+    @item = Item.new(item_params)
+    if @item.save!
       redirect_to root_path
     else
       @category_parent_array = Category.where(ancestry: nil)
@@ -46,8 +46,7 @@ class ItemsController < ApplicationController
 
   private
  def item_params
-    params.require(:item).permit(:category_id,:name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :user_id, :price, :saler_id, images_attributes:[:url, :_destroy, :id])
-    #ログイン機能実装後付け加える→ .merge(user_id: current_user.id)(saler_id: current_user_id )
+    params.require(:item).permit(:category_id,:name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :price,images_attributes:[:url, :_destroy, :id]).merge(user_id: current_user.id,saler_id: current_user.id )
   end
 
 end
