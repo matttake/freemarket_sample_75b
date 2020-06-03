@@ -91,13 +91,6 @@
         %p 販売手数料(10%)
         %hr/
 
-        %p user_id（仮）
-        =form.number_field :user_id,id:"price"
-        %p saler_id（仮）
-        =form.number_field :saler_id,id:"price"
-        -# ----------↑ログイン機能実装後削除-------------
-
-
       .exhibition__main__container
         %p 販売利益
 
@@ -109,7 +102,6 @@
       .exhibition__main__precaution
         %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
         
-
   .exhibition__footer
     %ul.exhibition__footer__poricy
       %li= link_to "プライバシーポリシー","#"
