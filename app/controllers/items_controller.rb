@@ -1,8 +1,24 @@
 class ItemsController < ApplicationController
+
+  before_action :set_item, only:[:show, :destroy]
+
   def index
   end
 
   def show
+  end
+
+  def edit
+  end
+  
+  def destroy
+    # 商品削除できた場合はトップページへ、できなかった場合は商品詳細ページへ遷移する
+    if @item.destroy
+      flash[:notice] = "#{@item.name}を削除しました"  # 「(商品名)を削除しました」と画面上部に表示する
+      redirect_to root_path
+    else
+      redirect_to item_path(@item)
+    end
   end
 
   def confimation
@@ -24,6 +40,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save!
+      flash[:notice] = "#{@item.name}を出品しました"  # 「(商品名)を出品しました」と画面上部に表示する
       redirect_to root_path
     else
       @category_parent_array = Category.where(ancestry: nil)
@@ -43,10 +60,13 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
-
   private
  def item_params
     params.require(:item).permit(:category_id,:name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :price,images_attributes:[:url, :_destroy, :id]).merge(user_id: current_user.id,saler_id: current_user.id )
+  end
+
+  def set_item  # itemデータの取得
+    @item = Item.find(params[:id])
   end
 
 end

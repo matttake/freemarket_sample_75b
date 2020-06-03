@@ -5,7 +5,7 @@
 }
 .background{
   background-color: $backColor;
-  height: 1950px;
+  height: 2100px;
   width: 100vw;
   .category{
     background-color:white;
@@ -32,7 +32,7 @@
   }
   .item__box{
     background-color: white;
-    height: 1400px;
+    height: 1550px;
     width: 580px;
     margin: 0 auto;
     margin-bottom: 10px;
@@ -88,7 +88,6 @@
     colgroup{
       background-color: #EEEEEE;
       width: 150px;
-
     }
     table{
       height: 480px;
@@ -98,13 +97,20 @@
       border: solid 1px #DDDDDD;
       padding: 0.5em;
       font-size: 14px;
-      text-indent: 1em; 
+      text-indent: 1em;
     }
-    .category__gender,.category__name,.category__detalis,.item__box__table__shipping__input{
+    td.item__box__table__category__title{
+      height: 40px;
+      line-height: 40px;
+    }
+    td.item__box__table__category__input{
+      padding: 0 0 20px 20px;
+      height: 40px;
+    } 
+    .category__gender,.category__name,.category__detalis,.item__box__table__shipping__input,.item__box__table__category__input{
       color: $logo-color;
       a:visited { color:$logo-color;}
     }
-
   }
   .option__area{
     height: 40px;
@@ -134,6 +140,22 @@
       a:visited { color:black;}
     }
   }
+  .item-btn{
+    width: 300px;
+    margin: 30px auto;
+    &__edit, &__delete, &__buy{
+      display: block;
+      width: 300px;
+      height: 50px;
+      line-height: 50px;
+      background-color: $logo-color;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+      text-align: center;
+    }
+  }
   .comment__box{
     background-color: white;
     height: 240px;
@@ -157,12 +179,10 @@
     &__submitBtn{
       height: 50px;
       background-color: $logo-color;
-      width: 350px;
-      border-radius: 50px; 
+      width: 300px;
       color: white;
       text-align: center;
       line-height: 50px;
-      font-size: 20px;
       a:visited { color:white;}
     }
   }
