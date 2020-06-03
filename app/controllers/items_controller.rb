@@ -30,15 +30,16 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil)
     
     # ↓出品ページのフォームのインスタンス生成（塚本）
-    @items = Item.new
-    @items.images.build
+    @item = Item.new
+    @item.images.build
   end
 
   # ↓出品ボタン押した後の挙動（塚本）
   def create
-    @items = Item.new(item_params)
+    @item = Item.new(item_params)
 
-    if @items.save!
+    if @item.save!
+      flash[:notice] = "#{@item.name}を出品しました"  # 「(商品名)を出品しました」と画面上部に表示する
       redirect_to root_path
     else
       @category_parent_array = Category.where(ancestry: nil)
