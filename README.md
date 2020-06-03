@@ -22,9 +22,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|card_number|string|null: false|
-|validated_date|date|null:false|
-|security_code|string|null:false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 ### Association
 - belongs_to :user
 
