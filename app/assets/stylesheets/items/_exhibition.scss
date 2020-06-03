@@ -180,28 +180,18 @@
 }
 
 
-
-
-
-
-
-
-
-
 //image投稿欄のCSS
 .dropzone-container{
   display: block;
   margin: 16px auto 0;
   display: flex;
 
-  //プレビュー表示欄のCSS
   #preview , #preview2{
     display: flex;
 
     .img_view {
-      height: 162px;
       width: 112px;
-      margin: 0 15px 10px 0;
+      margin: 0 15px 0px 0;
 
         img{
           width: 112px;
@@ -213,31 +203,18 @@
         display: flex;
         text-align: center;
 
-        .btn.edit {
-          color: #00b0ff;
-          width: 50%;
-          height: 50px;
-          line-height: 50px;
-          border: 1px solid #eee;
-          background: #f5f5f5;
-          cursor: pointer;
-        }
-
         .btn.delete {
           color: #00b0ff;
-          width: 50%;
-          height: 50px;
-          line-height: 50px;
+          width: 100%;
+          height: 30px;
+          line-height: 30px;
           border: 1px solid #eee;
           background: #f5f5f5;
           cursor: pointer;
         }
       }
     }
-
-  //投稿クリックエリアのCSS
   .dropzone-area {
-    margin-bottom: 10px;
     width: 620px;
 
     .dropzone-box {
@@ -246,7 +223,7 @@
       position: relative;
       background: #f5f5f5;
       width: 100%;
-      height: 162px;
+      height: 145px;
       cursor: pointer;
 
       p {
@@ -269,7 +246,6 @@
       }
     }
   }
-  //投稿クリックエリアのCSS
   .dropzone-area2{
     display: none;
     margin-bottom: 10px;
