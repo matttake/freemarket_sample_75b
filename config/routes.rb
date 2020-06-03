@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :addresses, only: [:new, :create]
+  resources :addresses, only: [:new, :create, :edit, :update]
 end
 
   # items#index         --- トップページ
