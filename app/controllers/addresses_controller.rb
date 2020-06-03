@@ -17,7 +17,7 @@ class AddressesController < ApplicationController
     @address.save
     if @address.save
       flash[:notice] = "お届け先住所を登録しました"
-      redirect_to("/users/#{user_session}")
+      redirect_to user_path(current_user.id)
     else
       render 'new'
     end
@@ -31,7 +31,7 @@ class AddressesController < ApplicationController
     @address = Address.find(current_user.addresses.first.id)
     if @address.update(address_params)
       flash[:notice] = "ユーザー情報を更新しました"
-      redirect_to("/users/#{user_session}")
+      redirect_to user_path
     else
       render 'edit'
     end
