@@ -1,6 +1,6 @@
-// ログイン画面
+// 新規登録画面
 .page {
-  height: 100vh;
+  height: auto;
   width: 100vw;
   .header {
     background-color: $backColor;
@@ -20,10 +20,10 @@
   //  フォーム
   .form {
     background-color: $backColor;
-    height: 1200px;
+    height: auto;
     &__content {
       background-color: white;
-      height: 1200px;
+      height: auto;
       width: 720px;
       margin: 0 auto;
       &--title{
@@ -37,18 +37,24 @@
       }
       .form__input{
         width: 400px;
-        height: 1115px;
+        height: auto;
         margin: 0 auto;
         padding: 30px 0 20px 0;
-        &--nicname{
+        &--nickname{
           height: 100px;
           margin-bottom: 10px;
+        }
+        &--title{
+          font-size: 20px;
         }
       }
         .form__input--email {
           @include input-brock;
         }
         .form__input--password{
+          @include input-brock;
+        }
+        .form__input--password-confirmation{
           @include input-brock;
         }
         .fidentification{
@@ -77,7 +83,7 @@
           font-size: 14px;
           text-align: center;
         }
-        button{
+        .button{
           background-color: #33CCCC;
           height: 50px;
           width: 400px;
@@ -132,10 +138,10 @@
           width: 196px;
           text-indent: 1em;
         }
-        .select-year,.select-month,.select-day{
-          height: 40px;
-          width: 100px;
+        .input__name{
+          display: flex;
         }
+       
     }
   }
 
@@ -176,4 +182,30 @@
       margin: 0 auto;
     }
   }
+}
+
+.nicknameBox,.emailBox,.passwordBox,.confirmation{
+  height: 40px;
+  width: 400px;
+  text-indent: 1em;
+}
+
+#birthday_birth_date_1i,#birthday_birth_date_2i, #birthday_birth_date_3i{
+  height: 40px;
+  width: 100px;
+}
+
+.alert {
+  color:#262626; 
+  background:#EEEEEE;
+  text-align: center;
+  border:2px solid #33CCCC;
+  padding:12px; font-weight:850;
+}
+
+.flash {
+  color: #33cccc;
+  text-align: center; 
+  font-weight: bold; 
+  font-size: 20px;
 }

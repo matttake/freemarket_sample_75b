@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.3'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -78,5 +78,14 @@ gem 'haml-rails'
 gem "font-awesome-sass"
 gem "payjp"
 gem "dotenv-rails"
-gem "devise"
-gem "pry-rails"
+gem 'devise'
+gem 'pry-rails'
+gem 'rails-i18n'
+gem 'ancestry'
+gem 'carrierwave'
+gem 'mini_magick'
+gem "fog-aws"
+gem 'active_hash'
+gem 'jquery-rails'
+gem 'ancestry'
+gem 'pry-rails'

@@ -35,7 +35,7 @@ end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
+  config.include FactoryBot::Syntax::Methods
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -64,10 +64,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  
   config.include Devise::Test::ControllerHelpers, type: :view
-
-  config.include FactoryBot::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
   
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }

@@ -6,7 +6,6 @@
 
     .mypage-wrapper__contents__right-logout
       .mypage-wrapper__contents__right-logout__content
-        = link_to '', class: "mypage-wrapper__contents__right-logout__content__btn" do
-          ログアウト
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "mypage-wrapper__contents__right-logout__content__btn"
 
 = render "layouts/footer"
