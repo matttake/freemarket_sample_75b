@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController
+  before_action :set_address, only: [:edit, :update]
   # ログイン状態且つ、addressテーブルにデータがある場合と無い場合で条件分岐
   # addressテーブルにデータがない場合(新規登録)
   def new
@@ -11,7 +12,7 @@ class AddressesController < ApplicationController
   end
   
   def create
-    @user = User.find_by(id: current_user[:id])
+    # @user = User.find_by(id: current_user[:id])
     @user_data = Address.find_by(user_id: current_user[:id])
     @address = Address.new(address_params)
     @address.save
@@ -24,11 +25,9 @@ class AddressesController < ApplicationController
   end
   # addressテーブルにデータがある場合 (入力欄に現在の初期値を表示)
   def edit
-    @address = Address.find(current_user.addresses.first.id)
   end
 
   def update
-    @address = Address.find(current_user.addresses.first.id)
     if @address.update(address_params)
       flash[:notice] = "ユーザー情報を更新しました"
       redirect_to user_path
@@ -40,6 +39,10 @@ class AddressesController < ApplicationController
   private
   def address_params
     params.require(:address).permit(:first_name, :last_name, :first_name_reading, :last_name_reading, :zip_code, :prefectures, :city, :address_line1, :address_line2).merge(user_id: current_user.id)
+  end
+
+  def set_address
+    @address = Address.find(current_user.addresses.first.id)
   end
 
 end
