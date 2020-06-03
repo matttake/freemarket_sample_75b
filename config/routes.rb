@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root to: "items#index"
 
   resources :items, only: [:index, :show] do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
     end
   end
   resources :view, only: [:index, :new, :edit]
+  resources :payments, only: [:new,:create,:destroy]
 end
 
   # items#index         --- トップページ

@@ -10,8 +10,30 @@
       .mypage-wrapper__contents__right-card-index__content
         .mypage-wrapper__contents__right-card-index__content__name
           クレジットカード一覧
-        = link_to "card_register", class: "mypage-wrapper__contents__right-card-index__content__register-btn" do
-          クレジットカードを追加する
+          -if @payment.present?
+            .mypage-wrapper__contents__right-card-index__content__name__icon
+              -case @payment_brand
+              -when "Visa"
+                =icon("fab fa-cc-visa",class: "icon")
+              -when "MasterCard"
+                =icon("fab fa-cc-mastercard",class: "icon")
+              -when "JCB"
+                =icon("fab fa-cc-jcb",class: "icon")
+              -when "American Express"
+                =icon("fab fa-cc-amex",class: "icon")
+              -when "Discover"
+                =icon("fab fa-cc-discover",class: "icon")
+            .mypage-wrapper__contents__right-card-index__content__name__numbers
+              ="**** **** **** " + @default_card_information.last4
+            .mypage-wrapper__contents__right-card-index__content__name__expiration
+              =@exp_month + "/" + @exp_year
+            .mypage-wrapper__contents__right-card-index__content__name__delete
+              = form_tag("/payments/:id", method: :DELETE, id: 'charge-form',name: "inputForm") do
+                %input{ type: "hidden", name: "card_id", value: "" }
+                %button.mypage-wrapper__contents__right-card-index__content__name__delete--btn 削除する
+          - else 
+            =link_to "card_register", class: "mypage-wrapper__contents__right-card-index__content__register-btn" do
+              クレジットカードを追加する
       .mypage-wrapper__contents__right-card-index__link
         = link_to "", class: "mypage-wrapper__contents__right-card-index__link__btn" do
           支払い方法について
