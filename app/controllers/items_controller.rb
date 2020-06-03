@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
     
     # ↓出品ページのフォームのインスタンス生成（塚本）
     @items = Item.new
-    # @items.images.build()
     @items.images.new
 
     
@@ -24,11 +23,7 @@ class ItemsController < ApplicationController
   # ↓出品ボタン押した後の挙動（塚本）
   def create
     @items = Item.new(item_params)
-    # binding.pry
     if @items.save!
-        # params[:prod][:url].each do |image|
-        #   @items.images.create(url: image,item_id: @items.id)
-        # end
       redirect_to root_path
     else
       @category_parent_array = Category.where(ancestry: nil)
