@@ -1,6 +1,6 @@
 .exhibition
   .exhibition__top
-    = image_tag('logo.png',height:"49px",width:"185px",class:"logo")
+    = link_to image_tag('logo.png',height:"49px",width:"185px",class:"logo"), root_path # ロゴのリンク先をトップページへ指定
   .exhibition__main
     =form_with(model: @item,local:true,class:"sell-form dropzone", id:"item-dropzone") do |form|
       .exhibition__main__container

@@ -27,15 +27,14 @@
         = @item.name
       .item__box__body
         .item__box__body--topImage
-          =image_tag 'sushi2.png',class: 'top-image',size: '550x350'
+          = image_tag @item.images.first.url.url, size: '400x350', class: 'main__image' # 投稿された画像の1枚目をメイン画像に指定
         .item__box__body--subImages
           %ol.subimages__box
-            %li
-              =image_tag 'sushi.png', size: '120x88'
-            %li
-              =image_tag 'sushi3.png', size: '120x88'
-            %li
-              =image_tag 'sushi4.png', size: '120x88'
+            - @item.images.each do |image| # 複数投稿された画像をリスト表示
+              %li
+                = image_tag image.url.url, size: '120x88', class: 'image__list'
+                = image_tag ('logo.png'), size: '120x88', class: 'image__list' # 画像複数投稿機能未実装のため、テスト画像の表示
+
       .item__box__price
         ¥
         = @item.price

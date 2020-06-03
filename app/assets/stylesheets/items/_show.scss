@@ -53,12 +53,23 @@
         text-align: center;
         line-height: 350px;
         margin-bottom: 10px;
+        img{
+          object-fit: cover;  // 中央でトリミングされた表示に変更する
+        }
       }
       &--subImages{
         height: 90px;
         .subimages__box{
           display: flex;
           justify-content: center;
+          img{
+            object-fit: cover;
+            cursor: default;
+            opacity: 0.5;
+          }
+          img:hover{
+            opacity: 1.0;
+          }
         }
       }
 
