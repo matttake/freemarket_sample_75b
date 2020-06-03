@@ -57,6 +57,8 @@
 |delivery_origin_area|string|null: false|
 |days_until_delivery|string|null: false|
 |price|integer|null: false|
+|buyer_id|integer||
+|saler_id|integer|null: false|
 ### Association
 - belongs_to :user
 - has_many :images
