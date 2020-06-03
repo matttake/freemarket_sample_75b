@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
       @address = Address.new
     end
   end
-
+  
   def create
     @user = User.find_by(id: current_user[:id])
     @user_data = Address.find_by(user_id: current_user[:id])
