@@ -32,16 +32,7 @@
           %ol.subimages__box
             - @item.images.each do |image| # 複数投稿された画像をリスト表示
               %li
-                = image_tag image.url.url, size: '110x88', class: 'image__list'
-                = image_tag image.url.url, size: '110x88', class: 'image__list'
-                = image_tag image.url.url, size: '110x88', class: 'image__list'
-                = image_tag image.url.url, size: '110x88', class: 'image__list'
-                = image_tag image.url.url, size: '110x88', class: 'image__list'
-                = image_tag image.url.url, size: '110x88', class: 'image__list'
-                = image_tag image.url.url, size: '110x88', class: 'image__list'
-                = image_tag image.url.url, size: '110x88', class: 'image__list'
-                = image_tag image.url.url, size: '110x88', class: 'image__list'
-                = image_tag ('logo.png'), size: '110x88', class: 'image__list' # 画像複数投稿機能未実装のため、テスト画像の表示
+                = image_tag image.url.url, size: '110x90', class: 'image__list'
 
       .item__box__price
         ¥
@@ -49,7 +40,7 @@
       .item__box__price--underText
         (税込) 送料込み
       .item__box__explanation
-        = @item.description
+        = simple_format @item.description # simple_formatで改行に対応
       %table.item__box__table
         %colgroup
         %tr
