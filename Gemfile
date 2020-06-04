@@ -85,4 +85,6 @@ gem "fog-aws"
 gem 'active_hash'
 gem 'jquery-rails'
 gem 'ancestry'
-gem 'pry-rails'
+gem "rspec-rails"
+gem "factory_bot_rails"
+gem "nested_form"
