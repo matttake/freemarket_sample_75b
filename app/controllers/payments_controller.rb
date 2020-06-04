@@ -5,8 +5,7 @@ class PaymentsController < ApplicationController
 
   def index
     @payment = Payment.find_by(user_id: current_user.id)
-    if @payment.blank?
-    else
+    if @payment.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@payment.customer_id)
       @default_card_information = customer.cards.retrieve(@payment.card_id)
@@ -40,8 +39,7 @@ class PaymentsController < ApplicationController
 
   def destroy  #PayjpとPaymentのデータベースを削除
     payment = Payment.find_by(user_id: current_user.id)
-    if payment.blank?
-    else
+    if payment.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(payment.customer_id)
       customer.delete
