@@ -42,13 +42,14 @@ class ItemsController < ApplicationController
     
     # ↓出品ページのフォームのインスタンス生成（塚本）
     @item = Item.new
-    @item.images.build
+    @item.images.new
+
+    
   end
 
   # ↓出品ボタン押した後の挙動（塚本）
   def create
     @item = Item.new(item_params)
-
     if @item.save!
       flash[:notice] = "#{@item.name}を出品しました"  # 「(商品名)を出品しました」と画面上部に表示する
       redirect_to root_path
@@ -71,9 +72,8 @@ class ItemsController < ApplicationController
   end
 
   private
-  def item_params
-    params.require(:item).permit(:category_id,:url, :name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :user_id, :price, :saler_id, :buyer_id, images_attributes:[:url, :_destroy, :id])
-    #ログイン機能実装後付け加える→ .merge(user_id: current_user.id)(saler_id: current_user_id )
+ def item_params
+    params.require(:item).permit(:category_id,:name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :price,images_attributes:[:url, :_destroy, :id]).merge(user_id: current_user.id,saler_id: current_user.id )
   end
 
   def set_item  # itemデータの取得

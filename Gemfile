@@ -87,3 +87,7 @@ gem 'mini_magick'
 gem "fog-aws"
 gem 'active_hash'
 gem 'jquery-rails'
+gem 'ancestry'
+gem "rspec-rails"
+gem "factory_bot_rails"
+gem "nested_form"

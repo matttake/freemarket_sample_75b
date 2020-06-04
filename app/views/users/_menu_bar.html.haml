@@ -1,6 +1,6 @@
 -# メニューリンク一覧
 - contents = ["マイページ", "出品する", "出品した商品", "購入した商品", "発送元・お届け先住所変更", "クレジットカードの登録", "ログアウト"]
-- links    = ["show", "", "", "", "addresses",payments_path, "logout"]
+- links    = ["/users/show", "/items/exhibition", "", "", "/addresses/new", payments_path, "/users/logout"]
 
 .mypage-wrapper__contents__left
   - contents.each.with_index(0) do |content, i|

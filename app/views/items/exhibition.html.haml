@@ -1,6 +1,6 @@
 .exhibition
   .exhibition__top
-    = image_tag('logo.png',height:"49px",width:"185px",class:"logo")
+    = link_to image_tag('logo.png',height:"49px",width:"185px",class:"logo"), root_path # ロゴのリンク先をトップページへ指定
   .exhibition__main
     =form_with(model: @item,local:true,class:"sell-form dropzone", id:"item-dropzone") do |form|
       .exhibition__main__container
@@ -9,39 +9,30 @@
           %span 必須
         %p 最大10枚までアップロードできます
 
-
-
-        #image-box
-          #previews
-            - if @item.persisted?
-              - @item.images.each_with_index do |image, i|
-                = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
-
-          =form.fields_for :images,class:"exhibition__main__container__uploader" do |image|
-            .exhibition__main__container__uploader__text.js-file_group{"data-index" => "#{image.index}"}
-              =image.file_field :url,class:"js-file"
-              %br/
-              %span.js-remove 削除
-            - if @item.persisted?
-              = image.check_box :_destroy, data:{index:imgae.index},class:"hidden-destroy"
-          - if @item.persisted?
-            .js-file_group{"data-index" => "#{@item.images.count}"}
-              =file_field_tag :url,name:"product[images_attributes][#{@item.images.count}][url]", class: 'js-file'
-              .js-remove 削除
-          %hr/
-          -# ----------------↑今はまだ一枚しか登録できません。後にファイル修正します。--------------
-
-          
+        = form.fields_for :images do |image|
+          .dropzone-container
+            #preview
+            .dropzone-area
+              = image.label :url, class: "dropzone-box", for: "upload-image" do
+                .input_area
+                  = image.file_field :url, id: "upload-image", class: "upload-image", 'data-image': 0
+                %p ここをクリックしてください
+          .dropzone-container
+            #preview2
+            .dropzone-area2
+              = image.label :url, class: "dropzone-box", for: "upload-image" do
+                %p ここをクリックしてください
+        %hr/
 
       .exhibition__main__container
         .exhibition__main__container__topic
           %label 商品名
           %span 必須
-        =form.text_field :name,placeholder:"40文字まで"
+        =form.text_field :name,maxlength: 40,placeholder:"40文字まで"
         .exhibition__main__container__topic
           %label 商品の説明
           %span 必須
-        =form.text_area :description,placeholder:"sample"
+        =form.text_area :description,maxlength: 1000,placeholder:"商品の説明（必須 1,000文字以内）"
         .exhibition__main__container__letters
           %p 0/1000
         %hr/
@@ -55,7 +46,7 @@
         -# ↓カテゴリ選択欄の表示（渡辺）
         .listing-select-wrapper
           .listing-select-wrapper__box
-            = form.collection_select :category, @category_parent_array, :id, :name, {prompt:"選択してください"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+            = form.collection_select :category_id, @category_parent_array, :id, :name, {prompt:"選択してください"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
 
         .exhibition__main__container__topic
           %label 商品の状態
@@ -87,16 +78,9 @@
             %span 必須
           .box__price
             %p ¥
-            =form.number_field :price,id:"price",mini: 300, max: 9999999
+            =form.number_field :price,id:"price",min: 300, max: 9999999,placeholder:"０"
         %p 販売手数料(10%)
         %hr/
-
-        %p user_id（仮）
-        =form.number_field :user_id,id:"price"
-        %p saler_id（仮）
-        =form.number_field :saler_id,id:"price"
-        -# ----------↑ログイン機能実装後削除-------------
-
 
       .exhibition__main__container
         %p 販売利益
@@ -109,7 +93,6 @@
       .exhibition__main__precaution
         %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
         
-
   .exhibition__footer
     %ul.exhibition__footer__poricy
       %li= link_to "プライバシーポリシー","#"

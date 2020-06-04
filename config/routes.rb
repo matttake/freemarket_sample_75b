@@ -24,11 +24,13 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     collection do
       get 'logout'
-      get 'addresses'
+      get 'card_index'
+      get 'card_register'
     end
   end
-  resources :view, only: [:index, :new, :edit]
+
   resources :payments, only: [:index,:new,:create,:destroy]
+  resources :addresses, only: [:new, :create, :edit, :update]
 end
 
   # items#index         --- トップページ
@@ -38,7 +40,8 @@ end
 
   # users#show          --- ユーザーマイページ
   # users#logout        --- ログアウト画面
-  # users#addresses     --- 送付先住所登録
 
   # payments#index      --- クレジットカード一覧ページ
   # payments#new        --- クレジットカード登録ページ
+
+  # addresses#new       --- 送付先住所登録
