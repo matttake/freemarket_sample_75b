@@ -36,7 +36,7 @@
 |fast_name|string|null: false|
 |last_name_reading|string|null: false|
 |fast_name_reading|string|null: false|
-|zip_code|integer|null: false|
+|zip_code|string|null: false|
 |prefectures|string|null: false|
 |city|string|null: false|
 |address_line1|string|null: false|

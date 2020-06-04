@@ -12,6 +12,4 @@ class UsersController < ApplicationController
   def card_register
   end
 
-  def addresses
-  end
 end
