@@ -1,6 +1,6 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  process resize_to_fit: [100, 100]  
+  process resize_to_fit: [1000, 1000] # 画像サイズを大きくするため100→1000へ変更
   
 
   if Rails.env.development?

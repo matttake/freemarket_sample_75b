@@ -1,6 +1,6 @@
 .mypage__main-contents{
   background-color: white;
-  height: 1150px;
+  height: auto;
   width: 700px;
   margin: 20px;
   &__title{
@@ -16,8 +16,9 @@
 }
 .mypage__main-contents__center{
   width: 350px;
-  height: 950px;
+  height: auto;
   margin: 0 auto;
+  padding-bottom: 50px;
   &__name{
     @include input-add-name;
   }
@@ -58,12 +59,11 @@ span.gray{
 }
 
 // text_fieldのサイズ
-.input-area,#prefectures{
+.input-area, #address_prefectures{
   height: 46px;
   width: 350px;
   text-indent: 1em;
   margin-top: 5px;
-  color: gray;
 }
 
 

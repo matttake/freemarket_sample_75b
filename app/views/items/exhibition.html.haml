@@ -1,6 +1,6 @@
 .exhibition
   .exhibition__top
-    = image_tag('logo.png',height:"49px",width:"185px",class:"logo")
+    = link_to image_tag('logo.png',height:"49px",width:"185px",class:"logo"), root_path # ロゴのリンク先をトップページへ指定
   .exhibition__main
     =form_with(model: @item,local:true,class:"sell-form dropzone", id:"item-dropzone") do |form|
       .exhibition__main__container
@@ -93,7 +93,6 @@
       .exhibition__main__precaution
         %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
         
-
   .exhibition__footer
     %ul.exhibition__footer__poricy
       %li= link_to "プライバシーポリシー","#"

@@ -31,6 +31,14 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      address:
+        first_name: 苗字
+        last_name: お名前
+        first_name_reading: 苗字(カナ)
+        last_name_reading: お名前(カナ)
+        zip_code: 郵便番号
+        prefectures: 都道府県
+        city: 市区町村
     models:
       user: ユーザ
   devise:

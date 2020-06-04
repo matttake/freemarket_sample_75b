@@ -1,0 +1,12 @@
+=render "layouts/header"
+
+.mypage-wrapper
+  .mypage-wrapper__contents
+    = render "users/menu_bar"
+
+    .mypage__main-contents
+      .mypage__main-contents__title
+        発送元・お届け先住所変更
+      =render "form"
+          
+= render "layouts/footer"
