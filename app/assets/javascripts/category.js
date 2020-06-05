@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
   // カテゴリセレクトボックスのオプション
   function appendOption(category){
     let html =`<option value='${category.id}' data-category='${category.id}'>${category.name}</option>`;

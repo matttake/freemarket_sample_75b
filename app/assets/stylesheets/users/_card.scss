@@ -24,6 +24,22 @@
         &__name {
           font-weight: bold;
           margin-left: 100px;
+          position: relative;
+          &__icon{ 
+            font-size: 30px;
+          }
+          &__delete {
+            &--btn {
+              background: #fff;
+              border-radius: 3px;
+              border: 1px solid #ea352d;
+              color: #ea352d;
+              padding: 4px 6px;
+              position: absolute;
+              top: 0;
+              right: 0
+            }
+          }
         }
         &__register-btn {
           display: block;
@@ -172,6 +188,14 @@
           line-height: 50px;
           &__btn {
             display: block;
+            margin: 0 auto;
+            border: none;
+            background-color: #3ccace;
+            color: white;
+            font-size: 14px;
+            padding-top: 15px;
+            outline: none;
+            width: 100%;
           }
           a {
             color: white;
