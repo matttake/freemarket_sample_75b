@@ -6,7 +6,7 @@ class PaymentsController < ApplicationController
   def index
     @payment = Payment.find_by(user_id: current_user.id)
     if @payment.present?
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@payment.customer_id)
       @default_card_information = customer.cards.retrieve(@payment.card_id)
       @exp_month =@default_card_information.exp_month.to_s
@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
   end
 
   def create   #Payjpとpaymentのデーベースを作成
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     if params['payjp-token'].blank?       # 保管した顧客IDでpayjpより情報を取得
       redirect_to new_payment_path(current_user.id)
     else
@@ -40,7 +40,7 @@ class PaymentsController < ApplicationController
   def destroy  #PayjpとPaymentのデータベースを削除
     payment = Payment.find_by(user_id: current_user.id)
     if payment.present?
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(payment.customer_id)
       customer.delete
       payment.delete
