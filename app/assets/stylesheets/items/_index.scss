@@ -107,6 +107,7 @@
   }
   &__lists {
     @include flex;
+    flex-wrap: wrap;
     width: 780px;
     margin: 26px auto;
     &__item{
@@ -114,6 +115,7 @@
       width: 220px;
       height: 245px;
       background-color: white;
+      margin-bottom: 40px;
       img{
         width: 220px;
         height: 150px;
