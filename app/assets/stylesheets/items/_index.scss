@@ -109,6 +109,26 @@
     @include flex;
     width: 780px;
     margin: 26px auto;
+    &__item{
+      display: grid;
+      width: 220px;
+      height: 245px;
+      background-color: white;
+      img{
+        width: 220px;
+        height: 150px;
+      }
+      &__text{
+        padding: 16px;
+        p{
+          color: black;
+        }
+        #tax{
+          font-size: 11px;
+        }
+      }
+
+    }
     &--image {
       @include lists-image;
     }
