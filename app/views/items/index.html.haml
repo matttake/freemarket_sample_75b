@@ -95,8 +95,8 @@
 
 
   .main-categories
-    %h2.main-categories__title ピックアップカテゴリー
-    =link_to "新規投稿商品" ,"#",class: "main-categories__subtitle"
+    %h2.main-categories__title 新規投稿商品
+    =link_to "商品をもっと見る" ,view_items_path,class: "main-categories__subtitle"
     .main-categories__lists
       - @items.each do |item|
         = link_to item_path(id: item.id) ,class:"main-categories__lists__item" do
@@ -110,16 +110,16 @@
 
 
 
-  .main-brands
-    %h2.main-brands__title ピックアップブランド
-    =link_to "アーカイバ","#",class: "main-brands__subtitle"
-    %ul.main-brands__lists
-      %li
-        =image_tag "sample-image1.jpg",class: "main-brands__lists--image" 
-      %li
-        =image_tag "sample-image2.jpg",class: "main-brands__lists--image"
-      %li
-        =image_tag "sample-image3.jpg",class: "main-brands__lists--image"
+  -# .main-brands
+  -#   %h2.main-brands__title ピックアップブランド
+  -#   =link_to "アーカイバ","#",class: "main-brands__subtitle"
+  -#   %ul.main-brands__lists
+  -#     %li
+  -#       =image_tag "sample-image1.jpg",class: "main-brands__lists--image" 
+  -#     %li
+  -#       =image_tag "sample-image2.jpg",class: "main-brands__lists--image"
+  -#     %li
+  -#       =image_tag "sample-image3.jpg",class: "main-brands__lists--image"
 
 =render 'layouts/footer'
 

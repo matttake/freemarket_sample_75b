@@ -3,7 +3,11 @@ class ItemsController < ApplicationController
   before_action :set_item, only:[:show, :destroy]
   
   def index
-    @items = Item.where(buyer_id: nil).includes([:images]).limit(3)
+    @items = Item.where(buyer_id: nil).includes([:images]).limit(6)
+  end
+
+  def view
+    @items = Item.where(buyer_id: nil).includes([:images])
   end
   
   def show

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       get 'confimation'
       get 'exhibition'
+      get 'view'
       # 子、孫カテゴリ登録用アクション
       get 'get_category_children',      defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
