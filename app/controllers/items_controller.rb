@@ -21,11 +21,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  #商品購入確定画面
   def confimation
     @payment = Payment.find_by(user_id: current_user.id)
     if @payment.blank?
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@payment.customer_id)
       @default_card_information = customer.cards.retrieve(@payment.card_id)
       @exp_month =@default_card_information.exp_month.to_s
