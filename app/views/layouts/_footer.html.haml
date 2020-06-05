@@ -1,8 +1,10 @@
 %footer
-  .app-banner
-    %h2.app-banner__title だれでもかんたん、人生を変えるフリマアプリ
-    %p.app-banner__subtitle 今すぐ無料ダウンロード！
-
+  - unless user_signed_in?
+    .app-banner
+      %h2.app-banner__title だれでもかんたん、人生を変えるフリマアプリ
+      %p.app-banner__subtitle 今すぐ無料ダウンロード！
+  - else
+      
   %ul.footer-contents
     %li.contents
       %h2.contents-footer FURIMAについて
