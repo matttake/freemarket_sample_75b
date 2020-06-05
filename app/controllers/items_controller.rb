@@ -1,13 +1,18 @@
 class ItemsController < ApplicationController
-
+  
   before_action :set_item, only:[:show, :destroy]
-
+  
   def index
+    @items = Item.where(buyer_id: nil).includes([:images]).limit(6)
   end
 
+  def view
+    @items = Item.where(buyer_id: nil).includes([:images])
+  end
+  
   def show
   end
-
+  
   def edit
   end
   
@@ -20,8 +25,7 @@ class ItemsController < ApplicationController
       redirect_to item_path(@item)
     end
   end
-
-  #商品購入確定画面
+  
   def confimation
     @payment = Payment.find_by(user_id: current_user.id)
     if @payment.blank?
@@ -35,7 +39,7 @@ class ItemsController < ApplicationController
       @payment_brand = @default_card_information.brand 
     end
   end
-
+  
   # 商品出品アクション
   def exhibition
     # ↓DBから親カテゴリのみ抽出し、配列へ追加(渡辺)
@@ -44,10 +48,10 @@ class ItemsController < ApplicationController
     # ↓出品ページのフォームのインスタンス生成（塚本）
     @item = Item.new
     @item.images.new
-
+    
     
   end
-
+  
   # ↓出品ボタン押した後の挙動（塚本）
   def create
     @item = Item.new(item_params)
@@ -71,9 +75,9 @@ class ItemsController < ApplicationController
     # 選択された子カテゴリに紐付く孫カテゴリの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
-
+  
   private
- def item_params
+  def item_params
     params.require(:item).permit(:category_id,:name, :description, :stats, :delivery_charge, :delivery_origin_area, :days_until_delivery, :price,images_attributes:[:url, :_destroy, :id]).merge(user_id: current_user.id,saler_id: current_user.id )
   end
 
