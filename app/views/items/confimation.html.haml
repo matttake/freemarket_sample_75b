@@ -26,8 +26,26 @@
           %label.confimation-main__page__form__point__label ポイントを使用(所持ポイント:P0)
         .confimation-main__page__form__buy
           %h3.confimation-main__page__form__buy__pay 支払い方法
-          =icon("fas fa-plus-circle", class: "icon")
-          =link_to "登録してください" ,"#",class:"confimation-main__page__form__buy__link"
+          -if @payment.present?
+            .mypage-wrapper__contents__right-card-index__content__name__icon
+              -case @payment_brand
+              -when "Visa"
+                =icon("fab fa-cc-visa",class: "icon")
+              -when "MasterCard"
+                =icon("fab fa-cc-mastercard",class: "icon")
+              -when "JCB"
+                =icon("fab fa-cc-jcb",class: "icon")
+              -when "American Express"
+                =icon("fab fa-cc-amex",class: "icon")
+              -when "Discover"
+                =icon("fab fa-cc-discover",class: "icon")
+            .mypage-wrapper__contents__right-card-index__content__name__numbers
+              ="**** **** **** " + @default_card_information.last4
+            .mypage-wrapper__contents__right-card-index__content__name__expiration
+              =@exp_month + "/" + @exp_year
+          -else
+            =icon("fas fa-plus-circle", class: "icon")
+            =link_to "登録してください" ,card_register_users_path(current_user.id),class:"confimation-main__page__form__buy__link"
         .confimation-main__page__form__delivery
           %h3.confimation-main__page__form__delivery__address 配送先
           =icon("fas fa-plus-circle",class: "icon")

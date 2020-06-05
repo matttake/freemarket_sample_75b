@@ -5,11 +5,7 @@ class UsersController < ApplicationController
   
   def logout
   end
-
-  def card_index
-  end
   
-  def card_register
+  def addresses
   end
-
 end

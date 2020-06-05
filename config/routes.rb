@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :payments, only: [:index,:new,:create,:destroy]
   resources :addresses, only: [:new, :create, :edit, :update]
 end
 
@@ -39,7 +40,8 @@ end
 
   # users#show          --- ユーザーマイページ
   # users#logout        --- ログアウト画面
-  # users#card_index    --- クレジットカード一覧ページ
-  # users#card_register --- クレジットカード登録ページ
- 
-  # addresses#new     --- 送付先住所登録
+
+  # payments#index      --- クレジットカード一覧ページ
+  # payments#new        --- クレジットカード登録ページ
+
+  # addresses#new       --- 送付先住所登録
