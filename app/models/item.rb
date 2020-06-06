@@ -14,7 +14,7 @@ class Item < ApplicationRecord
 
   validates :images, presence: true
   validates :user_id, presence: true
-  validates :category_id, presence: true
+  validates :category, presence: true
   validates :name, presence: true
   validates :description, presence: true
   validates :stats, presence: true

@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
   # ↓出品ボタン押した後の挙動（塚本）
   def create
     @item = Item.new(item_params)
-    if @item.save!
+    if @item.save
       flash[:notice] = "#{@item.name}を出品しました"  # 「(商品名)を出品しました」と画面上部に表示する
       redirect_to root_path
     else
