@@ -27,9 +27,11 @@ class ItemsController < ApplicationController
   end
   
   def confimation
+    @item = Item.find(params[:id])
+    @image = Image.find(params[:id])
     @payment = Payment.find_by(user_id: current_user.id)
-    if @payment.blank?
-    else
+    @address = Address.find_by(user_id: current_user.id)
+    if @payment.present?
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@payment.customer_id)
       @default_card_information = customer.cards.retrieve(@payment.card_id)
@@ -39,6 +41,26 @@ class ItemsController < ApplicationController
       @payment_brand = @default_card_information.brand 
     end
   end
+
+  def pay
+    @item = Item.find(params[:id])
+    @payment = Payment.find_by(user_id: current_user.id)
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    charge = Payjp::Charge.create(
+      amount: @item.price,
+      customer: @payment.customer_id,
+      currency: 'jpy',
+    )
+    @item_buyer = Item.find(params[:id])
+    @item_buyer.update(buyer_id: current_user.id)
+    
+    flash[:notice] = "#{@item.name}を購入しました"
+    redirect_to root_path
+  end
+
+
+
+
   
   # 商品出品アクション
   def exhibition

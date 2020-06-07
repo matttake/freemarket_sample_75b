@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   root to: "items#index"
 
   resources :items, only: [:index, :show, :create, :edit, :destroy] do
-    collection do
+    member do
       get 'confimation'
+      post 'pay'
+    end
+
+    collection do
       get 'exhibition'
       get 'view'
       # 子、孫カテゴリ登録用アクション
