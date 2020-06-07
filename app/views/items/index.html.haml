@@ -95,6 +95,26 @@
               %p= "#{item.price}円"
               %p#tax (税込み)
 
+    %h2.main-categories__title レディース新着アイテム
+    .main-categories__lists
+      - @cat_no1.each do |item|
+        = link_to item_path(id: item.id) ,class:"main-categories__lists__ladies" do
+          - item.images.last(1).each do |image|
+            = image_tag image.url.url
+            .main-categories__lists__ladies__text
+              %p= item.name
+              %p= "#{item.price}円"
+              %p#tax (税込み)
+
+    %h2.main-categories__title メンズ新着アイテム
+    .main-categories__lists
+      - @cat_no196.each do |item|
+        = link_to item_path(id: item.id) ,class:"main-categories__lists__mens" do
+          - item.images.last(1).each do |image|
+            = image_tag image.url.url
+            .main-categories__lists__mens__text
+              %p= item.name
+              %p= "#{item.price}円"
+              %p#tax (税込み)
+
 =render 'layouts/footer'
-
-

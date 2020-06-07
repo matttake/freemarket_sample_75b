@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   
   before_action :set_item, only:[:show, :destroy]
-  
+  before_action :index_category_set, only: :index
+
   def index
     @items = Item.where(buyer_id: nil).includes([:images]).limit(6)
   end
@@ -85,4 +86,16 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def index_category_set  # 人気のカテゴリの取得
+    array = [1, 196]
+    for num in array do
+      search_anc = Category.where('ancestry LIKE(?)', "#{num}/%")
+      ids = []
+      search_anc.each do |i|
+        ids << i[:id]
+      end
+      items = Item.where(category_id: ids).includes([:images]).limit(6)
+      instance_variable_set("@cat_no#{num}", items)
+    end
+  end
 end
