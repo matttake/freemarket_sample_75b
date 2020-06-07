@@ -5,54 +5,70 @@
 -# メイン
 .confimation
   .confimation-main
-    .confimation-main__page
-      %h2.confimation-main__page__title 購入内容の確認
-      .confimation-main__page__content
-        .confimation-main__page__content__inner
-          .confimation-main__page__content__inner__box
-            .confimation-main__page__content__inner__box__image
-              =image_tag "sample-image1.jpg",class:"image"
-            .confimation-main__page__content__inner__box__item
-              %p.item-name 盛りドレスワンピースです
-              %p.item-price
-                %span ¥600 
-                %span (税込み)送料です
-      .confimation-main__page__form
-        %ul.confimation-main__page__form__price
-          %li.confimation-main__page__form__price--pay 支払い金額
-          %li.confimation-main__page__form__price--prices ¥600
-        .confimation-main__page__form__point
-          =icon("fas fa-check-square", class: "icon")
-          %label.confimation-main__page__form__point__label ポイントを使用(所持ポイント:P0)
-        .confimation-main__page__form__buy
-          %h3.confimation-main__page__form__buy__pay 支払い方法
-          -if @payment.present?
-            .mypage-wrapper__contents__right-card-index__content__name__icon
-              -case @payment_brand
-              -when "Visa"
-                =icon("fab fa-cc-visa",class: "icon")
-              -when "MasterCard"
-                =icon("fab fa-cc-mastercard",class: "icon")
-              -when "JCB"
-                =icon("fab fa-cc-jcb",class: "icon")
-              -when "American Express"
-                =icon("fab fa-cc-amex",class: "icon")
-              -when "Discover"
-                =icon("fab fa-cc-discover",class: "icon")
-            .mypage-wrapper__contents__right-card-index__content__name__numbers
-              ="**** **** **** " + @default_card_information.last4
-            .mypage-wrapper__contents__right-card-index__content__name__expiration
-              =@exp_month + "/" + @exp_year
-          -else
-            =icon("fas fa-plus-circle", class: "icon")
-            =link_to "登録してください" ,card_register_users_path(current_user.id),class:"confimation-main__page__form__buy__link"
-        .confimation-main__page__form__delivery
-          %h3.confimation-main__page__form__delivery__address 配送先
-          =icon("fas fa-plus-circle",class: "icon")
-          =link_to "登録してください","#",class: "confimation-main__page__form__delivery__link"
-        .confimation-main__page__form__submit
-          =form_with url: "#"  do  |form| 
-            =form.submit "購入する",class: "confimation-main__page__form__submit--btn"
+    =form_with url:{controller: 'items', action: "pay", method:'post'}  do  |form| 
+      .confimation-main__page
+        %h2.confimation-main__page__title 購入内容の確認
+        .confimation-main__page__content
+          .confimation-main__page__content__inner
+            .confimation-main__page__content__inner__box
+              .confimation-main__page__content__inner__box__image
+                =image_tag @image.url.url ,class:"image"
+              .confimation-main__page__content__inner__box__item
+                =@item.name
+                %p.item-price
+                  %span= "#{@item.price}円" 
+                  %span (税込み)送料です
+        .confimation-main__page__form
+          %ul.confimation-main__page__form__price
+            %li.confimation-main__page__form__price--pay 支払い金額
+            %li.confimation-main__page__form__price--prices ¥#{@item.price}
+          .confimation-main__page__form__point
+            =icon("fas fa-check-square", class: "icon")
+            %label.confimation-main__page__form__point__label ポイントを使用(所持ポイント:P0)
+          .confimation-main__page__form__buy
+            %h3.confimation-main__page__form__buy__pay 支払い方法
+            -if @payment.present?
+              .mypage-wrapper__contents__right-card-index__content__name__icon
+                -case @payment_brand
+                -when "Visa"
+                  =icon("fab fa-cc-visa",class: "icon")
+                -when "MasterCard"
+                  =icon("fab fa-cc-mastercard",class: "icon")
+                -when "JCB"
+                  =icon("fab fa-cc-jcb",class: "icon")
+                -when "American Express"
+                  =icon("fab fa-cc-amex",class: "icon")
+                -when "Discover"
+                  =icon("fab fa-cc-discover",class: "icon")
+              .mypage-wrapper__contents__right-card-index__content__name__numbers
+                ="**** **** **** " + @default_card_information.last4
+              .mypage-wrapper__contents__right-card-index__content__name__expiration
+                =@exp_month + "/" + @exp_year
+            -else
+              =icon("fas fa-plus-circle", class: "icon")
+              =link_to "登録してください" ,new_payment_path(current_user.id),class:"confimation-main__page__form__buy__link"
+          .confimation-main__page__form__delivery
+            %h3.confimation-main__page__form__delivery__address 配送先
+            -if @address.present?
+              .confimation-main__page__form__delivery__
+                =@address.zip_code
+                %br
+                =@address.prefectures
+                %br
+                =@address.city
+                -if @address.address_line1.present?
+                  =@address.address_line1
+                -if  @address.address_line2.present?
+                  =@address.address_line2
+            -else
+              =icon("fas fa-plus-circle",class: "icon")
+              =link_to "登録してください",new_address_path,class: "confimation-main__page__form__delivery__link"
+          -if @item.buyer_id.present?
+            .confimation-main__page__form__submit
+              =link_to "売り切れました",root_path,class:"confimation-main__page__form__submit--buy"
+          -elsif @payment.present? && @address.present?
+            .confimation-main__page__form__submit
+              =form.submit "購入する",class: "confimation-main__page__form__submit--btn"
 
             
 -# フッター 
