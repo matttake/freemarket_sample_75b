@@ -96,9 +96,13 @@
             %br
             = link_to item_path(@item), method: "delete", class:"item-btn__delete" do
               商品を削除する
-        - else  # ログインユーザーが出品者以外の場合、商品購入ボタンが表示される
+        - elsif  @item.buyer_id.present?  # ログインユーザーが出品者以外でbuyer_idに値がある場合の条件分岐
           .item-btn
-            = link_to confimation_items_path(@item), class:"item-btn__buy" do
+            = link_to root_path ,class:"item-btn__sold" do
+              売り切れました
+        - else
+          .item-btn
+            = link_to confimation_item_path, class:"item-btn__buy" do
               購入画面に進む
 
     .comment__box
