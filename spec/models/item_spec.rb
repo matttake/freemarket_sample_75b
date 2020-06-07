@@ -17,13 +17,6 @@ describe Item do
         expect(item.errors[:user_id]).to include("を入力してください")
     end  
 
-    #3
-    it "category_idがない場合は登録できないこと" do
-        item = build(:item, category_id: "")
-        item.valid?
-        expect(item.errors[:category_id]).to include("を入力してください")
-    end
-
     #4
     it "nameがない場合は登録できないこと" do
         item = build(:item, name: "")
