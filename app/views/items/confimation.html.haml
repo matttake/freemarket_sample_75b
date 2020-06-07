@@ -50,7 +50,7 @@
           .confimation-main__page__form__delivery
             %h3.confimation-main__page__form__delivery__address 配送先
             -if @address.present?
-              .confimation-main__page__form__delivery__
+              .confimation-main__page__form__delivery__addresses
                 =@address.zip_code
                 %br
                 =@address.prefectures
