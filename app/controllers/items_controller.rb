@@ -14,7 +14,24 @@ class ItemsController < ApplicationController
   end
   
   def edit
+    @category_parent_array = Category.where(ancestry: nil)
+    @item = Item.find(params[:id])
+    
   end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = "#{@item.name}の商品情報を修正しました"  # 「(商品名)を出品しました」と画面上部に表示する
+      # redirect_to item_path(@item) ←カテゴリーエラー解消後こっちに
+      redirect_to root_path
+    else
+      @category_parent_array = Category.where(ancestry: nil)
+      render :edit
+    end
+
+  end
+
   
   def destroy
     # 商品削除できた場合はトップページへ、できなかった場合は商品詳細ページへ遷移する

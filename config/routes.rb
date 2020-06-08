@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   root to: "items#index"
 
-  resources :items, only: [:index, :show, :create, :edit, :destroy] do
+  resources :items, only: [:index, :show, :create, :edit, :destroy, :update] do
     collection do
       get 'confimation'
       get 'exhibition'
