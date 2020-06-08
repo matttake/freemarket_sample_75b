@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   
-  before_action :set_item, only:[:show, :destroy]
+  before_action :set_item, only:[:show, :destroy, :confimation, :pay]
+  before_action :set_confimation, only: :confimation
+  before_action :set_payment, only: [:confimation, :pay]
   before_action :popular_category_set, only: :index
 
   def index
@@ -28,18 +30,31 @@ class ItemsController < ApplicationController
   end
   
   def confimation
-    @payment = Payment.find_by(user_id: current_user.id)
-    if @payment.blank?
-    else
+    if @payment.present?
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@payment.customer_id)
       @default_card_information = customer.cards.retrieve(@payment.card_id)
       @exp_month =@default_card_information.exp_month.to_s
       @exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-      # クレジットカードのアイコンを表示するためにカード会社を取得
-      @payment_brand = @default_card_information.brand 
+      @payment_brand = @default_card_information.brand   # クレジットカードのアイコンを表示するためにカード会社を取得
     end
   end
+
+  def pay
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    charge = Payjp::Charge.create(
+      amount: @item.price,
+      customer: @payment.customer_id,
+      currency: 'jpy',
+    )
+    if @item.update(buyer_id: current_user.id)    
+        flash[:notice] = "#{@item.name}を購入しました"
+        redirect_to root_path
+    else 
+        redirect_to confimation_item_path(@item)
+    end
+  end
+
   
   # 商品出品アクション
   def exhibition
@@ -82,6 +97,15 @@ class ItemsController < ApplicationController
 
   def set_item  # itemデータの取得
     @item = Item.find(params[:id])
+  end
+
+  def set_confimation
+    @image = Image.find(params[:id])
+    @address = Address.find_by(user_id: current_user.id)
+  end
+
+  def set_payment
+    @payment = Payment.find_by(user_id: current_user.id)
   end
 
   def popular_category_set  # 人気のカテゴリの取得

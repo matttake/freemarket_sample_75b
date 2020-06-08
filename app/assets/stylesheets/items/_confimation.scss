@@ -43,6 +43,7 @@
             &__image {
               .image {
                 width:100px;
+                object-fit: cover;
               }
             }
             &__item {
@@ -123,10 +124,18 @@
           border-top: 1px solid #f5f5f5;
           &--btn {
             border: 1px solid #888;
-            background: #888;
+            background-color: #33CCCC;
             color: #fff;
             width: 100%;
             line-height: 48px;
+          }
+          &--buy {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #888;
+            color: white;
           }
         }
       }
