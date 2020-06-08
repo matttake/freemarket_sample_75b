@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   
-  before_action :set_item, only:[:show, :destroy]
+  before_action :set_item, only:[:show, :destroy, :confimation, :pay]
   before_action :set_confimation, only: :confimation
-  
+  before_action :set_payment, only: [:confimation, :pay]
+
   def index
     @items = Item.where(buyer_id: nil).includes([:images]).limit(6)
   end
@@ -39,15 +40,13 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    @item = Item.find(params[:id])
-    @payment = Payment.find_by(user_id: current_user.id)
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     charge = Payjp::Charge.create(
       amount: @item.price,
       customer: @payment.customer_id,
       currency: 'jpy',
     )
-    @item_buyer = Item.find(params[:id])
+    @item_buyer = @item
     @item_buyer.update(buyer_id: current_user.id)
     
     flash[:notice] = "#{@item.name}を購入しました"
@@ -104,10 +103,12 @@ class ItemsController < ApplicationController
   end
 
   def set_confimation
-    @item = Item.find(params[:id])
     @image = Image.find(params[:id])
-    @payment = Payment.find_by(user_id: current_user.id)
     @address = Address.find_by(user_id: current_user.id)
+  end
+
+  def set_payment
+    @payment = Payment.find_by(user_id: current_user.id)
   end
 
 end
