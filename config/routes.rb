@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   root to: "items#index"
 
   resources :items, only: [:index, :show, :create, :edit, :destroy, :update] do
-    collection do
+    member do
       get 'confimation'
+      post 'pay'
+    end
+
+    collection do
       get 'exhibition'
       get 'view'
       # 子、孫カテゴリ登録用アクション
@@ -25,24 +29,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     collection do
       get 'logout'
-      get 'card_index'
-      get 'card_register'
     end
   end
 
   resources :payments, only: [:index,:new,:create,:destroy]
   resources :addresses, only: [:new, :create, :edit, :update]
 end
-
-  # items#index         --- トップページ
-  # items#show          --- 商品詳細ページ
-  # items#confimation   --- 商品購入確認ページ
-  # items#exhibition    --- 商品出品ページ
-
-  # users#show          --- ユーザーマイページ
-  # users#logout        --- ログアウト画面
-
-  # payments#index      --- クレジットカード一覧ページ
-  # payments#new        --- クレジットカード登録ページ
-
-  # addresses#new       --- 送付先住所登録

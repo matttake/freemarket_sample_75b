@@ -110,7 +110,7 @@
     flex-wrap: wrap;
     width: 780px;
     margin: 26px auto;
-    &__item{
+    &__item, &__ladies, &__mens{
       display: grid;
       width: 220px;
       height: 245px;
