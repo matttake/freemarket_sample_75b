@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
       ancestry_category.each do |i|
         ids << i[:id]  # 親カテゴリに関連するカテゴリのidをidsに挿入
       end
-      items = Item.where(category_id: ids).includes([:images]).order("id DESC").limit(6)
+      items = Item.where(category_id: ids, buyer_id: nil).includes([:images]).order("id DESC").limit(6)
       instance_variable_set("@category_no#{num}", items)
     end
   end
