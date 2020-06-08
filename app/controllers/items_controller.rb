@@ -102,7 +102,7 @@ class ItemsController < ApplicationController
   end
 
   def set_confimation
-    @image = Image.find(params[:id])
+    @image = Image.find_by(item_id: params[:id])
     @address = Address.find_by(user_id: current_user.id)
   end
 
