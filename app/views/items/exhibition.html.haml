@@ -3,13 +3,14 @@
     = link_to image_tag('logo.png',height:"49px",width:"185px",class:"logo"), root_path # ロゴのリンク先をトップページへ指定
   .exhibition__main
     =form_with(model: @item,local:true,class:"sell-form dropzone", id:"item-dropzone") do |form|
+      = render 'layouts/error_messages', model: form.object
       .exhibition__main__container
         .exhibition__main__container__topic
           %label 出品画像
           %span 必須
         %p 最大10枚までアップロードできます
 
-        = form.fields_for :images do |image|
+        = form.fields_for :images, @item.images.new do |image|
           .dropzone-container
             #preview
             .dropzone-area

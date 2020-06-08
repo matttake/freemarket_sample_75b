@@ -3,9 +3,10 @@ class ItemsController < ApplicationController
   before_action :set_item, only:[:show, :destroy, :confimation, :pay]
   before_action :set_confimation, only: :confimation
   before_action :set_payment, only: [:confimation, :pay]
+  before_action :popular_category_set, only: :index
 
   def index
-    @items = Item.where(buyer_id: nil).includes([:images]).limit(6)
+    @items = Item.where(buyer_id: nil).includes([:images]).order("id DESC").limit(6)
   end
 
   def view
@@ -72,7 +73,7 @@ class ItemsController < ApplicationController
   # ↓出品ボタン押した後の挙動（塚本）
   def create
     @item = Item.new(item_params)
-    if @item.save!
+    if @item.save
       flash[:notice] = "#{@item.name}を出品しました"  # 「(商品名)を出品しました」と画面上部に表示する
       redirect_to root_path
     else
@@ -111,4 +112,16 @@ class ItemsController < ApplicationController
     @payment = Payment.find_by(user_id: current_user.id)
   end
 
+  def popular_category_set  # 人気のカテゴリの取得
+    popular_category = [1, 196] # レディース(1),メンズ(196)のidを挿入
+    for num in popular_category do
+      ancestry_category = Category.where('ancestry like?', "#{num}/%")  # 親子孫の3階層のカテゴリ情報を一括取得
+      ids = []
+      ancestry_category.each do |i|
+        ids << i[:id]  # 親カテゴリに関連するカテゴリのidをidsに挿入
+      end
+      items = Item.where(category_id: ids).includes([:images]).order("id DESC").limit(6)
+      instance_variable_set("@category_no#{num}", items)
+    end
+  end
 end

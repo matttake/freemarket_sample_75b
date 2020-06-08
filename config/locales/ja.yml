@@ -39,6 +39,16 @@ ja:
         zip_code: 郵便番号
         prefectures: 都道府県
         city: 市区町村
+      item:
+        category: カテゴリー
+        images: 商品画像
+        name: 商品名
+        description: 商品の説明
+        stats: 商品の状態
+        delivery_charge: 配送料の負担
+        delivery_origin_area: 発送元の地域
+        days_until_delivery: 発想までの日数
+        price: 販売価格
     models:
       user: ユーザ
   devise:
