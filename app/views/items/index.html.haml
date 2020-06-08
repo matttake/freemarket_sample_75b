@@ -1,6 +1,12 @@
 =render 'layouts/header'
 
 .main
+  .main-icon
+    %a{ href: "/items/exhibition"}
+      .main-icon__form
+        .main-icon__form__first 出品
+        .main-icon__form__second
+          =icon("fas fa-camera",class: "icon")
   .main-visual
     .main-visual__title
       人生を変えるフリマアプリ
