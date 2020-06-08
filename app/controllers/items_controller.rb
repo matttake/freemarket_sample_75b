@@ -47,15 +47,13 @@ class ItemsController < ApplicationController
       customer: @payment.customer_id,
       currency: 'jpy',
     )
-    @item_buyer = @item
-    @item_buyer.update(buyer_id: current_user.id)
-    
-    flash[:notice] = "#{@item.name}を購入しました"
-    redirect_to root_path
+    if @item.update(buyer_id: current_user.id)    
+        flash[:notice] = "#{@item.name}を購入しました"
+        redirect_to root_path
+    else 
+        redirect_to confimation_item_path(@item)
+    end
   end
-
-
-
 
   
   # 商品出品アクション
