@@ -6,6 +6,4 @@ class UsersController < ApplicationController
   def logout
   end
   
-  def addresses
-  end
 end
