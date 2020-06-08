@@ -1,4 +1,35 @@
 // 変数定義
+
+.main {
+  position: relative;
+  .main-icon {
+    position: fixed;
+    bottom: 32px;
+    font-size: 22px;
+    height: 160px;
+    right: 32px;
+    width: 160px;
+    background-color: #3CCACE;
+    border-radius: 50%;
+    overflow: auto;
+    z-index: 2;
+    &__form {
+      width: 160px;
+      height: 160px;
+      padding-top: 32px;
+      text-align: center;
+      &__first {
+        color: white;
+      }
+      &__second {
+        color: white;
+        font-size: 50px;
+      }
+    }
+  }
+}
+
+
 .main-visual {
   background-image: image-url("bg-mainVisual-pict_pc.jpg");
   @include image;
