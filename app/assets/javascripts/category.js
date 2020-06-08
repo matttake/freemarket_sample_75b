@@ -39,7 +39,7 @@ $(document).on('turbolinks:load',function(){
     ('parent_category').value;
     if (parent_category_id != "選択してください"){ // 親カテゴリが初期値でないときイベント発火
       $.ajax({
-        url: 'get_category_children',
+        url: '/items/get_category_children',
         type: 'GET',
         data: { parent_id: parent_category_id},
         dataType: 'json'

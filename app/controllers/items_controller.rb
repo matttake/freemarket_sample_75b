@@ -49,8 +49,6 @@ class ItemsController < ApplicationController
     # ↓出品ページのフォームのインスタンス生成（塚本）
     @item = Item.new
     @item.images.new
-    
-    
   end
   
   # ↓出品ボタン押した後の挙動（塚本）
