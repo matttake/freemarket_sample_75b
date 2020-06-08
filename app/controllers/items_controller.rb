@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   
   before_action :set_item, only:[:show, :destroy]
+  before_action :set_confimation, only: :confimation
   
   def index
     @items = Item.where(buyer_id: nil).includes([:images]).limit(6)
@@ -27,18 +28,13 @@ class ItemsController < ApplicationController
   end
   
   def confimation
-    @item = Item.find(params[:id])
-    @image = Image.find(params[:id])
-    @payment = Payment.find_by(user_id: current_user.id)
-    @address = Address.find_by(user_id: current_user.id)
     if @payment.present?
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@payment.customer_id)
       @default_card_information = customer.cards.retrieve(@payment.card_id)
       @exp_month =@default_card_information.exp_month.to_s
       @exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-      # クレジットカードのアイコンを表示するためにカード会社を取得
-      @payment_brand = @default_card_information.brand 
+      @payment_brand = @default_card_information.brand   # クレジットカードのアイコンを表示するためにカード会社を取得
     end
   end
 
@@ -105,6 +101,13 @@ class ItemsController < ApplicationController
 
   def set_item  # itemデータの取得
     @item = Item.find(params[:id])
+  end
+
+  def set_confimation
+    @item = Item.find(params[:id])
+    @image = Image.find(params[:id])
+    @payment = Payment.find_by(user_id: current_user.id)
+    @address = Address.find_by(user_id: current_user.id)
   end
 
 end
