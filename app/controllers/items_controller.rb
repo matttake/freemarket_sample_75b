@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:notice] = "#{@item.name}の商品情報を修正しました"  # 「(商品名)を出品しました」と画面上部に表示する
+      flash[:notice] = "#{@item.name}の商品情報を修正しました"  
       # redirect_to item_path(@item) ←カテゴリーエラー解消後こっちに
       redirect_to root_path
     else

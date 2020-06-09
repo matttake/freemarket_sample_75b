@@ -14,52 +14,26 @@
         %p 最大5枚までアップロードできます
         #filebox
           .prev-content
-            - if @item.persisted?
-              - @item.images.each_with_index do |image, i|
-                .preview-box
-                  .upper-box
-                    = image_tag image.url.url, data: { index: i }, width: "112", height: '112'
-                  .lower-box
-                    -# .update-box
-                    -#   %label.edit-btn 編集
-                    .delete-box
-                      %span.js-remove 削除
+            - @item.images.each_with_index do |image, i|
+              .preview-box
+                .upper-box
+                  = image_tag image.url.url, data: { index: i }, width: "112", height: '112'
+                .lower-box
+                  .delete-box
+                    %span.js-remove 削除
           .label-content
-            //プレビューの数に合わせてforオプションを指定
             = form.label :"item-images_attributes_#{@item.images.length}_url", class: "label-box", id: "label-box--#{@item.images.length}" do
               %pre.label-box__text-visible クリックしてファイルをアップロード
-              .hidden-content
-                = form.fields_for :images do |i|
-                  //プレビューが出ている分のfile_fieldとdelete用のチェックボックスを設置
-                  .js-file_group{"data-index" => "#{i.index}"}
-                    = i.file_field :url, class: "hidden-field"
-                  - if @item.persisted?
-                    = i.check_box:_destroy, data:{ index: i.index },class: "hidden-checkbox"
-                  - if @item.persisted?
-                    .js-file_group{"data-index" => "#{@item.images.count}"}
-                  - @item.images.length.upto(4) do |i|
-                    %input{name: "item[images_attributes][#{i}][url]", id: "item_images_attributes_#{i}_url", class:"hidden-field", type:"file"}
-
-      -# .exhibition__main__container
-      -#   .exhibition__main__container__topic
-      -#     %label 出品画像
-      -#     %span 必須
-      -#   %p 最大10枚までアップロードできます
-
-      -#   = form.fields_for :images, @item.images.new do |image|
-      -#     .dropzone-container
-      -#       #preview
-      -#       .dropzone-area
-      -#         = image.label :url, class: "dropzone-box", for: "upload-image" do
-      -#           .input_area
-      -#             = image.file_field :url, id: "upload-image", class: "upload-image", 'data-image': 0
-      -#           %p ここをクリックしてください
-      -#     .dropzone-container
-      -#       #preview2
-      -#       .dropzone-area2
-      -#         = image.label :url, class: "dropzone-box", for: "upload-image" do
-      -#           %p ここをクリックしてください
-      -#   %hr/
+          .hidden-content
+            = form.fields_for :images do |i|
+              .js-file_group{"data-index" => "#{i.index}"}
+                = i.file_field :url, class: "hidden-field"
+              - if @item.persisted?
+                = i.check_box:_destroy, data:{ index: i.index },class: "hidden-checkbox"
+              - if @item.persisted?
+                .js-file_group{"data-index" => "#{@item.images.count}"}
+            - @item.images.length.upto(4) do |i|
+              %input{name: "item[images_attributes][#{i}][url]", id: "item_images_attributes_#{i}_url", class:"hidden-field", type:"file"}
 
       .exhibition__main__container
         .exhibition__main__container__topic
