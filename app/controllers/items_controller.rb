@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   before_action :popular_category_set, only: :index
   before_action :authenticate_user!, except: [:index, :show]
   before_action :no_purchase_by_seller, only:[:confimation, :pay]
+  before_action :value_buyer_id, only:[:confimation, :pay]
 
   def index
     @items = Item.where(buyer_id: nil).includes([:images]).order("id DESC").limit(6)
@@ -126,6 +127,12 @@ class ItemsController < ApplicationController
   def no_purchase_by_seller
     if current_user.id == @item.saler_id  # 自身が出品した商品の購入ページへは遷移できず、トップページへ遷移する
       redirect_to root_path
+    end
+  end
+
+  def value_buyer_id
+    if @item.buyer_id.present?  # 既に商品が購入されている場合は商品の購入ページへ偏移できず、トップページへ偏移する
+        redirect_to root_path
     end
   end
 end
