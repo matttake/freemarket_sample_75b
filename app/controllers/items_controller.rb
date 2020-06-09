@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
       flash[:notice] = "#{@item.name}の商品情報を修正しました"  
       redirect_to item_path(@item) 
     else
-      flash[:notice] = "商品情報の保存に失敗しました"  
+      flash[:notice] = "#{@item.name}の商品情報の保存に失敗しました"  
       redirect_to edit_item_path(@item) 
     end
 

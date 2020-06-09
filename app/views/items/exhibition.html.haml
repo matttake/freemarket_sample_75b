@@ -16,7 +16,7 @@
             %label{for: "item_images_attributes_0_url", class: "label-box"}
               %pre.label-box__text-visible クリックしてファイルをアップロード
           .hidden-content
-            = form.fields_for :images do |i|
+            = form.fields_for :images, @item.images.new do |i|
               = i.file_field :url, class: "hidden-field"
               %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][url]", id: "item_images_attributes_1_url" }
               %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][url]", id: "item_images_attributes_2_url" }
@@ -99,4 +99,3 @@
       %li= link_to "特定商取引に関する法律表記","#"
     = image_tag('logo-mini.png',height:"65px",width:"80px",class:"logo")
     %p © FURIMA, Inc.
-      
