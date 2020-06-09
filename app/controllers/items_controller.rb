@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@payment.customer_id)
       @default_card_information = customer.cards.retrieve(@payment.card_id)
-      @exp_month =@default_card_information.exp_month.to_s
+      @exp_month = @default_card_information.exp_month.to_s
       @exp_year = @default_card_information.exp_year.to_s.slice(2,3)
       @payment_brand = @default_card_information.brand   # クレジットカードのアイコンを表示するためにカード会社を取得
     end

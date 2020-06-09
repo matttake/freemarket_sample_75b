@@ -1,4 +1,3 @@
-
 .ground{
   height: 100vh;
   width: 100vw;
@@ -28,7 +27,6 @@
       margin:0 8px 0 8px;
       font-size: 10px;
     }
-
   }
   .item__box{
     background-color: white;
@@ -37,8 +35,6 @@
     margin: 0 auto;
     margin-bottom: 10px;
     padding: 0 60px 0 60px;
-    
-    
     &__name{
       height: 70px;
       text-align: center;
@@ -73,7 +69,6 @@
           }
         }
       }
-
     }
     &__price{
       height: 56px;

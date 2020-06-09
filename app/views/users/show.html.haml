@@ -11,10 +11,10 @@
     = render "menu_bar"
 
     .mypage-wrapper__contents__right
-      = image_tag "pict-reason-03.jpg", class: "mypage-wrapper__contents__right__back-image"
+      .mypage-wrapper__contents__right__back-image
       = image_tag "member_photo_noimage_thumb.png", class: "mypage-wrapper__contents__right__user-image"
       .mypage-wrapper__contents__right__user-name
-        freemarket_sample_75b
+        = current_user.nickname
       .mypage-wrapper__contents__right__title
         .mypage-wrapper__contents__right__title__notice
           お知らせ
