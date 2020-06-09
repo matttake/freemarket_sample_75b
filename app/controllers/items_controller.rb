@@ -5,7 +5,8 @@ class ItemsController < ApplicationController
   before_action :set_payment, only: [:confimation, :pay]
   before_action :popular_category_set, only: :index
   before_action :authenticate_user!, except: [:index, :show]
-  
+  before_action :no_purchase_by_seller, only:[:confimation, :pay]
+
   def index
     @items = Item.where(buyer_id: nil).includes([:images]).order("id DESC").limit(6)
   end
@@ -48,11 +49,11 @@ class ItemsController < ApplicationController
       customer: @payment.customer_id,
       currency: 'jpy',
     )
-    if @item.update(buyer_id: current_user.id)    
-        flash[:notice] = "#{@item.name}を購入しました"
-        redirect_to root_path
-    else 
-        redirect_to confimation_item_path(@item)
+    if @item.update(buyer_id: current_user.id)
+      flash[:notice] = "#{@item.name}を購入しました"
+      redirect_to root_path
+    else
+      redirect_to confimation_item_path(@item)
     end
   end
 
@@ -101,7 +102,7 @@ class ItemsController < ApplicationController
   end
 
   def set_confimation
-    @image = Image.find(params[:id])
+    @image = Image.find_by(item_id: params[:id])
     @address = Address.find_by(user_id: current_user.id)
   end
 
@@ -119,6 +120,12 @@ class ItemsController < ApplicationController
       end
       items = Item.where(category_id: ids, buyer_id: nil).includes([:images]).order("id DESC").limit(6)
       instance_variable_set("@category_no#{num}", items)
+    end
+  end
+
+  def no_purchase_by_seller
+    if current_user.id == @item.saler_id  # 自身が出品した商品の購入ページへは遷移できず、トップページへ遷移する
+      redirect_to root_path
     end
   end
 end
