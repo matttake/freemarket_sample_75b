@@ -1,5 +1,7 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:edit, :update]
+  before_action :authenticate_user!
+  
   # ログイン状態且つ、addressテーブルにデータがある場合と無い場合で条件分岐
   # addressテーブルにデータがない場合(新規登録)
   def new

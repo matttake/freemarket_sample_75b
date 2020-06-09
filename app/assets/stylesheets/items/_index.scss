@@ -11,7 +11,6 @@
     width: 160px;
     background-color: #3CCACE;
     border-radius: 50%;
-    overflow: auto;
     z-index: 2;
     &__form {
       width: 160px;
@@ -28,7 +27,6 @@
     }
   }
 }
-
 
 .main-visual {
   background-image: image-url("bg-mainVisual-pict_pc.jpg");

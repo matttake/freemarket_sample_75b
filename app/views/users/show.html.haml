@@ -1,6 +1,12 @@
 = render "layouts/header"
 
 .mypage-wrapper
+  .mypage-wrapper__icon
+    %a{ href: "/items/exhibition"}
+      .mypage-wrapper__icon__form
+        .mypage-wrapper__icon__form__first 出品
+        .mypage-wrapper__icon__form__second
+          =icon("fas fa-camera",class: "icon")
   .mypage-wrapper__contents
     = render "menu_bar"
 
