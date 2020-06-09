@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
   before_action :set_confimation, only: :confimation
   before_action :set_payment, only: [:confimation, :pay]
   before_action :popular_category_set, only: :index
-
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
     @items = Item.where(buyer_id: nil).includes([:images]).order("id DESC").limit(6)
   end
