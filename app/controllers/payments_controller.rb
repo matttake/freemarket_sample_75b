@@ -1,7 +1,6 @@
 class PaymentsController < ApplicationController
-
+  before_action :authenticate_user!
   require "payjp" #Payjpの読み込み
-
 
   def index
     @payment = Payment.find_by(user_id: current_user.id)
