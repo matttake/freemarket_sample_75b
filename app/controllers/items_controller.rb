@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def view
-    @items = Item.where(buyer_id: nil).includes([:images])
+    @items = Item.where(buyer_id: nil).includes([:images]).order("id DESC")
   end
   
   def show
