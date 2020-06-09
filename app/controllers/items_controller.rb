@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   
-  before_action :set_item, only:[:show, :destroy, :confimation, :pay]
+  before_action :set_item, only:[:show, :destroy, :confimation, :pay, :new, :edit]
   before_action :set_confimation, only: :confimation
   before_action :set_payment, only: [:confimation, :pay]
   before_action :popular_category_set, only: :index
@@ -21,11 +21,9 @@ class ItemsController < ApplicationController
   
   def edit
     @category_parent_array = Category.where(ancestry: nil)
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:notice] = "#{@item.name}の商品情報を修正しました"  
       redirect_to item_path(@item) 
