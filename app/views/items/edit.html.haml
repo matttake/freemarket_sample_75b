@@ -28,9 +28,7 @@
             = form.fields_for :images do |i|
               .js-file_group{"data-index" => "#{i.index}"}
                 = i.file_field :url, class: "hidden-field"
-              - if @item.persisted?
                 = i.check_box:_destroy, data:{ index: i.index },class: "hidden-checkbox"
-              - if @item.persisted?
                 .js-file_group{"data-index" => "#{@item.images.count}"}
             - @item.images.length.upto(4) do |i|
               %input{name: "item[images_attributes][#{i}][url]", id: "item_images_attributes_#{i}_url", class:"hidden-field", type:"file"}

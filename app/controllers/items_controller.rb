@@ -21,18 +21,16 @@ class ItemsController < ApplicationController
   def edit
     @category_parent_array = Category.where(ancestry: nil)
     @item = Item.find(params[:id])
-    
   end
 
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:notice] = "#{@item.name}の商品情報を修正しました"  
-      # redirect_to item_path(@item) ←カテゴリーエラー解消後こっちに
-      redirect_to root_path
+      redirect_to item_path(@item) 
     else
-      @category_parent_array = Category.where(ancestry: nil)
-      render :edit
+      flash[:notice] = "商品情報の保存に失敗しました"  
+      redirect_to edit_item_path(@item) 
     end
 
   end
@@ -75,21 +73,16 @@ class ItemsController < ApplicationController
   end
 
   
-  # 商品出品アクション
   def exhibition
-    # ↓DBから親カテゴリのみ抽出し、配列へ追加(渡辺)
     @category_parent_array = Category.where(ancestry: nil)
-    
-    # ↓出品ページのフォームのインスタンス生成（塚本）
     @item = Item.new
     @item.images.new
   end
   
-  # ↓出品ボタン押した後の挙動（塚本）
   def create
     @item = Item.new(item_params)
     if @item.save
-      flash[:notice] = "#{@item.name}を出品しました"  # 「(商品名)を出品しました」と画面上部に表示する
+      flash[:notice] = "#{@item.name}を出品しました" 
       redirect_to root_path
     else
       @category_parent_array = Category.where(ancestry: nil)
