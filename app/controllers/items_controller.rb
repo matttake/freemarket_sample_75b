@@ -60,15 +60,15 @@ class ItemsController < ApplicationController
   
   # 商品出品アクション
   def exhibition
-    # ↓DBから親カテゴリのみ抽出し、配列へ追加(渡辺)
+    # ↓DBから親カテゴリのみ抽出し、配列へ追加
     @category_parent_array = Category.where(ancestry: nil)
     
-    # ↓出品ページのフォームのインスタンス生成（塚本）
+    # ↓出品ページのフォームのインスタンス生成
     @item = Item.new
     @item.images.new
   end
   
-  # ↓出品ボタン押した後の挙動（塚本）
+  # ↓出品ボタン押した後の挙動
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -80,7 +80,7 @@ class ItemsController < ApplicationController
     end
   end
   
-  # ↓親カテゴリ選択後の子カテゴリ表示（渡辺）
+  # ↓親カテゴリ選択後の子カテゴリ表示
   def get_category_children
     # 選択された親カテゴリに紐付く子カテゴリの配列を取得
     @category_children = Category.find("#{params[:parent_id]}").children

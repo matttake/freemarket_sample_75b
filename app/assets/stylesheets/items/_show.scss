@@ -62,7 +62,7 @@
         .subimages__box{
           display: flex;
           justify-content: center;
-          // flex-wrap: wrap;
+          flex-wrap: wrap;
           img{
             object-fit: cover;
             cursor: default;
