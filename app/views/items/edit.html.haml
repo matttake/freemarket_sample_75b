@@ -1,11 +1,9 @@
 .exhibition
   .exhibition__top
-    = link_to image_tag('logo.png',height:"49px",width:"185px",class:"logo"), root_path # ロゴのリンク先をトップページへ指定
+    = link_to image_tag('logo.png',height:"49px",width:"185px",class:"logo"), root_path 
   .exhibition__main
     =form_with(model: @item,local:true,class:"sell-form dropzone", id:"item-dropzone") do |form|
       = render 'layouts/error_messages', model: form.object
-
-
 
       .exhibition__main__container
         .exhibition__main__container__topic
@@ -52,7 +50,6 @@
           %label カテゴリー
           %span 必須
 
-        -# ↓カテゴリ選択欄の表示（渡辺）
         .listing-select-wrapper
           .listing-select-wrapper__box
             = form.collection_select :category_id, @category_parent_array, :id, :name, {prompt:"選択してください"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
