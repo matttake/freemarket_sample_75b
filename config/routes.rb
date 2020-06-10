@@ -11,14 +11,13 @@ Rails.application.routes.draw do
   
   root to: "items#index"
 
-  resources :items, except: :new do
+  resources :items do
     member do
       get 'confimation'
       post 'pay'
     end
 
     collection do
-      get 'exhibition'
       get 'view'
       # 子、孫カテゴリ登録用アクション
       get 'get_category_children',      defaults: { format: 'json' }
@@ -29,7 +28,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     collection do
       get 'logout'
-      get 'exhibition_item'
+      get 'new_item'
       get 'confimation_item'
     end
   end
