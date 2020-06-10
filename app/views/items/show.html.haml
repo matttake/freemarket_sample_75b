@@ -87,19 +87,19 @@
           = icon("fas","flag")
           = link_to "不適切な商品の通報","#"
 
-      -# ログインしていない場合は商品詳細画面に商品編集・削除・購入ボタンは表示されない
+      -# ログインしていない場合は商品詳細画面に商品編集・削除・購入・売切れは表示されない
       - if user_signed_in?
-        - if @item.saler_id == current_user.id  # ログインユーザーが出品者の場合、商品編集・削除ボタンが表示される
+        - if @item.buyer_id.present?
+          .item-btn
+            = link_to root_path ,class:"item-btn__sold" do
+              売り切れました
+        - elsif @item.saler_id == current_user.id
           .item-btn
             = link_to edit_item_path(@item), class:"item-btn__edit" do
               商品を編集する
             %br
             = link_to item_path(@item), method: "delete", class:"item-btn__delete" do
               商品を削除する
-        - elsif  @item.buyer_id.present?  # ログインユーザーが出品者以外でbuyer_idに値がある場合の条件分岐
-          .item-btn
-            = link_to root_path ,class:"item-btn__sold" do
-              売り切れました
         - else
           .item-btn
             = link_to confimation_item_path, class:"item-btn__buy" do
