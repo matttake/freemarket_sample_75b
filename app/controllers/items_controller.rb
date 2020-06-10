@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
     Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
       @category_grandchildren_array << grandchildren
     end
-    
   end
   
   def update
