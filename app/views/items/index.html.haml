@@ -94,35 +94,35 @@
     .main-categories__lists
       - @items.each do |item|
         = link_to item_path(id: item.id) ,class:"main-categories__lists__item" do
-          - item.images.last(1).each do |image| 
+          - item.images.first(1).each do |image| 
             = image_tag image.url.url
             .main-categories__lists__item__text
               %p= item.name
               %p= "#{item.price}円"
-              %p#tax (税込み)
+              %p#tax (税込)
 
     -# レディースカテゴリの新着商品の一覧表示
     %h2.main-categories__title レディース新着アイテム
     .main-categories__lists
       - @category_no1.each do |item|
         = link_to item_path(id: item.id) ,class:"main-categories__lists__ladies" do
-          - item.images.last(1).each do |image|
+          - item.images.first(1).each do |image|
             = image_tag image.url.url
             .main-categories__lists__ladies__text
               %p= item.name
               %p= "#{item.price}円"
-              %p#tax (税込み)
+              %p#tax (税込)
 
     -# メンズカテゴリの新着商品の一覧表示
     %h2.main-categories__title メンズ新着アイテム
     .main-categories__lists
       - @category_no196.each do |item|
         = link_to item_path(id: item.id) ,class:"main-categories__lists__mens" do
-          - item.images.last(1).each do |image|
+          - item.images.first(1).each do |image|
             = image_tag image.url.url
             .main-categories__lists__mens__text
               %p= item.name
               %p= "#{item.price}円"
-              %p#tax (税込み)
+              %p#tax (税込)
 
 =render 'layouts/footer'

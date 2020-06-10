@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   end
 
   def view
-    @items = Item.where(buyer_id: nil).includes([:images])
+    @items = Item.where(buyer_id: nil).includes([:images]).order("id DESC")
   end
   
   def show
@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@payment.customer_id)
       @default_card_information = customer.cards.retrieve(@payment.card_id)
-      @exp_month =@default_card_information.exp_month.to_s
+      @exp_month = @default_card_information.exp_month.to_s
       @exp_year = @default_card_information.exp_year.to_s.slice(2,3)
       @payment_brand = @default_card_information.brand   # クレジットカードのアイコンを表示するためにカード会社を取得
     end
@@ -84,13 +84,12 @@ class ItemsController < ApplicationController
     end
   end
 
-  
   def exhibition
     @category_parent_array = Category.where(ancestry: nil)
     @item = Item.new
     @item.images.new
   end
-  
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -102,7 +101,7 @@ class ItemsController < ApplicationController
     end
   end
   
-  # ↓親カテゴリ選択後の子カテゴリ表示（渡辺）
+  # ↓親カテゴリ選択後の子カテゴリ表示
   def get_category_children
     # 選択された親カテゴリに紐付く子カテゴリの配列を取得
     @category_children = Category.find("#{params[:parent_id]}").children

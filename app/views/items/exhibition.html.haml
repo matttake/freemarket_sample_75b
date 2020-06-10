@@ -45,7 +45,7 @@
         .exhibition__main__container__category
           .exhibition__main__container__category__box
             = form.collection_select :category_id, @category_parent_array, :id, :name, {prompt:"選択してください"}, {class: 'exhibition__main__container__category__box--select', id: 'parent_category'}
-
+            
         .exhibition__main__container__topic
           %label 商品の状態
           %span 必須
