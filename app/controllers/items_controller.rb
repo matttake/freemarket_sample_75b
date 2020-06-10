@@ -1,12 +1,13 @@
 class ItemsController < ApplicationController
   
-  before_action :set_item, only:[:show, :destroy, :confimation, :pay, :new, :edit]
+  before_action :set_item, only:[:show, :destroy, :confimation, :pay, :edit, :update ]
   before_action :set_confimation, only: :confimation
   before_action :set_payment, only: [:confimation, :pay]
   before_action :popular_category_set, only: :index
   before_action :authenticate_user!, except: [:index, :show]
   before_action :no_purchase_by_seller, only:[:confimation, :pay]
   before_action :value_buyer_id, only: :confimation
+  before_action :item_edit, only:[:edit, :update, :destroy]
 
   def index
     @items = Item.where(buyer_id: nil).includes([:images]).order("id DESC").limit(6)
@@ -143,4 +144,11 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def item_edit
+    if current_user.id != @item.saler_id  # 自身が出品者でない場合、編集ページに偏移できず、トップページへ偏移する
+      redirect_to root_path
+    end
+  end
+
 end
