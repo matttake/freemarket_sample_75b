@@ -27,10 +27,10 @@
         = @item.name
       .item__box__body
         .item__box__body--topImage
-          = image_tag @item.images.last.url.url, size: '500x350', class: 'main__image' # 投稿された画像の1枚目をメイン画像に指定
+          = image_tag @item.images.first.url.url, size: '500x350', class: 'main__image' # 投稿された画像の1枚目をメイン画像に指定
         .item__box__body--subImages
           %ol.subimages__box
-            - @item.images.reverse.each do |image| # 複数投稿された画像をリスト表示
+            - @item.images.each do |image| # 複数投稿された画像をリスト表示
               %li
                 = image_tag image.url.url, size: '110x90', class: 'image__list'
 

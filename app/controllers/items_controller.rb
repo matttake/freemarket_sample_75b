@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   
-  before_action :set_item, only:[:show, :destroy, :confimation, :pay, :new, :edit]
+  before_action :set_item, only:[:show, :destroy, :confimation, :pay, :edit, :update]
   before_action :set_confimation, only: :confimation
   before_action :set_payment, only: [:confimation, :pay]
   before_action :popular_category_set, only: :index

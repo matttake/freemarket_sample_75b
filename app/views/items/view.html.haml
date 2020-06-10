@@ -4,7 +4,7 @@
   .main-categories__lists#roll
     - @items.each do |item|
       = link_to item_path(id: item.id) ,class:"main-categories__lists__item" do
-        - item.images.last(1).each do |image| 
+        - item.images.first(1).each do |image| 
           = image_tag image.url.url
           .main-categories__lists__item__text
             %p= item.name
