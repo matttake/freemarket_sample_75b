@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   
-  before_action :set_item, only:[:show, :destroy, :confimation, :pay, :new, :edit]
+  before_action :set_item, only:[:show, :destroy, :confimation, :pay, :edit, :update]
   before_action :set_confimation, only: :confimation
   before_action :set_payment, only: [:confimation, :pay]
   before_action :popular_category_set, only: :index
@@ -20,9 +20,23 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    @category_parent_array = Category.where(ancestry: nil)
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+    
   end
-
+  
   def update
     if @item.update(item_params)
       flash[:notice] = "#{@item.name}の商品情報を修正しました"  
