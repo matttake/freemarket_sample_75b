@@ -142,7 +142,7 @@
     &__item, &__ladies, &__mens{
       display: grid;
       width: 220px;
-      height: 245px;
+      height: 310px;
       background-color: white;
       margin-bottom: 40px;
       img{
@@ -159,7 +159,6 @@
           font-size: 11px;
         }
       }
-
     }
     &--image {
       @include lists-image;

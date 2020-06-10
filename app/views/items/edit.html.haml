@@ -46,13 +46,16 @@
 
       .exhibition__main__container
         %p 商品の詳細
-        .exhibition__main__container__topic__category
+        .exhibition__main__container__topic
           %label カテゴリー
           %span 必須
-
-        .listing-select-wrapper
-          .listing-select-wrapper__box
-            = form.collection_select :category_id, @category_parent_array, :id, :name, {prompt:"選択してください"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+        .exhibition__main__container__category
+        
+        = form.select :parent_id, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'exhibition__main__container__category__box--select', id: 'parent_category'}
+        .exhibition__main__container__category
+          = form.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'exhibition__main__container__category__box--select', id: 'child_category'}
+        .exhibition__main__container__category
+          = form.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'exhibition__main__container__category__box--select', id: 'grandchild_category'}
 
         .exhibition__main__container__topic
           %label 商品の状態

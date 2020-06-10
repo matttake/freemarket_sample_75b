@@ -1,24 +1,20 @@
 $(document).on('turbolinks:load', function(){
   $(function(){
-    
+
     function buildHTML(count) {
       var html = `<div class="preview-box" id="preview-box__${count}">
-      <div class="upper-box">
-      <img src="" alt="preview">
-      </div>
-      <div class="lower-box">
-      
-      <div class="delete-box" id="delete_btn_${count}">
-      <span>削除</span>
-      </div>
-      </div>
-      </div>`
+                    <div class="upper-box">
+                      <img src="" alt="preview">
+                    </div>
+                    <div class="lower-box">
+                      
+                      <div class="delete-box" id="delete_btn_${count}">
+                        <span>削除</span>
+                      </div>
+                    </div>
+                  </div>`
       return html;
     }
-    
-    //共通の定数を定義==================================================================
-    var class_label = $(".label-content");
-    var class_box = $(".label-box");
 
     // 編集
     if (window.location.href.match(/\/items\/\d+\/edit/)){
@@ -33,15 +29,14 @@ $(document).on('turbolinks:load', function(){
       var count = $('.preview-box').length;
       //プレビューが5あるときは、投稿ボックスを消しておく
       if (count == 5) {
-        class_label.hide();
+        $('.label-content').hide();
       }
     }
     
-    //登録済み画像のプレビュー表示欄の要素を取得する
     function setLabel() {
-      var prevContent = class_label.prev();
+      var prevContent = $('.label-content').prev();
       labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
-      class_label.css('width', labelWidth);
+      $('.label-content').css('width', labelWidth);
     }
     
     $(document).on('change', '.hidden-field', function() {
@@ -49,7 +44,7 @@ $(document).on('turbolinks:load', function(){
       //hidden-fieldのidの数値のみ取得
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       //labelボックスのidとforを更新
-      class_box.attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_url`});
+      $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_url`});
       //選択したfileのオブジェクトを取得
       var file = this.files[0];
       var reader = new FileReader();
@@ -63,7 +58,7 @@ $(document).on('turbolinks:load', function(){
           var count = $('.preview-box').length;
           var html = buildHTML(id);
           //ラベルの直前のプレビュー群にプレビューを追加
-          var prevContent = class_label.prev();
+          var prevContent = $('.label-content').prev();
           $(prevContent).append(html);
         }
         //イメージを追加
@@ -71,7 +66,7 @@ $(document).on('turbolinks:load', function(){
         var count = $('.preview-box').length;
         //プレビューが5個あったらラベルを隠す 
         if (count == 5) { 
-          class_label.hide();
+          $('.label-content').hide();
         }
 
         if ($(`#item_images_attributes_${id}__destroy`)){
@@ -83,7 +78,7 @@ $(document).on('turbolinks:load', function(){
         //ラベルのidとforの値を変更
         if(count < 5){
           //プレビューの数でラベルのオプションを更新する
-          class_box.attr({id: `label-box--${count}`,for: `item_images_attributes_${count}_url`});
+          $('.label-box').attr({id: `label-box--${count}`,for: `item_images_attributes_${count}_url`});
         }
       }
     });
@@ -103,25 +98,25 @@ $(document).on('turbolinks:load', function(){
         var count = $('.preview-box').length;
         //5個めが消されたらラベルを表示
         if (count == 4) {
-          class_label.show();
+          $('.label-content').show();
         }
         setLabel(count);
         if(id < 5){
-          class_box.attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_url`});
+          $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_url`});
         }
       } else {
         //投稿編集時
         $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
         //5個めが消されたらラベルを表示
         if (count == 4) {
-          class_label.show();
+          $('.label-content').show();
         }
         //ラベルのwidth操作
         setLabel();
         //ラベルのidとforの値を変更
         //削除したプレビューのidによって、ラベルのidを変更する
         if(id < 5){
-          class_box.attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_url`});
+          $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_url`});
         }
       }
     });
@@ -130,20 +125,19 @@ $(document).on('turbolinks:load', function(){
 
 $(document).on('turbolinks:load', function(){
   //共通の定数を定義==================================================================
-  var class_label = $(".label-content");
-  const prevContent = class_label.prev();
+  const prevContent = $('.label-content').prev();
 
   //ラベルのwidth・id・forの値を変更==================================================
   function setLabel(count) {
     //プレビューが5個あったらラベルを隠す
     if (count == 5) { 
-      class_label.hide();
+      $('.label-content').hide();
     } else {
       //プレビューが4個以下の場合はラベルを表示
-      class_label.show();
+      $('.label-content').show();
       //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定
       labelWidth = (620 - parseInt($(prevContent).css('width')));
-      class_label.css('width', labelWidth);
+      $('.label-content').css('width', labelWidth);
       //id・forの値を変更
       $('.label-box').attr({for: `item_images_attributes_${count}_url`});
     }

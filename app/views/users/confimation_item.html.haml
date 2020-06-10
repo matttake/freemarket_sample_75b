@@ -1,6 +1,8 @@
 =render 'layouts/header'
+
 .main-categories
-  %h2.main-categories__title 出品中の商品一覧
+  %h2.main-categories__title 
+    = "#{current_user.nickname}さんが購入した商品"
   .main-categories__lists#roll
     - @items.each do |item|
       = link_to item_path(id: item.id) ,class:"main-categories__lists__item" do
