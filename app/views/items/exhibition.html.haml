@@ -4,26 +4,24 @@
   .exhibition__main
     =form_with(model: @item,local:true,class:"sell-form dropzone", id:"item-dropzone") do |form|
       = render 'layouts/error_messages', model: form.object
+
       .exhibition__main__container
         .exhibition__main__container__topic
           %label 出品画像
-          %span 必須
-        %p 最大10枚までアップロードできます
-
-        = form.fields_for :images, @item.images.new do |image|
-          .dropzone-container
-            #preview
-            .dropzone-area
-              = image.label :url, class: "dropzone-box", for: "upload-image" do
-                .input_area
-                  = image.file_field :url, id: "upload-image", class: "upload-image", 'data-image': 0
-                %p ここをクリックしてください
-          .dropzone-container
-            #preview2
-            .dropzone-area2
-              = image.label :url, class: "dropzone-box", for: "upload-image" do
-                %p ここをクリックしてください
-        %hr/
+          %span 必須  
+        %p 最大5枚までアップロードできます
+        #filebox
+          .prev-content
+          .label-content
+            %label{for: "item_images_attributes_0_url", class: "label-box"}
+              %pre.label-box__text-visible クリックしてファイルをアップロード
+          .hidden-content
+            = form.fields_for :images, @item.images.new do |i|
+              = i.file_field :url, class: "hidden-field"
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][url]", id: "item_images_attributes_1_url" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][url]", id: "item_images_attributes_2_url" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][url]", id: "item_images_attributes_3_url" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][url]", id: "item_images_attributes_4_url" }
 
       .exhibition__main__container
         .exhibition__main__container__topic
@@ -100,4 +98,3 @@
       %li= link_to "特定商取引に関する法律表記","#"
     = image_tag('logo-mini.png',height:"65px",width:"80px",class:"logo")
     %p © FURIMA, Inc.
-      

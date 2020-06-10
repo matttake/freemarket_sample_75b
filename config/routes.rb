@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   root to: "items#index"
 
-  resources :items, only: [:index, :show, :create, :edit, :destroy] do
+  resources :items, except: :new do
     member do
       get 'confimation'
       post 'pay'
