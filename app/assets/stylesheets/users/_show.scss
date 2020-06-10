@@ -68,6 +68,7 @@
         height: 250px;
         display: block;
         object-fit: cover;
+        background-color: white;
       }
       &__user-image {
         border-radius: 100%;
@@ -81,10 +82,11 @@
       }
       &__user-name {
         margin: 0 auto;
+        width: 700px;
         position: absolute;
         top: 140px;
-        left: 35%;
         font-weight: bold;
+        text-align: center;
       }
       &__title {
         display: flex;
