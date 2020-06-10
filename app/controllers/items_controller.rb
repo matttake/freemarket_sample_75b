@@ -20,7 +20,21 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    @category_parent_array = Category.where(ancestry: nil)
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+
   end
 
   def update
@@ -28,6 +42,20 @@ class ItemsController < ApplicationController
       flash[:notice] = "#{@item.name}の商品情報を修正しました"  
       redirect_to item_path(@item) 
     else
+      # grandchild_category = @item.category
+      # child_category = grandchild_category.parent
+      # @category_parent_array = []
+      # Category.where(ancestry: nil).each do |parent|
+      #   @category_parent_array << parent.name
+      # end
+      # @category_children_array = []
+      # Category.where(ancestry: child_category.ancestry).each do |children|
+      #   @category_children_array << children
+      # end
+      # @category_grandchildren_array = []
+      # Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      #   @category_grandchildren_array << grandchildren
+      # end
       flash[:notice] = "#{@item.name}の商品情報の保存に失敗しました"  
       redirect_to edit_item_path(@item) 
     end
