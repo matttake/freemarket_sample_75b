@@ -111,12 +111,12 @@
         .comment__box__note
           相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となることがあります。
         = form.submit "コメントする", class:"comment__box__submitBtn"
-    %ol.links
-      %li.links__previous__page
-        - if @item != Item.first
-          = link_to "< 前の商品", item_path(id: @item.id-1)
-      %li.links__next__page
-        - if @item != Item.last
-          = link_to "次の商品 >",item_path(id: @item.id+1)
+    -# %ol.links
+    -#   %li.links__previous__page
+    -#     - if @item != Item.first
+    -#       = link_to "< 前の商品", item_path(id: @item.id-1)
+    -#   %li.links__next__page
+    -#     - if @item != Item.last
+    -#       = link_to "次の商品 >",item_path(id: @item.id+1)
 
   = render "layouts/footer"
