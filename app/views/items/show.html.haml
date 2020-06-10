@@ -113,10 +113,10 @@
         = form.submit "コメントする", class:"comment__box__submitBtn"
     %ol.links
       %li.links__previous__page
-        = link_to "< 前の商品", "#"
+        - if @item != Item.first
+          = link_to "< 前の商品", item_path(id: @item.id-1)
       %li.links__next__page
-        = link_to "次の商品 >","#"
-    .related__items
-      = link_to "#{@item.category.parent.parent.name}をもっと見る","#"
-      
+        - if @item != Item.last
+          = link_to "次の商品 >",item_path(id: @item.id+1)
+
   = render "layouts/footer"
