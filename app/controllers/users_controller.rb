@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def logout
   end
   
-  def exhibition_item
+  def new_item
     @items = Item.where(saler_id: current_user.id).includes([:images]).order("id DESC")
   end
 

@@ -8,23 +8,23 @@ $(document).on('turbolinks:load',function(){
   // 子カテゴリのセレクトボックス作成
   function appendChidrenBox(insertHTML){
     let childSelectHtml = '';
-    childSelectHtml = `<div class='exhibition__main__container__category__added' id='children_wrapper'>
-                        <div class='exhibition__main__container__category__box' id='children_wrapper_box'>
-                          <select class='exhibition__main__container__category__box--select' id='child_category' name='item[category_id]'>
+    childSelectHtml = `<div class='new__main__container__category__added' id='children_wrapper'>
+                        <div class='new__main__container__category__box' id='children_wrapper_box'>
+                          <select class='new__main__container__category__box--select' id='child_category' name='item[category_id]'>
                             <option value='---' data-category='---'>選択してください</option>
                             ${insertHTML}
                           </select>
                         </div>
                       </div>`;
-    $('.exhibition__main__container__category__box').append(childSelectHtml);
+    $('.new__main__container__category__box').append(childSelectHtml);
   }
 
   // 孫カテゴリのセレクトボックス作成
   function appendGrandchidrenBox(insertHTML){
     let grandchildSelectHtml = '';
-    grandchildSelectHtml = `<div class='exhibition__main__container__category__added' id= 'grandchildren_wrapper'>
-                              <div class='exhibition__main__container__category__box' id= 'grandchildren_wrapper_box'>
-                                <select class='exhibition__main__container__category__box--select' id='grandchild_category' name='item[category_id]'>
+    grandchildSelectHtml = `<div class='new__main__container__category__added' id= 'grandchildren_wrapper'>
+                              <div class='new__main__container__category__box' id= 'grandchildren_wrapper_box'>
+                                <select class='new__main__container__category__box--select' id='grandchild_category' name='item[category_id]'>
                                   <option value='---' data-category='---'>選択してください</option>
                                   ${insertHTML}
                                 </select>
@@ -63,7 +63,7 @@ $(document).on('turbolinks:load',function(){
   });
 
   // 子カテゴリ選択後のイベント
-  $('.exhibition__main__container__category__box').on('change', '#child_category', function(){
+  $('.new__main__container__category__box').on('change', '#child_category', function(){
     let childId = $('#child_category option:selected').data('category'); // 選択された子カテゴリのidを取得
     if (childId != "選択してください"){ // 子カテゴリが初期値でないときイベント発火
       $.ajax({

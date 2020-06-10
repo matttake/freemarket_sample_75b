@@ -85,7 +85,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def exhibition
+  def new
     @category_parent_array = Category.where(ancestry: nil)
     @item = Item.new
     @item.images.new
@@ -98,7 +98,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       @category_parent_array = Category.where(ancestry: nil)
-      render :exhibition
+      render :new
     end
   end
   
