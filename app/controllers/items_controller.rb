@@ -21,7 +21,20 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    @category_parent_array = Category.where(ancestry: nil)
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
   end
   
   def update
@@ -73,7 +86,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @category_parent_array = Category.where(ancestry: nil)
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
     @item = Item.new
     @item.images.new
   end
@@ -92,7 +105,9 @@ class ItemsController < ApplicationController
   # ↓親カテゴリ選択後の子カテゴリ表示
   def get_category_children
     # 選択された親カテゴリに紐付く子カテゴリの配列を取得
-    @category_children = Category.find("#{params[:parent_id]}").children
+    # @category_children = Category.find("#{params[:parent_id]}").children
+    @category_children = Category.find_by(name: "#{params[:parent_id]}", ancestry: nil).children
+
   end
   
   # 子カテゴリ選択後の孫カテゴリ表示
