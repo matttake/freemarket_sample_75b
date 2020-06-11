@@ -44,7 +44,7 @@
 
         .new__main__container__category
           .new__main__container__category__box
-            = form.collection_select :category_id, @category_parent_array, :id, :name, {prompt:"選択してください"}, {class: 'new__main__container__category__box--select', id: 'parent_category'}
+            = form.select :category_id, @category_parent_array, {prompt:"選択してください"}, {class: 'new__main__container__category__box--select', id: 'parent_category'}
             
         .new__main__container__topic
           %label 商品の状態

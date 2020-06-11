@@ -49,11 +49,15 @@
         .new__main__container__topic
           %label カテゴリー
           %span 必須
-          %label#edit もう一度選び直してください
         .new__main__container__category
           .new__main__container__category__box
-            = form.collection_select :category_id, @category_parent_array, :id, :name, {prompt:"選択してください"}, {class: 'new__main__container__category__box--select', id: 'parent_category'}
-
+            = form.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'new__main__container__category__box--select', id: 'parent_category'}
+            .new__main__container__category__added#children_wrapper
+              .new__main__container__category__box#children_wrapper_box
+                = form.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'new__main__container__category__box--select', id: 'child_category'}
+            .new__main__container__category__added#grandchildren_wrapper
+              .new__main__container__category__box#grandchildren_wrapper_box
+                = form.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'new__main__container__category__box--select', id: 'grandchild_category'}
 
         .new__main__container__topic
           %label 商品の状態
